@@ -31,7 +31,19 @@ public class EmployeeDirectory {
        directory.add(emp);
        return emp;
    }
+   public void deleteEmployee(Employee emp){
+        directory.remove(emp);
+    }
    
+   public Employee updateEmployee(int id){
+       for(Employee e:directory){
+           if(directory.indexOf(e) == id){
+               directory.set(id,e);
+           }
+           return e;
+           }
+           return null;
+       }
 
    
 }

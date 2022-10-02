@@ -65,6 +65,8 @@ public class ViewJPanel extends javax.swing.JPanel {
         teaminfoField = new javax.swing.JTextField();
         startdateLabel = new javax.swing.JLabel();
         titleField = new javax.swing.JTextField();
+        updateButton = new javax.swing.JButton();
+        deleteButton = new javax.swing.JButton();
 
         jLabel1.setFont(new java.awt.Font("Segoe UI", 1, 18)); // NOI18N
         jLabel1.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
@@ -129,64 +131,86 @@ public class ViewJPanel extends javax.swing.JPanel {
             }
         });
 
+        updateButton.setText("Update");
+        updateButton.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                updateButtonActionPerformed(evt);
+            }
+        });
+
+        deleteButton.setText("Delete");
+        deleteButton.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                deleteButtonActionPerformed(evt);
+            }
+        });
+
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(this);
         this.setLayout(layout);
         layout.setHorizontalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(layout.createSequentialGroup()
-                .addContainerGap()
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addComponent(jLabel1, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                    .addComponent(jScrollPane1, javax.swing.GroupLayout.Alignment.TRAILING))
-                .addContainerGap())
-            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
-                .addGap(69, 69, 69)
-                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
                     .addGroup(layout.createSequentialGroup()
-                        .addGap(209, 209, 209)
-                        .addComponent(imagepathLabel)
-                        .addGap(18, 18, 18))
-                    .addGroup(layout.createSequentialGroup()
-                        .addComponent(imageLabel, javax.swing.GroupLayout.PREFERRED_SIZE, 159, javax.swing.GroupLayout.PREFERRED_SIZE)
-                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                        .addContainerGap()
                         .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
-                                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                                    .addGroup(layout.createSequentialGroup()
-                                        .addGap(4, 4, 4)
-                                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                                            .addComponent(emailLabel)
-                                            .addComponent(titleLabel)
-                                            .addComponent(phonenumberLabel)))
-                                    .addComponent(ageLabel)
-                                    .addComponent(genderLabel)
-                                    .addComponent(startdateLabel)
-                                    .addComponent(levelLabel)
-                                    .addGroup(layout.createSequentialGroup()
-                                        .addGap(2, 2, 2)
-                                        .addComponent(nameLabel)))
-                                .addGap(31, 31, 31))
-                            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
-                                .addComponent(employeeidLabel)
+                            .addComponent(jLabel1, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                            .addComponent(jScrollPane1, javax.swing.GroupLayout.Alignment.TRAILING)))
+                    .addGroup(layout.createSequentialGroup()
+                        .addGap(69, 69, 69)
+                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
+                            .addGroup(layout.createSequentialGroup()
+                                .addGap(209, 209, 209)
+                                .addComponent(imagepathLabel)
                                 .addGap(18, 18, 18))
                             .addGroup(layout.createSequentialGroup()
-                                .addComponent(teaminfoLabel)
-                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)))))
-                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addComponent(ageField)
-                    .addComponent(genderField)
-                    .addComponent(phonenumberField, javax.swing.GroupLayout.Alignment.TRAILING)
-                    .addComponent(teaminfoField, javax.swing.GroupLayout.Alignment.TRAILING)
-                    .addComponent(levelField)
-                    .addComponent(titleField, javax.swing.GroupLayout.Alignment.TRAILING)
-                    .addComponent(emailField, javax.swing.GroupLayout.Alignment.TRAILING)
-                    .addComponent(imagepathField, javax.swing.GroupLayout.Alignment.TRAILING)
-                    .addComponent(startdateField)
-                    .addComponent(employeeidField, javax.swing.GroupLayout.Alignment.TRAILING)
-                    .addComponent(nameField, javax.swing.GroupLayout.Alignment.TRAILING))
-                .addGap(92, 92, 92)
+                                .addComponent(imageLabel, javax.swing.GroupLayout.PREFERRED_SIZE, 159, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 84, Short.MAX_VALUE)
+                                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                                    .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
+                                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                                            .addGroup(layout.createSequentialGroup()
+                                                .addGap(4, 4, 4)
+                                                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                                                    .addComponent(emailLabel)
+                                                    .addComponent(titleLabel)
+                                                    .addComponent(phonenumberLabel)))
+                                            .addComponent(ageLabel)
+                                            .addComponent(genderLabel)
+                                            .addComponent(startdateLabel)
+                                            .addComponent(levelLabel)
+                                            .addGroup(layout.createSequentialGroup()
+                                                .addGap(2, 2, 2)
+                                                .addComponent(nameLabel)))
+                                        .addGap(31, 31, 31))
+                                    .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
+                                        .addComponent(employeeidLabel)
+                                        .addGap(18, 18, 18))
+                                    .addGroup(layout.createSequentialGroup()
+                                        .addComponent(teaminfoLabel)
+                                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)))))
+                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                            .addComponent(ageField, javax.swing.GroupLayout.DEFAULT_SIZE, 46, Short.MAX_VALUE)
+                            .addComponent(genderField)
+                            .addComponent(phonenumberField, javax.swing.GroupLayout.Alignment.TRAILING)
+                            .addComponent(teaminfoField, javax.swing.GroupLayout.Alignment.TRAILING)
+                            .addComponent(levelField)
+                            .addComponent(titleField, javax.swing.GroupLayout.Alignment.TRAILING)
+                            .addComponent(emailField, javax.swing.GroupLayout.Alignment.TRAILING)
+                            .addComponent(imagepathField, javax.swing.GroupLayout.Alignment.TRAILING)
+                            .addComponent(startdateField)
+                            .addComponent(employeeidField, javax.swing.GroupLayout.Alignment.TRAILING)
+                            .addComponent(nameField, javax.swing.GroupLayout.Alignment.TRAILING))
+                        .addGap(222, 222, 222)))
+                .addContainerGap())
+            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
+                .addGap(0, 0, Short.MAX_VALUE)
                 .addComponent(viewButton)
-                .addGap(47, 47, 47))
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                .addComponent(deleteButton)
+                .addGap(12, 12, 12)
+                .addComponent(updateButton)
+                .addGap(19, 19, 19))
         );
         layout.setVerticalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
@@ -195,59 +219,58 @@ public class ViewJPanel extends javax.swing.JPanel {
                 .addComponent(jLabel1)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                 .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, 112, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addGap(18, 18, 18)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 13, Short.MAX_VALUE)
+                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                    .addComponent(viewButton)
+                    .addComponent(deleteButton)
+                    .addComponent(updateButton))
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addGroup(layout.createSequentialGroup()
-                        .addComponent(viewButton)
-                        .addContainerGap())
+                    .addComponent(imageLabel, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.PREFERRED_SIZE, 163, javax.swing.GroupLayout.PREFERRED_SIZE)
                     .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
-                        .addGap(0, 24, Short.MAX_VALUE)
-                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                            .addComponent(imageLabel, javax.swing.GroupLayout.PREFERRED_SIZE, 163, javax.swing.GroupLayout.PREFERRED_SIZE)
-                            .addGroup(layout.createSequentialGroup()
-                                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                                    .addComponent(nameField, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                                    .addComponent(nameLabel))
-                                .addGap(18, 18, 18)
-                                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                                    .addComponent(employeeidField, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                                    .addComponent(employeeidLabel))
-                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
-                                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                                    .addComponent(ageField, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                                    .addComponent(ageLabel))
-                                .addGap(18, 18, 18)
-                                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                                    .addComponent(genderField, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                                    .addComponent(genderLabel))
-                                .addGap(18, 18, 18)
-                                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                                    .addComponent(startdateLabel)
-                                    .addComponent(startdateField, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))))
-                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                         .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                            .addComponent(levelField, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                            .addComponent(levelLabel, javax.swing.GroupLayout.PREFERRED_SIZE, 22, javax.swing.GroupLayout.PREFERRED_SIZE))
+                            .addComponent(nameField, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                            .addComponent(nameLabel))
                         .addGap(18, 18, 18)
                         .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                            .addComponent(teaminfoField, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                            .addComponent(teaminfoLabel))
-                        .addGap(18, 18, 18)
-                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                            .addComponent(titleField, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                            .addComponent(titleLabel))
+                            .addComponent(employeeidField, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                            .addComponent(employeeidLabel))
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
                         .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                            .addComponent(phonenumberField, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                            .addComponent(phonenumberLabel))
+                            .addComponent(ageField, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                            .addComponent(ageLabel))
                         .addGap(18, 18, 18)
                         .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                            .addComponent(emailField, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                            .addComponent(emailLabel))
+                            .addComponent(genderField, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                            .addComponent(genderLabel))
                         .addGap(18, 18, 18)
-                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                            .addComponent(imagepathField, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                            .addComponent(imagepathLabel)))))
+                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                            .addComponent(startdateLabel)
+                            .addComponent(startdateField, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))))
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                    .addComponent(levelField, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(levelLabel, javax.swing.GroupLayout.PREFERRED_SIZE, 22, javax.swing.GroupLayout.PREFERRED_SIZE))
+                .addGap(18, 18, 18)
+                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                    .addComponent(teaminfoField, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(teaminfoLabel))
+                .addGap(18, 18, 18)
+                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                    .addComponent(titleField, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(titleLabel))
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
+                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                    .addComponent(phonenumberField, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(phonenumberLabel))
+                .addGap(18, 18, 18)
+                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                    .addComponent(emailField, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(emailLabel))
+                .addGap(18, 18, 18)
+                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                    .addComponent(imagepathField, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(imagepathLabel)))
         );
     }// </editor-fold>//GEN-END:initComponents
 
@@ -290,10 +313,76 @@ public class ViewJPanel extends javax.swing.JPanel {
         // TODO add your handling code here:
     }//GEN-LAST:event_titleFieldActionPerformed
 
+    private void updateButtonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_updateButtonActionPerformed
+        // TODO add your handling code here:
+        DefaultTableModel model = (DefaultTableModel) jTable1.getModel();
+        int rowindex = jTable1.getSelectedRow();
+
+        String newname = nameField.getText();
+        int newemployeeid = Integer.parseInt(employeeidField.getText());
+        int newage = Integer.parseInt(ageField.getText());
+        String newgender = genderField.getText();
+        String newstartdate = startdateField.getText();
+        int newlevel = Integer.parseInt(levelField.getText());
+        String newteaminfo = teaminfoField.getText();
+        String newtitle = titleField.getText();
+        String newphonenumber = phonenumberField.getText();
+        String newemail = emailField.getText();
+
+        Employee emp = directory.updateEmployee(rowindex);
+
+        emp.setName(newname);
+        emp.setEmployeeId(newemployeeid);
+        emp.setAge(newage);
+        emp.setGender(newgender);
+        emp.setStartdate(newstartdate);
+        emp.setLevel(newlevel);
+        emp.setTeaminfo(newteaminfo);
+        emp.setTitle(newtitle);
+        emp.setPhone(newphonenumber);
+        emp.setEmail(newemail);
+
+        // String newname = JOptionPane.showInputDialog(null,"enter a name value:",name);
+        // int newemployeeid = Integer.parseInt(JOptionPane.showInputDialog(null, "enter employeeID value:", employeeid));
+
+        model.setValueAt(newname, rowindex, 0);
+        model.setValueAt(newemployeeid, rowindex, 1);
+        model.setValueAt(newage, rowindex, 2);
+        model.setValueAt(newgender, rowindex, 3);
+        model.setValueAt(newstartdate, rowindex, 4);
+        model.setValueAt(newlevel, rowindex, 5);
+        model.setValueAt(newteaminfo, rowindex, 6);
+        model.setValueAt(newtitle, rowindex, 7);
+        model.setValueAt(newphonenumber, rowindex, 8);
+        model.setValueAt(newemail, rowindex, 9);
+
+        populateTable();
+    }//GEN-LAST:event_updateButtonActionPerformed
+
+    private void deleteButtonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_deleteButtonActionPerformed
+        // TODO add your handling code here:
+        int rowindex = jTable1.getSelectedRow();
+
+        if(rowindex<0){
+            JOptionPane.showMessageDialog(this,"Please select a row to delete.");
+            return;
+        }
+
+        DefaultTableModel model = (DefaultTableModel) jTable1.getModel();
+        Employee selectedemp = (Employee) model.getValueAt(rowindex, 0);
+
+        directory.deleteEmployee(selectedemp);
+
+        JOptionPane.showMessageDialog(this, "Selected Employee Record is deleted.");
+
+        populateTable();
+    }//GEN-LAST:event_deleteButtonActionPerformed
+
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JTextField ageField;
     private javax.swing.JLabel ageLabel;
+    private javax.swing.JButton deleteButton;
     private javax.swing.JTextField emailField;
     private javax.swing.JLabel emailLabel;
     private javax.swing.JTextField employeeidField;
@@ -318,6 +407,7 @@ public class ViewJPanel extends javax.swing.JPanel {
     private javax.swing.JLabel teaminfoLabel;
     private javax.swing.JTextField titleField;
     private javax.swing.JLabel titleLabel;
+    private javax.swing.JButton updateButton;
     private javax.swing.JButton viewButton;
     // End of variables declaration//GEN-END:variables
 
