@@ -10,6 +10,7 @@ import java.util.ArrayList;
  *
  * @author ashwini
  */
+// Creating class EmployeeDirectory
 public class EmployeeDirectory {
     
     private ArrayList<Employee> directory;
@@ -25,16 +26,17 @@ public class EmployeeDirectory {
     public void setDirectory(ArrayList<Employee> directory) {
         this.directory = directory;
     }
-    
+    // Function to add Employee to the ArrayList
    public Employee addnewEmployees(){
        Employee emp = new Employee();
        directory.add(emp);
        return emp;
    }
+   // Function to delete Employee to the ArrayList
    public void deleteEmployee(Employee emp){
         directory.remove(emp);
     }
-   
+   // Function to update Employee to the ArrayList
    public Employee updateEmployee(int id){
        for(Employee e:directory){
            if(directory.indexOf(e) == id){

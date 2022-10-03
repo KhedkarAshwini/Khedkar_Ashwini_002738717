@@ -20,6 +20,7 @@ public class ViewJPanel extends javax.swing.JPanel {
     /**
      * Creates new form ViewJPanel
      */
+    // Creating reference variable for ArrayList.
     EmployeeDirectory directory;
     
     public ViewJPanel(EmployeeDirectory directory) {
@@ -112,24 +113,12 @@ public class ViewJPanel extends javax.swing.JPanel {
 
         imagepathLabel.setText("Image Path:");
 
-        levelField.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                levelFieldActionPerformed(evt);
-            }
-        });
-
         imageLabel.setHorizontalAlignment(javax.swing.SwingConstants.LEFT);
         imageLabel.setBorder(javax.swing.BorderFactory.createLineBorder(new java.awt.Color(0, 0, 0)));
 
         genderLabel.setText("Gender:");
 
         startdateLabel.setText("Start Date:");
-
-        titleField.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                titleFieldActionPerformed(evt);
-            }
-        });
 
         updateButton.setText("Update");
         updateButton.addActionListener(new java.awt.event.ActionListener() {
@@ -155,17 +144,16 @@ public class ViewJPanel extends javax.swing.JPanel {
                         .addContainerGap()
                         .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                             .addComponent(jLabel1, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                            .addComponent(jScrollPane1, javax.swing.GroupLayout.Alignment.TRAILING)))
+                            .addComponent(jScrollPane1, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.DEFAULT_SIZE, 653, Short.MAX_VALUE)))
                     .addGroup(layout.createSequentialGroup()
-                        .addGap(69, 69, 69)
-                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
-                            .addGroup(layout.createSequentialGroup()
-                                .addGap(209, 209, 209)
+                        .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
                                 .addComponent(imagepathLabel)
                                 .addGap(18, 18, 18))
-                            .addGroup(layout.createSequentialGroup()
-                                .addComponent(imageLabel, javax.swing.GroupLayout.PREFERRED_SIZE, 159, javax.swing.GroupLayout.PREFERRED_SIZE)
-                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 84, Short.MAX_VALUE)
+                            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
+                                .addComponent(imageLabel, javax.swing.GroupLayout.PREFERRED_SIZE, 175, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                .addGap(46, 46, 46)
                                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                                     .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
                                         .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
@@ -274,6 +262,7 @@ public class ViewJPanel extends javax.swing.JPanel {
         );
     }// </editor-fold>//GEN-END:initComponents
 
+    // Function code for View button.
     private void viewButtonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_viewButtonActionPerformed
         // TODO add your handling code here:
         int rowindex = jTable1.getSelectedRow();
@@ -282,10 +271,12 @@ public class ViewJPanel extends javax.swing.JPanel {
             JOptionPane.showMessageDialog(this,"Please select a row to view.");
             return;
         }
-
+        
+        // Creating JTable model variable to put/get values from/into JTable.
         DefaultTableModel model = (DefaultTableModel) jTable1.getModel();
         Employee selectedemp = (Employee) model.getValueAt(rowindex, 0);
 
+        // Getting values from Textfield and adding Arraylist reference to them.
         nameField.setText(String.valueOf(selectedemp.getName()));
         employeeidField.setText(String.valueOf(selectedemp.getEmployeeId()));
         ageField.setText(String.valueOf(selectedemp.getAge()));
@@ -298,26 +289,23 @@ public class ViewJPanel extends javax.swing.JPanel {
         emailField.setText(String.valueOf(selectedemp.getEmail()));
         imagepathField.setText(String.valueOf(selectedemp.getImagepath()));
         String imgpath = selectedemp.getImagepath();
-
+        
+        // Using Imageicon to display image using image path.
         ImageIcon img = new ImageIcon(imgpath);
         Image image = img.getImage().getScaledInstance(imageLabel.getWidth(), imageLabel.getHeight(), Image.SCALE_SMOOTH);
 
         imageLabel.setIcon(new ImageIcon(image));
     }//GEN-LAST:event_viewButtonActionPerformed
 
-    private void levelFieldActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_levelFieldActionPerformed
-        // TODO add your handling code here:
-    }//GEN-LAST:event_levelFieldActionPerformed
-
-    private void titleFieldActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_titleFieldActionPerformed
-        // TODO add your handling code here:
-    }//GEN-LAST:event_titleFieldActionPerformed
-
+    // Function Code for Update button.
     private void updateButtonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_updateButtonActionPerformed
         // TODO add your handling code here:
+        
+        // Creating JTable model to get values from the selected row in Jtable.
         DefaultTableModel model = (DefaultTableModel) jTable1.getModel();
         int rowindex = jTable1.getSelectedRow();
-
+        
+        // Creating new variables to store new updated Text Field values.
         String newname = nameField.getText();
         int newemployeeid = Integer.parseInt(employeeidField.getText());
         int newage = Integer.parseInt(ageField.getText());
@@ -328,9 +316,11 @@ public class ViewJPanel extends javax.swing.JPanel {
         String newtitle = titleField.getText();
         String newphonenumber = phonenumberField.getText();
         String newemail = emailField.getText();
-
+        
+        // Calling UpdateEmployee function to add updated values to Array list.
         Employee emp = directory.updateEmployee(rowindex);
-
+        
+        // Setting new values and linking it to employeeDirectory reference.
         emp.setName(newname);
         emp.setEmployeeId(newemployeeid);
         emp.setAge(newage);
@@ -342,9 +332,7 @@ public class ViewJPanel extends javax.swing.JPanel {
         emp.setPhone(newphonenumber);
         emp.setEmail(newemail);
 
-        // String newname = JOptionPane.showInputDialog(null,"enter a name value:",name);
-        // int newemployeeid = Integer.parseInt(JOptionPane.showInputDialog(null, "enter employeeID value:", employeeid));
-
+        // Adding new input values to the JTable for selectedrow.
         model.setValueAt(newname, rowindex, 0);
         model.setValueAt(newemployeeid, rowindex, 1);
         model.setValueAt(newage, rowindex, 2);
@@ -356,13 +344,17 @@ public class ViewJPanel extends javax.swing.JPanel {
         model.setValueAt(newphonenumber, rowindex, 8);
         model.setValueAt(newemail, rowindex, 9);
 
+        // Calling function to display values added to JTable.
         populateTable();
     }//GEN-LAST:event_updateButtonActionPerformed
 
+    // Function Code for delete button.
     private void deleteButtonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_deleteButtonActionPerformed
         // TODO add your handling code here:
+        // Getting row index value to delete.
         int rowindex = jTable1.getSelectedRow();
 
+        // Check if user has selected a row to delete.
         if(rowindex<0){
             JOptionPane.showMessageDialog(this,"Please select a row to delete.");
             return;
@@ -371,10 +363,12 @@ public class ViewJPanel extends javax.swing.JPanel {
         DefaultTableModel model = (DefaultTableModel) jTable1.getModel();
         Employee selectedemp = (Employee) model.getValueAt(rowindex, 0);
 
+        // Calling function to delete element in arraylist directory.
         directory.deleteEmployee(selectedemp);
 
         JOptionPane.showMessageDialog(this, "Selected Employee Record is deleted.");
 
+        // Calling Function to display table.
         populateTable();
     }//GEN-LAST:event_deleteButtonActionPerformed
 
@@ -411,6 +405,7 @@ public class ViewJPanel extends javax.swing.JPanel {
     private javax.swing.JButton viewButton;
     // End of variables declaration//GEN-END:variables
 
+    // Function to display table values.
     private void populateTable() {
         DefaultTableModel model = (DefaultTableModel) jTable1.getModel();
         model.setRowCount(0);

@@ -8,6 +8,7 @@ package model;
  *
  * @author ashwini
  */
+// Employee Class
 public class Employee {
     private String name;
     private int employeeId;
@@ -122,6 +123,7 @@ public class Employee {
     public void setImagepath(String imagepath) {
         this.imagepath = imagepath;
     }
+    // override function for name.
     @Override
     public String toString() {
         return name; 

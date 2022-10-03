@@ -22,6 +22,7 @@ public class CreateJPanel extends javax.swing.JPanel {
     /**
      * Creates new form CreateJPanel
      */
+    // Creating reference variable for ArrayList.
     EmployeeDirectory directory;
     
     public CreateJPanel() {
@@ -210,9 +211,16 @@ public class CreateJPanel extends javax.swing.JPanel {
         );
     }// </editor-fold>//GEN-END:initComponents
 
+    // Function Code for Save Button
     private void saveButtonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_saveButtonActionPerformed
         // TODO add your handling code here:
-
+        
+        // Performing Following Validation on Input Text Fields -
+        // 1. Check if input value is empty.
+        // 2. Check if input datatype is not matching suppose input value(like String).
+        // 3. Check if length of input value for phone number is less or more than 10.
+        // 4. Check if input value for Email has @.
+        
         int val = 0;
         String name = nameField.getText();
         if(name.isEmpty()){
@@ -233,7 +241,8 @@ public class CreateJPanel extends javax.swing.JPanel {
             JOptionPane.showMessageDialog(this,"Please enter input");
             val++;
         }
-
+        
+        // Using Java Swing Component Datepicker to get date value.
         Date sdate = startDatePicker.getDate();
         String pattern = "MM-dd-yyyy";
         SimpleDateFormat simpleDateFormat = new SimpleDateFormat(pattern);
@@ -289,12 +298,16 @@ public class CreateJPanel extends javax.swing.JPanel {
             val++;
         }
         String path = imagepathField.getText();
+        
+        // If any Validation fails, input is not added to the Jtable.
         if(val==0){
+            // Calling function to insert element to arraylist.
             Employee emp = directory.addnewEmployees();
 
             emp.setName(name);
             emp.setEmployeeId(employeeid);
             emp.setAge(age);
+            // Checking which radiobutton is selected for Gender.
             if((mRadioButton.isSelected())){
                 emp.setGender("male");
             }
@@ -311,6 +324,7 @@ public class CreateJPanel extends javax.swing.JPanel {
 
             JOptionPane.showMessageDialog(this,"New Employee Details saved successfully!!!");
 
+            // Resetting textfield values.
             nameField.setText("");
             employeeidField.setText("");
             ageField.setText("");
@@ -322,7 +336,8 @@ public class CreateJPanel extends javax.swing.JPanel {
         }
 
     }//GEN-LAST:event_saveButtonActionPerformed
-
+    
+    // Function Code for Uploading Images.
     private void imageButtonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_imageButtonActionPerformed
         // TODO add your handling code here:
         JFileChooser imagefile = new JFileChooser();

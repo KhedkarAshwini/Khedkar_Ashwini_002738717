@@ -17,6 +17,7 @@ public class MainJFrame extends javax.swing.JFrame {
     /**
      * Creates new form MainJFrame
      */
+    // Creating reference variable for arraylist.
     EmployeeDirectory directory;
     
     public MainJFrame() {
@@ -41,6 +42,7 @@ public class MainJFrame extends javax.swing.JFrame {
         controlPanel = new javax.swing.JPanel();
         InsertemployeeButton = new javax.swing.JButton();
         viewemployeeButton = new javax.swing.JButton();
+        searchButton = new javax.swing.JButton();
         workPanel = new javax.swing.JPanel();
         jLabel1 = new javax.swing.JLabel();
         imageLabel = new javax.swing.JLabel();
@@ -63,6 +65,14 @@ public class MainJFrame extends javax.swing.JFrame {
             }
         });
 
+        searchButton.setFont(new java.awt.Font("Segoe UI", 1, 12)); // NOI18N
+        searchButton.setText("Search");
+        searchButton.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                searchButtonActionPerformed(evt);
+            }
+        });
+
         javax.swing.GroupLayout controlPanelLayout = new javax.swing.GroupLayout(controlPanel);
         controlPanel.setLayout(controlPanelLayout);
         controlPanelLayout.setHorizontalGroup(
@@ -71,7 +81,8 @@ public class MainJFrame extends javax.swing.JFrame {
                 .addContainerGap()
                 .addGroup(controlPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addComponent(InsertemployeeButton, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                    .addComponent(viewemployeeButton, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
+                    .addComponent(viewemployeeButton, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                    .addComponent(searchButton, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
                 .addContainerGap())
         );
         controlPanelLayout.setVerticalGroup(
@@ -81,7 +92,9 @@ public class MainJFrame extends javax.swing.JFrame {
                 .addComponent(InsertemployeeButton)
                 .addGap(18, 18, 18)
                 .addComponent(viewemployeeButton)
-                .addContainerGap(476, Short.MAX_VALUE))
+                .addGap(18, 18, 18)
+                .addComponent(searchButton)
+                .addContainerGap(433, Short.MAX_VALUE))
         );
 
         splitPane.setLeftComponent(controlPanel);
@@ -134,19 +147,27 @@ public class MainJFrame extends javax.swing.JFrame {
 
         pack();
     }// </editor-fold>//GEN-END:initComponents
-
+    
+    // Function for InsertEmployee Button.
     private void InsertemployeeButtonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_InsertemployeeButtonActionPerformed
         // TODO add your handling code here:
 
         CreateJPanel createpanel = new CreateJPanel(directory);
         splitPane.setRightComponent(createpanel);
     }//GEN-LAST:event_InsertemployeeButtonActionPerformed
-
+    // Function for View Employee Button.
     private void viewemployeeButtonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_viewemployeeButtonActionPerformed
         // TODO add your handling code here:
         ViewJPanel viewpanel = new ViewJPanel(directory);
         splitPane.setRightComponent(viewpanel);
     }//GEN-LAST:event_viewemployeeButtonActionPerformed
+    // Function for Search Employee Button.
+    private void searchButtonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_searchButtonActionPerformed
+        // TODO add your handling code here:
+
+        SearchJPanel searchpanel = new SearchJPanel(directory);
+        splitPane.setRightComponent(searchpanel);
+    }//GEN-LAST:event_searchButtonActionPerformed
 
     /**
      * @param args the command line arguments
@@ -188,6 +209,7 @@ public class MainJFrame extends javax.swing.JFrame {
     private javax.swing.JPanel controlPanel;
     private javax.swing.JLabel imageLabel;
     private javax.swing.JLabel jLabel1;
+    private javax.swing.JButton searchButton;
     private javax.swing.JSplitPane splitPane;
     private javax.swing.JButton viewemployeeButton;
     private javax.swing.JPanel workPanel;
