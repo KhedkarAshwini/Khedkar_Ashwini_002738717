@@ -25,44 +25,38 @@
                   <Component id="deleteButton" min="-2" max="-2" attributes="0"/>
                   <Component id="backButton" min="-2" max="-2" attributes="0"/>
               </Group>
-              <EmptySpace type="separate" max="-2" attributes="0"/>
-              <Group type="103" groupAlignment="0" max="-2" attributes="0">
-                  <Group type="102" attributes="0">
-                      <Group type="103" groupAlignment="0" attributes="0">
-                          <Component id="pIDLabel" alignment="0" min="-2" max="-2" attributes="0"/>
-                          <Component id="pnameLabel" alignment="0" min="-2" max="-2" attributes="0"/>
+              <EmptySpace min="-2" pref="43" max="-2" attributes="0"/>
+              <Group type="103" groupAlignment="0" attributes="0">
+                  <Component id="emailLabel" min="-2" max="-2" attributes="0"/>
+                  <Group type="103" groupAlignment="0" max="-2" attributes="0">
+                      <Group type="102" alignment="0" attributes="0">
+                          <Group type="103" groupAlignment="0" attributes="0">
+                              <Component id="pIDLabel" alignment="0" min="-2" max="-2" attributes="0"/>
+                              <Component id="pnameLabel" alignment="0" min="-2" max="-2" attributes="0"/>
+                          </Group>
+                          <EmptySpace min="-2" pref="42" max="-2" attributes="0"/>
+                          <Group type="103" groupAlignment="0" attributes="0">
+                              <Component id="pnameField" pref="170" max="32767" attributes="0"/>
+                              <Component id="pidField" max="32767" attributes="0"/>
+                          </Group>
                       </Group>
-                      <EmptySpace min="-2" pref="42" max="-2" attributes="0"/>
-                      <Group type="103" groupAlignment="0" attributes="0">
-                          <Component id="pnameField" pref="170" max="32767" attributes="0"/>
-                          <Component id="pidField" max="32767" attributes="0"/>
-                      </Group>
-                  </Group>
-                  <Group type="102" alignment="0" attributes="0">
-                      <Group type="103" groupAlignment="0" attributes="0">
-                          <Component id="weightLabel" alignment="0" min="-2" max="-2" attributes="0"/>
-                          <Component id="hLabel" alignment="0" min="-2" max="-2" attributes="0"/>
-                          <Component id="visitdateLabel" alignment="0" min="-2" pref="62" max="-2" attributes="0"/>
-                          <Component id="diagnosisLabel" alignment="0" min="-2" max="-2" attributes="0"/>
-                          <Component id="pulseLabel" alignment="0" min="-2" max="-2" attributes="0"/>
-                          <Component id="BPLabel" alignment="0" min="-2" max="-2" attributes="0"/>
-                          <Component id="temperatureLabel" alignment="0" min="-2" pref="84" max="-2" attributes="0"/>
-                          <Component id="genderLabel" alignment="0" min="-2" max="-2" attributes="0"/>
-                          <Component id="jLabel2" alignment="0" min="-2" max="-2" attributes="0"/>
-                      </Group>
-                      <EmptySpace min="-2" pref="34" max="-2" attributes="0"/>
-                      <Group type="103" groupAlignment="0" max="-2" attributes="0">
-                          <Component id="weightField" pref="170" max="32767" attributes="0"/>
-                          <Component id="temperatureField" alignment="0" pref="170" max="32767" attributes="0"/>
-                          <Component id="bloodpressureField" alignment="0" pref="170" max="32767" attributes="0"/>
-                          <Component id="pulseField" alignment="0" pref="170" max="32767" attributes="0"/>
-                          <Component id="diagnosisField" alignment="0" pref="170" max="32767" attributes="0"/>
-                          <Component id="heightField" alignment="0" max="32767" attributes="0"/>
-                          <Component id="visitdateField" alignment="0" max="32767" attributes="0"/>
-                          <Component id="genderField" alignment="0" max="32767" attributes="0"/>
-                          <Component id="ageField" alignment="0" max="32767" attributes="0"/>
+                      <Group type="102" alignment="0" attributes="0">
+                          <Group type="103" groupAlignment="0" attributes="0">
+                              <Component id="genderLabel" alignment="0" min="-2" max="-2" attributes="0"/>
+                              <Component id="jLabel2" alignment="0" min="-2" max="-2" attributes="0"/>
+                              <Component id="addressLabel" alignment="0" min="-2" max="-2" attributes="0"/>
+                          </Group>
+                          <EmptySpace min="-2" pref="67" max="-2" attributes="0"/>
+                          <Group type="103" groupAlignment="0" max="-2" attributes="0">
+                              <Component id="genderField" alignment="0" pref="170" max="32767" attributes="0"/>
+                              <Component id="ageField" alignment="0" max="32767" attributes="0"/>
+                              <Component id="contactField" alignment="0" max="32767" attributes="0"/>
+                              <Component id="emailField" alignment="0" max="32767" attributes="0"/>
+                              <Component id="addressField" max="32767" attributes="0"/>
+                          </Group>
                       </Group>
                   </Group>
+                  <Component id="contactLabel" min="-2" max="-2" attributes="0"/>
               </Group>
               <EmptySpace min="0" pref="0" max="32767" attributes="0"/>
           </Group>
@@ -71,88 +65,58 @@
     <DimensionLayout dim="1">
       <Group type="103" groupAlignment="0" attributes="0">
           <Group type="102" alignment="0" attributes="0">
-              <Group type="103" groupAlignment="1" attributes="0">
+              <Component id="jLabel1" min="-2" max="-2" attributes="0"/>
+              <EmptySpace max="-2" attributes="0"/>
+              <Component id="jScrollPane1" min="-2" pref="112" max="-2" attributes="0"/>
+              <EmptySpace max="-2" attributes="0"/>
+              <Group type="103" groupAlignment="0" attributes="0">
                   <Group type="102" attributes="0">
-                      <Component id="jLabel1" min="-2" max="-2" attributes="0"/>
-                      <EmptySpace max="-2" attributes="0"/>
-                      <Component id="jScrollPane1" min="-2" pref="112" max="-2" attributes="0"/>
-                      <Group type="103" groupAlignment="0" attributes="0">
-                          <Group type="102" attributes="0">
-                              <EmptySpace type="unrelated" max="-2" attributes="0"/>
-                              <Component id="viewButton" min="-2" max="-2" attributes="0"/>
-                              <EmptySpace type="separate" max="-2" attributes="0"/>
-                              <Component id="updateButton" min="-2" max="-2" attributes="0"/>
-                          </Group>
-                          <Group type="102" alignment="0" attributes="0">
-                              <EmptySpace min="-2" pref="30" max="-2" attributes="0"/>
-                              <Group type="103" groupAlignment="3" attributes="0">
-                                  <Component id="pnameLabel" alignment="3" min="-2" max="-2" attributes="0"/>
-                                  <Component id="pnameField" alignment="3" min="-2" max="-2" attributes="0"/>
-                              </Group>
-                              <EmptySpace type="separate" max="-2" attributes="0"/>
-                              <Group type="103" groupAlignment="3" attributes="0">
-                                  <Component id="pIDLabel" alignment="3" min="-2" max="-2" attributes="0"/>
-                                  <Component id="pidField" alignment="3" min="-2" max="-2" attributes="0"/>
-                              </Group>
-                          </Group>
+                      <Component id="viewButton" min="-2" max="-2" attributes="0"/>
+                      <EmptySpace type="separate" max="-2" attributes="0"/>
+                      <Component id="updateButton" min="-2" max="-2" attributes="0"/>
+                      <EmptySpace type="separate" max="-2" attributes="0"/>
+                      <Component id="deleteButton" min="-2" max="-2" attributes="0"/>
+                      <EmptySpace type="separate" max="-2" attributes="0"/>
+                      <Component id="backButton" min="-2" max="-2" attributes="0"/>
+                  </Group>
+                  <Group type="102" alignment="0" attributes="0">
+                      <Group type="103" groupAlignment="3" attributes="0">
+                          <Component id="pnameLabel" alignment="3" min="-2" max="-2" attributes="0"/>
+                          <Component id="pnameField" alignment="3" min="-2" max="-2" attributes="0"/>
+                      </Group>
+                      <EmptySpace type="separate" max="-2" attributes="0"/>
+                      <Group type="103" groupAlignment="3" attributes="0">
+                          <Component id="pIDLabel" alignment="3" min="-2" max="-2" attributes="0"/>
+                          <Component id="pidField" alignment="3" min="-2" max="-2" attributes="0"/>
                       </Group>
                       <EmptySpace max="-2" attributes="0"/>
                       <Group type="103" groupAlignment="1" attributes="0">
                           <Component id="jLabel2" min="-2" max="-2" attributes="0"/>
                           <Component id="ageField" min="-2" max="-2" attributes="0"/>
                       </Group>
+                      <EmptySpace type="separate" max="-2" attributes="0"/>
+                      <Group type="103" groupAlignment="3" attributes="0">
+                          <Component id="genderLabel" alignment="3" min="-2" max="-2" attributes="0"/>
+                          <Component id="genderField" alignment="3" min="-2" max="-2" attributes="0"/>
+                      </Group>
+                      <EmptySpace type="separate" max="-2" attributes="0"/>
+                      <Group type="103" groupAlignment="3" attributes="0">
+                          <Component id="contactLabel" alignment="3" min="-2" max="-2" attributes="0"/>
+                          <Component id="contactField" alignment="3" min="-2" max="-2" attributes="0"/>
+                      </Group>
                   </Group>
-                  <Component id="deleteButton" min="-2" max="-2" attributes="0"/>
               </Group>
-              <EmptySpace pref="10" max="32767" attributes="0"/>
+              <EmptySpace type="separate" max="-2" attributes="0"/>
               <Group type="103" groupAlignment="0" attributes="0">
-                  <Group type="102" alignment="0" attributes="0">
-                      <Group type="103" groupAlignment="0" attributes="0">
-                          <Component id="genderLabel" alignment="1" min="-2" max="-2" attributes="0"/>
-                          <Component id="genderField" alignment="1" min="-2" max="-2" attributes="0"/>
-                      </Group>
-                      <EmptySpace type="separate" max="-2" attributes="0"/>
-                      <Group type="103" groupAlignment="0" attributes="0">
-                          <Component id="visitdateLabel" alignment="1" min="-2" max="-2" attributes="0"/>
-                          <Component id="visitdateField" alignment="1" min="-2" max="-2" attributes="0"/>
-                      </Group>
-                      <EmptySpace type="separate" max="-2" attributes="0"/>
-                      <Group type="103" groupAlignment="0" attributes="0">
-                          <Component id="hLabel" alignment="1" min="-2" max="-2" attributes="0"/>
-                          <Component id="heightField" alignment="1" min="-2" max="-2" attributes="0"/>
-                      </Group>
-                      <EmptySpace type="unrelated" max="-2" attributes="0"/>
-                      <Group type="103" groupAlignment="3" attributes="0">
-                          <Component id="weightLabel" alignment="3" min="-2" max="-2" attributes="0"/>
-                          <Component id="weightField" alignment="3" min="-2" max="-2" attributes="0"/>
-                      </Group>
-                      <EmptySpace type="separate" max="-2" attributes="0"/>
-                      <Group type="103" groupAlignment="3" attributes="0">
-                          <Component id="temperatureLabel" alignment="3" min="-2" max="-2" attributes="0"/>
-                          <Component id="temperatureField" alignment="3" min="-2" max="-2" attributes="0"/>
-                      </Group>
-                      <EmptySpace type="separate" max="-2" attributes="0"/>
-                      <Group type="103" groupAlignment="1" attributes="0">
-                          <Component id="BPLabel" min="-2" max="-2" attributes="0"/>
-                          <Component id="bloodpressureField" min="-2" max="-2" attributes="0"/>
-                      </Group>
-                      <EmptySpace type="separate" max="-2" attributes="0"/>
-                      <Group type="103" groupAlignment="1" attributes="0">
-                          <Component id="pulseLabel" min="-2" max="-2" attributes="0"/>
-                          <Component id="pulseField" min="-2" max="-2" attributes="0"/>
-                      </Group>
-                      <EmptySpace type="separate" max="-2" attributes="0"/>
-                      <Group type="103" groupAlignment="1" attributes="0">
-                          <Component id="diagnosisLabel" min="-2" max="-2" attributes="0"/>
-                          <Component id="diagnosisField" min="-2" max="-2" attributes="0"/>
-                      </Group>
-                  </Group>
-                  <Group type="102" alignment="0" attributes="0">
-                      <EmptySpace min="-2" pref="6" max="-2" attributes="0"/>
-                      <Component id="backButton" min="-2" max="-2" attributes="0"/>
-                  </Group>
+                  <Component id="emailLabel" min="-2" max="-2" attributes="0"/>
+                  <Component id="emailField" min="-2" max="-2" attributes="0"/>
               </Group>
-              <EmptySpace min="-2" pref="32" max="-2" attributes="0"/>
+              <EmptySpace type="separate" max="-2" attributes="0"/>
+              <Group type="103" groupAlignment="3" attributes="0">
+                  <Component id="addressLabel" alignment="3" min="-2" max="-2" attributes="0"/>
+                  <Component id="addressField" alignment="3" min="-2" max="-2" attributes="0"/>
+              </Group>
+              <EmptySpace pref="219" max="32767" attributes="0"/>
           </Group>
       </Group>
     </DimensionLayout>
@@ -182,42 +146,18 @@
               </Border>
             </Property>
             <Property name="model" type="javax.swing.table.TableModel" editor="org.netbeans.modules.form.editors2.TableModelEditor">
-              <Table columnCount="11" rowCount="0">
+              <Table columnCount="7" rowCount="0">
                 <Column editable="true" title="Name" type="java.lang.Object"/>
                 <Column editable="true" title="PatientId" type="java.lang.Object"/>
                 <Column editable="true" title="Age" type="java.lang.Object"/>
                 <Column editable="true" title="Gender" type="java.lang.Object"/>
-                <Column editable="true" title="Visit Date" type="java.lang.Object"/>
-                <Column editable="true" title="Height" type="java.lang.Object"/>
-                <Column editable="true" title="Weight" type="java.lang.Object"/>
-                <Column editable="true" title="Temperature" type="java.lang.Object"/>
-                <Column editable="true" title="BloodPressure" type="java.lang.Object"/>
-                <Column editable="true" title="Pulse" type="java.lang.Object"/>
-                <Column editable="true" title="Diagnosis" type="java.lang.Object"/>
+                <Column editable="true" title="Contact" type="java.lang.Object"/>
+                <Column editable="true" title="Email" type="java.lang.Object"/>
+                <Column editable="true" title="Address" type="java.lang.Object"/>
               </Table>
             </Property>
             <Property name="columnModel" type="javax.swing.table.TableColumnModel" editor="org.netbeans.modules.form.editors2.TableColumnModelEditor">
               <TableColumnModel selectionModel="0">
-                <Column maxWidth="-1" minWidth="-1" prefWidth="-1" resizable="true">
-                  <Title/>
-                  <Editor/>
-                  <Renderer/>
-                </Column>
-                <Column maxWidth="-1" minWidth="-1" prefWidth="-1" resizable="true">
-                  <Title/>
-                  <Editor/>
-                  <Renderer/>
-                </Column>
-                <Column maxWidth="-1" minWidth="-1" prefWidth="-1" resizable="true">
-                  <Title/>
-                  <Editor/>
-                  <Renderer/>
-                </Column>
-                <Column maxWidth="-1" minWidth="-1" prefWidth="-1" resizable="true">
-                  <Title/>
-                  <Editor/>
-                  <Renderer/>
-                </Column>
                 <Column maxWidth="-1" minWidth="-1" prefWidth="-1" resizable="true">
                   <Title/>
                   <Editor/>
@@ -288,70 +228,12 @@
         <Property name="text" type="java.lang.String" value="Patient ID :"/>
       </Properties>
     </Component>
-    <Component class="javax.swing.JLabel" name="hLabel">
-      <Properties>
-        <Property name="text" type="java.lang.String" value="Height :"/>
-      </Properties>
-    </Component>
-    <Component class="javax.swing.JLabel" name="visitdateLabel">
-      <Properties>
-        <Property name="text" type="java.lang.String" value="Visit Date :"/>
-      </Properties>
-    </Component>
-    <Component class="javax.swing.JLabel" name="weightLabel">
-      <Properties>
-        <Property name="text" type="java.lang.String" value="Weight :"/>
-      </Properties>
-    </Component>
-    <Component class="javax.swing.JTextField" name="weightField">
-    </Component>
     <Component class="javax.swing.JLabel" name="genderLabel">
       <Properties>
         <Property name="text" type="java.lang.String" value="Gender"/>
       </Properties>
     </Component>
-    <Component class="javax.swing.JLabel" name="diagnosisLabel">
-      <Properties>
-        <Property name="text" type="java.lang.String" value="Diagnosis :"/>
-      </Properties>
-    </Component>
-    <Component class="javax.swing.JTextField" name="temperatureField">
-    </Component>
-    <Component class="javax.swing.JTextField" name="pulseField">
-    </Component>
-    <Component class="javax.swing.JTextField" name="bloodpressureField">
-      <Events>
-        <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="bloodpressureFieldActionPerformed"/>
-      </Events>
-    </Component>
-    <Component class="javax.swing.JTextField" name="diagnosisField">
-    </Component>
-    <Component class="javax.swing.JLabel" name="temperatureLabel">
-      <Properties>
-        <Property name="text" type="java.lang.String" value="Temperature :"/>
-      </Properties>
-    </Component>
-    <Component class="javax.swing.JLabel" name="BPLabel">
-      <Properties>
-        <Property name="text" type="java.lang.String" value="Blood Pressure :"/>
-      </Properties>
-    </Component>
-    <Component class="javax.swing.JLabel" name="pulseLabel">
-      <Properties>
-        <Property name="text" type="java.lang.String" value="Pulse :"/>
-      </Properties>
-    </Component>
     <Component class="javax.swing.JTextField" name="genderField">
-    </Component>
-    <Component class="javax.swing.JTextField" name="visitdateField">
-      <Events>
-        <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="visitdateFieldActionPerformed"/>
-      </Events>
-    </Component>
-    <Component class="javax.swing.JTextField" name="heightField">
-      <Events>
-        <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="heightFieldActionPerformed"/>
-      </Events>
     </Component>
     <Component class="javax.swing.JLabel" name="jLabel2">
       <Properties>
@@ -383,6 +265,30 @@
       <Events>
         <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="backButtonActionPerformed"/>
       </Events>
+    </Component>
+    <Component class="javax.swing.JLabel" name="addressLabel">
+      <Properties>
+        <Property name="text" type="java.lang.String" value="Address : "/>
+      </Properties>
+    </Component>
+    <Component class="javax.swing.JTextField" name="addressField">
+      <Events>
+        <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="addressFieldActionPerformed"/>
+      </Events>
+    </Component>
+    <Component class="javax.swing.JLabel" name="emailLabel">
+      <Properties>
+        <Property name="text" type="java.lang.String" value="Email  :"/>
+      </Properties>
+    </Component>
+    <Component class="javax.swing.JTextField" name="emailField">
+    </Component>
+    <Component class="javax.swing.JLabel" name="contactLabel">
+      <Properties>
+        <Property name="text" type="java.lang.String" value="Contact:"/>
+      </Properties>
+    </Component>
+    <Component class="javax.swing.JTextField" name="contactField">
     </Component>
   </SubComponents>
 </Form>

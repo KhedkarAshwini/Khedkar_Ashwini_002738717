@@ -4,10 +4,13 @@
  */
 package ui;
 
+import datamodel.DataManager;
 import java.awt.CardLayout;
+
 import javax.swing.JOptionPane;
 import javax.swing.JPanel;
-import model.DoctorDirectory;
+import javax.swing.table.DefaultTableModel;
+import model.*;
 
 /**
  *
@@ -18,17 +21,27 @@ public class SearchdocJPanel extends javax.swing.JPanel {
     /**
      * Creates new form SearchdocJPanel
      */
-    DoctorDirectory doctors;
+    HospitalDirectory hospital;
+    Encounter encounter;
     JPanel cards;
     CardLayout cl;
     
-    public SearchdocJPanel(DoctorDirectory doc , JPanel cards) {
-        this.doctors = doc;
+    public SearchdocJPanel(Encounter doc , JPanel cards) {
+        this.encounter = doc;
         this.cards = cards;
         this.cl = (CardLayout) cards.getLayout();
         initComponents();
     }
-
+    
+    /***
+    public SearchdocJPanel(HospitalDirectory hos, JPanel cards) {
+        
+        this.hospital = hos;
+        this.cards = cards;
+        this.cl = (CardLayout) cards.getLayout();
+        initComponents();
+    }
+***/
     /**
      * This method is called from within the constructor to initialize the form.
      * WARNING: Do NOT modify this code. The content of this method is always
@@ -44,12 +57,15 @@ public class SearchdocJPanel extends javax.swing.JPanel {
         sbyIDButton = new javax.swing.JButton();
         searchLabel = new javax.swing.JLabel();
         jButton1 = new javax.swing.JButton();
+        jTabbedPane1 = new javax.swing.JTabbedPane();
+        jScrollPane1 = new javax.swing.JScrollPane();
+        jTable1 = new javax.swing.JTable();
 
         jLabel1.setFont(new java.awt.Font("Segoe UI", 1, 24)); // NOI18N
         jLabel1.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
         jLabel1.setText("Find a Doctor");
 
-        jComboBox1.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "Please Select", "DoctorName", "City", "Community" }));
+        jComboBox1.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "Please Select", "DoctorName", "HospitalName", "Zipcode" }));
 
         sbyIDButton.setBackground(new java.awt.Color(51, 0, 255));
         sbyIDButton.setText("Search");
@@ -69,11 +85,32 @@ public class SearchdocJPanel extends javax.swing.JPanel {
             }
         });
 
+        jTable1.setModel(new javax.swing.table.DefaultTableModel(
+            new Object [][] {
+                {null, null, null, null, null, null, null, null, null},
+                {null, null, null, null, null, null, null, null, null},
+                {null, null, null, null, null, null, null, null, null},
+                {null, null, null, null, null, null, null, null, null}
+            },
+            new String [] {
+                "Doctor Name", "Doctor ID", "Age", "Gender", "Contact", "Email", "Address", "City", "Speciality"
+            }
+        ));
+        jScrollPane1.setViewportView(jTable1);
+
+        jTabbedPane1.addTab("Doctor Table ", jScrollPane1);
+
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(this);
         this.setLayout(layout);
         layout.setHorizontalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addComponent(jLabel1, javax.swing.GroupLayout.DEFAULT_SIZE, 1000, Short.MAX_VALUE)
+            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
+                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                .addComponent(jButton1, javax.swing.GroupLayout.PREFERRED_SIZE, 86, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addGap(31, 31, 31)
+                .addComponent(sbyIDButton, javax.swing.GroupLayout.PREFERRED_SIZE, 98, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addGap(450, 450, 450))
             .addGroup(layout.createSequentialGroup()
                 .addGap(174, 174, 174)
                 .addComponent(searchLabel, javax.swing.GroupLayout.PREFERRED_SIZE, 100, javax.swing.GroupLayout.PREFERRED_SIZE)
@@ -82,12 +119,10 @@ public class SearchdocJPanel extends javax.swing.JPanel {
                 .addGap(18, 18, 18)
                 .addComponent(searchField, javax.swing.GroupLayout.PREFERRED_SIZE, 181, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
-            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
-                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                .addComponent(jButton1, javax.swing.GroupLayout.PREFERRED_SIZE, 86, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addGap(31, 31, 31)
-                .addComponent(sbyIDButton, javax.swing.GroupLayout.PREFERRED_SIZE, 98, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addGap(450, 450, 450))
+            .addGroup(layout.createSequentialGroup()
+                .addContainerGap()
+                .addComponent(jTabbedPane1)
+                .addContainerGap())
         );
         layout.setVerticalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
@@ -103,7 +138,9 @@ public class SearchdocJPanel extends javax.swing.JPanel {
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(sbyIDButton)
                     .addComponent(jButton1))
-                .addContainerGap(430, Short.MAX_VALUE))
+                .addGap(18, 18, 18)
+                .addComponent(jTabbedPane1, javax.swing.GroupLayout.DEFAULT_SIZE, 399, Short.MAX_VALUE)
+                .addContainerGap())
         );
     }// </editor-fold>//GEN-END:initComponents
 
@@ -111,19 +148,31 @@ public class SearchdocJPanel extends javax.swing.JPanel {
         // TODO add your handling code here:
 
         String selectedfield = jComboBox1.getSelectedItem().toString();
-
+        int rowindex = jTable1.getSelectedRow();
+        DefaultTableModel model = (DefaultTableModel) jTable1.getModel();
+        
+        if(rowindex != 0){
+            int DoctorId = (Integer) model.getValueAt(rowindex, 1);
+            encounter.doctor = DataManager.shared.doctors.fetchDoctor(DoctorId);
+        }
+        
         if(selectedfield.equals("DoctorName")){
             String name = searchField.getText();
-            
+            searchbyName(name);
             searchField.setText("");
         }
-        else if(selectedfield.equals("EmployeeId")){
-            int id = Integer.parseInt(searchField.getText());
-            
+        else if(selectedfield.equals("HospitalName")){
+            String name = searchField.getText();
+            searchbyHospitalName(name);
+            searchField.setText("");
+        }
+        else if(selectedfield.equals("Zipcode")){
+            String name = searchField.getText();
+            searchbyZipCode(name);
             searchField.setText("");
         }
         else{
-            JOptionPane.showMessageDialog(this, "Please enter name or Id of employee to search.");
+            JOptionPane.showMessageDialog(this, "Please enter value to search.");
         }
     }//GEN-LAST:event_sbyIDButtonActionPerformed
 
@@ -138,8 +187,68 @@ public class SearchdocJPanel extends javax.swing.JPanel {
     private javax.swing.JButton jButton1;
     private javax.swing.JComboBox<String> jComboBox1;
     private javax.swing.JLabel jLabel1;
+    private javax.swing.JScrollPane jScrollPane1;
+    private javax.swing.JTabbedPane jTabbedPane1;
+    private javax.swing.JTable jTable1;
     private javax.swing.JButton sbyIDButton;
     private javax.swing.JTextField searchField;
     private javax.swing.JLabel searchLabel;
     // End of variables declaration//GEN-END:variables
+
+    private void searchbyName(String name) {
+        for (Doctor doc:DataManager.shared.doctors.getDoctor()){
+                if(doc.getPerson().getName().equals(name)){
+                    PopulateTable(doc);
+                }
+                
+            }
+    }
+
+    private void searchbyHospitalName(String name) {
+        for (Hospital hos:hospital.getHospitals()){
+                if(hos.getHosname().equals(name)){
+                    for(Doctor doc:hos.getDoctors().getDoctor()){
+                            PopulateTable(doc);
+                        }
+                }
+                
+            }
+    }
+
+    private void searchbyZipCode(String name) {
+        for (Hospital hos:hospital.getHospitals()){
+                if(hos.getZipcode().equals(name)){
+                    for(Doctor doc:hos.getDoctors().getDoctor()){
+                         PopulateTable(doc);
+                        }
+                }
+                
+            }
+    }
+
+    private void PopulateTable(Doctor doc) {
+        DefaultTableModel model = (DefaultTableModel) jTable1.getModel();
+        model.setRowCount(0);
+        
+        Object[] row = new Object[10];
+        int eid = 0;
+        row[0] = doc;
+        row[1] = doc.getPerson().getName();
+        if(doc.getPerson().getId() == 0){
+            row[2] = eid++;
+        }
+        else{
+            row[2] = doc.getPerson().getId();
+        }
+        row[3] = doc.getPerson().getAge();
+        row[4] = doc.getPerson().getGender();
+        row[5] = doc.getPerson().getContact();
+        row[6] = doc.getPerson().getEmail();
+        row[7] = doc.getPerson().getAddress();
+        row[8] = doc.getPerson().getCity();
+        
+
+        model.addRow(row);
+}
+
 }

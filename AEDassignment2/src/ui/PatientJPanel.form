@@ -20,9 +20,9 @@
           <Group type="102" alignment="0" attributes="0">
               <EmptySpace min="-2" pref="163" max="-2" attributes="0"/>
               <Component id="jButton1" min="-2" pref="210" max="-2" attributes="0"/>
-              <EmptySpace pref="181" max="32767" attributes="0"/>
-              <Component id="jButton2" min="-2" pref="233" max="-2" attributes="0"/>
-              <EmptySpace min="-2" pref="213" max="-2" attributes="0"/>
+              <EmptySpace pref="224" max="32767" attributes="0"/>
+              <Component id="vappointButton" min="-2" pref="200" max="-2" attributes="0"/>
+              <EmptySpace min="-2" pref="203" max="-2" attributes="0"/>
           </Group>
       </Group>
     </DimensionLayout>
@@ -34,7 +34,7 @@
               <EmptySpace min="-2" pref="88" max="-2" attributes="0"/>
               <Group type="103" groupAlignment="3" attributes="0">
                   <Component id="jButton1" alignment="3" min="-2" pref="47" max="-2" attributes="0"/>
-                  <Component id="jButton2" alignment="3" min="-2" pref="47" max="-2" attributes="0"/>
+                  <Component id="vappointButton" alignment="3" min="-2" pref="47" max="-2" attributes="0"/>
               </Group>
               <EmptySpace pref="403" max="32767" attributes="0"/>
           </Group>
@@ -62,15 +62,15 @@
         <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="jButton1ActionPerformed"/>
       </Events>
     </Component>
-    <Component class="javax.swing.JButton" name="jButton2">
+    <Component class="javax.swing.JButton" name="vappointButton">
       <Properties>
         <Property name="background" type="java.awt.Color" editor="org.netbeans.beaninfo.editors.ColorEditor">
           <Color blue="ff" green="0" red="33" type="rgb"/>
         </Property>
-        <Property name="text" type="java.lang.String" value="Find a Doctor"/>
+        <Property name="text" type="java.lang.String" value="View Appointment History"/>
       </Properties>
       <Events>
-        <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="jButton2ActionPerformed"/>
+        <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="vappointButtonActionPerformed"/>
       </Events>
     </Component>
   </SubComponents>

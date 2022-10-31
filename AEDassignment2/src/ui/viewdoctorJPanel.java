@@ -4,6 +4,7 @@
  */
 package ui;
 
+import datamodel.DataManager;
 import java.awt.CardLayout;
 import javax.swing.JOptionPane;
 import javax.swing.JPanel;
@@ -262,7 +263,7 @@ public class viewdoctorJPanel extends javax.swing.JPanel {
         d.getPerson().setEmail(email);
         d.getPerson().setAddress(address);
         d.getPerson().setCity(city);
-        d.getPerson().setPtype(ptype);
+        
 
         model.setValueAt(newname, rowindex, 0);
         model.setValueAt(newid, rowindex, 1);
@@ -288,7 +289,7 @@ public class viewdoctorJPanel extends javax.swing.JPanel {
 
         DefaultTableModel model = (DefaultTableModel) jTable1.getModel();
         Doctor selectedp = (Doctor) model.getValueAt(rowindex, 0);
-
+        
         pnameField.setText(String.valueOf(selectedp.getPerson().getName()));
         pidField.setText(String.valueOf(selectedp.getPerson().getId()));
         ageField.setText(String.valueOf(selectedp.getPerson().getAge()));
@@ -297,7 +298,6 @@ public class viewdoctorJPanel extends javax.swing.JPanel {
         emailField.setText(String.valueOf(selectedp.getPerson().getEmail()));
         addressField.setText(String.valueOf(selectedp.getPerson().getAddress()));
         cityField.setText(String.valueOf(selectedp.getPerson().getCity()));
-        ptypeField.setText(String.valueOf(selectedp.getPerson().getPtype()));
     }//GEN-LAST:event_viewButtonActionPerformed
 
     private void deleteButtonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_deleteButtonActionPerformed
@@ -361,20 +361,19 @@ public class viewdoctorJPanel extends javax.swing.JPanel {
 
     private void PopulateTable() {
         DefaultTableModel model = (DefaultTableModel) jTable1.getModel();
-        model.setRowCount(0);
+        model.setRowCount(1);
         
-        for (Doctor doc: doctors.getDoctor()){
+        for (Doctor doc: DataManager.shared.doctors.getDoctor()){
             Object[] row = new Object[9];
             row[0] = doc;
             row[1] = doc.getPerson().getName();
-            row[1] = doc.getPerson().getId();
-            row[2] = doc.getPerson().getAge();
-            row[3] = doc.getPerson().getGender();
-            row[4] = doc.getPerson().getContact();
-            row[5] = doc.getPerson().getEmail();
-            row[6] = doc.getPerson().getAddress();
-            row[7] = doc.getPerson().getCity();
-            row[8] = doc.getPerson().getPtype();
+            row[2] = String.valueOf(doc.getPerson().getId());
+            row[3] = String.valueOf(doc.getPerson().getAge());
+            row[4] = doc.getPerson().getGender();
+            row[5] = doc.getPerson().getContact();
+            row[6] = doc.getPerson().getEmail();
+            row[7] = doc.getPerson().getAddress();
+            row[8] = doc.getPerson().getCity();
             model.addRow(row);
     }
     }

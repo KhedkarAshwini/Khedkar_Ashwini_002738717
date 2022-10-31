@@ -4,6 +4,7 @@
  */
 package ui;
 
+import datamodel.DataManager;
 import java.awt.CardLayout;
 import javax.swing.JOptionPane;
 import javax.swing.JPanel;
@@ -21,13 +22,14 @@ public class viewencounterJPanel extends javax.swing.JPanel {
      * Creates new form viewencounterPanel
      */
     
-    Encounterhistory history;
+    //Encounterhistory history;
+    Encounter encounter;
     JPanel cards;
     CardLayout cl;
     
-    public viewencounterJPanel(Encounterhistory history, JPanel cards) {
+    public viewencounterJPanel(JPanel cards) {
         initComponents();
-        this.history = history;
+        //this.history = history;
         this.cards = cards;
         this.cl =  (CardLayout)cards.getLayout();
         PopulateTable();
@@ -53,11 +55,9 @@ public class viewencounterJPanel extends javax.swing.JPanel {
         vtypeField = new javax.swing.JTextField();
         vdoctorLabel = new javax.swing.JLabel();
         eidLabel = new javax.swing.JLabel();
-        lastdateLabel = new javax.swing.JLabel();
         vdoctorField = new javax.swing.JTextField();
         eidField = new javax.swing.JTextField();
         visitdateField = new javax.swing.JTextField();
-        lvisitdateField = new javax.swing.JTextField();
         backButton = new javax.swing.JButton();
 
         jLabel1.setFont(new java.awt.Font("Segoe UI", 1, 18)); // NOI18N
@@ -70,7 +70,7 @@ public class viewencounterJPanel extends javax.swing.JPanel {
 
             },
             new String [] {
-                "Visit date", "EncounterId", "Visiting Doctor", "Last Visit Date", "Visit type"
+                "Visit date", "EncounterID", "Visiting Doctor", "Visit type"
             }
         ));
         jTable1.setPreferredSize(new java.awt.Dimension(825, 80));
@@ -102,15 +102,19 @@ public class viewencounterJPanel extends javax.swing.JPanel {
 
         vtypeLabel.setText("Visit type : ");
 
-        vdoctorLabel.setText("Visiting Doctor");
+        vdoctorLabel.setText("Visiting Doctor : ");
 
         eidLabel.setText("EncounterID : ");
-
-        lastdateLabel.setText("Last Visit Date : ");
 
         eidField.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 eidFieldActionPerformed(evt);
+            }
+        });
+
+        visitdateField.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                visitdateFieldActionPerformed(evt);
             }
         });
 
@@ -127,29 +131,29 @@ public class viewencounterJPanel extends javax.swing.JPanel {
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addComponent(jLabel1, javax.swing.GroupLayout.DEFAULT_SIZE, 1000, Short.MAX_VALUE)
             .addComponent(jScrollPane1)
-            .addGroup(layout.createSequentialGroup()
-                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addComponent(viewButton)
-                    .addGroup(layout.createSequentialGroup()
-                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                            .addComponent(updateButton)
-                            .addComponent(deleteButton)
-                            .addComponent(backButton))
-                        .addGap(126, 126, 126)
-                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                            .addComponent(visitdateLabel, javax.swing.GroupLayout.PREFERRED_SIZE, 62, javax.swing.GroupLayout.PREFERRED_SIZE)
-                            .addComponent(vdoctorLabel)
-                            .addComponent(lastdateLabel)
-                            .addComponent(vtypeLabel)
-                            .addComponent(eidLabel))
-                        .addGap(42, 42, 42)
-                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
-                            .addComponent(vdoctorField)
-                            .addComponent(vtypeField)
-                            .addComponent(visitdateField)
-                            .addComponent(lvisitdateField)
-                            .addComponent(eidField, javax.swing.GroupLayout.PREFERRED_SIZE, 81, javax.swing.GroupLayout.PREFERRED_SIZE))))
-                .addGap(0, 0, Short.MAX_VALUE))
+            .addComponent(viewButton)
+            .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
+                .addComponent(eidField, javax.swing.GroupLayout.PREFERRED_SIZE, 133, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addGroup(layout.createSequentialGroup()
+                    .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                        .addComponent(updateButton)
+                        .addComponent(deleteButton)
+                        .addComponent(backButton))
+                    .addGap(126, 126, 126)
+                    .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                        .addComponent(visitdateLabel, javax.swing.GroupLayout.PREFERRED_SIZE, 62, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addComponent(vdoctorLabel)
+                        .addComponent(eidLabel)
+                        .addComponent(vtypeLabel))
+                    .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                        .addGroup(layout.createSequentialGroup()
+                            .addGap(62, 62, 62)
+                            .addComponent(visitdateField, javax.swing.GroupLayout.PREFERRED_SIZE, 133, javax.swing.GroupLayout.PREFERRED_SIZE))
+                        .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
+                            .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                            .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                                .addComponent(vdoctorField, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.PREFERRED_SIZE, 133, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                .addComponent(vtypeField, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.PREFERRED_SIZE, 133, javax.swing.GroupLayout.PREFERRED_SIZE))))))
         );
         layout.setVerticalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
@@ -179,16 +183,12 @@ public class viewencounterJPanel extends javax.swing.JPanel {
                         .addGap(18, 18, 18)
                         .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                             .addComponent(vdoctorLabel)
-                            .addComponent(vdoctorField, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
-                        .addGap(18, 18, 18)
-                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                            .addComponent(lastdateLabel)
-                            .addComponent(lvisitdateField, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
-                        .addGap(23, 23, 23)
-                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                            .addComponent(vtypeLabel)
-                            .addComponent(vtypeField, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))))
-                .addContainerGap(193, Short.MAX_VALUE))
+                            .addComponent(vdoctorField, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))))
+                .addGap(28, 28, 28)
+                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                    .addComponent(vtypeField, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(vtypeLabel))
+                .addContainerGap(226, Short.MAX_VALUE))
         );
     }// </editor-fold>//GEN-END:initComponents
 
@@ -205,9 +205,8 @@ public class viewencounterJPanel extends javax.swing.JPanel {
         Encounter selectedp = (Encounter) model.getValueAt(rowindex, 0);
 
         eidField.setText(String.valueOf(selectedp.getEncounterid()));
-        visitdateField.setText(selectedp.getVisitdate());
-        vdoctorField.setText(String.valueOf(selectedp.getVisitingdoctor()));
-        lvisitdateField.setText(String.valueOf(selectedp.getLastvisitdate()));
+        visitdateField.setText(String.valueOf(selectedp.getVisitdate()));
+        vdoctorField.setText(String.valueOf(selectedp.doctor.getPerson().getName()));
         vtypeField.setText(String.valueOf(selectedp.getVisittype()));
         
 
@@ -217,28 +216,31 @@ public class viewencounterJPanel extends javax.swing.JPanel {
         // TODO add your handling code here:
         DefaultTableModel model = (DefaultTableModel) jTable1.getModel();
         int rowindex = jTable1.getSelectedRow();
-
-        String eid = eidField.getText();
+        
+        if(rowindex != 0){
+            int EncounterId = (Integer) model.getValueAt(rowindex, 1);
+            encounter = DataManager.shared.history.fetchEncounter(EncounterId);
+        }
+        
         String vdate = visitdateField.getText();
+        String eid = eidField.getText();
         String vdoctor = vdoctorField.getText();
-        String ldate = lvisitdateField.getText();
         String vtype = vtypeField.getText();
         
-
-        Encounter enc = history.updateEncounter(rowindex);
-
-        enc.setEncounterid(Integer.parseInt(eid));
-        enc.setVisitdate(vdate);
-        enc.setVisitingdoctor(vdoctor);
-        enc.setLastvisitdate(ldate);
-        enc.setVisittype(vtype);
+        
+        
+        //DataManager.shared.history.updateEncounter(rowindex);
+        
+        encounter.setVisitdate(vdate);
+        encounter.setEncounterid(Integer.parseInt(eid));
+        encounter.setVisittype(vtype);
        
 
-        model.setValueAt(eid, rowindex, 0);
-        model.setValueAt(vdate, rowindex, 1);
+        
+        model.setValueAt(vdate, rowindex, 0);
+        model.setValueAt(eid, rowindex, 1);
         model.setValueAt(vdoctor, rowindex, 2);
-        model.setValueAt(ldate, rowindex, 3);
-        model.setValueAt(vtype, rowindex, 4);
+        model.setValueAt(vtype, rowindex, 3);
         
         PopulateTable();
 
@@ -257,14 +259,14 @@ public class viewencounterJPanel extends javax.swing.JPanel {
         DefaultTableModel model = (DefaultTableModel) jTable1.getModel();
         Encounter selectedp = (Encounter) model.getValueAt(rowindex, 0);
 
-        history.deleteEncounter(selectedp);
+        DataManager.shared.history.deleteEncounter(selectedp);
 
         JOptionPane.showMessageDialog(this, "Selected Encounter Record is deleted.");
 
-        eidField.setText("");
+        
         visitdateField.setText("");
+        eidField.setText("");
         vdoctorField.setText("");
-        lvisitdateField.setText("");
         vtypeField.setText("");
         
 
@@ -281,6 +283,10 @@ public class viewencounterJPanel extends javax.swing.JPanel {
         cards.remove(this);
     }//GEN-LAST:event_backButtonActionPerformed
 
+    private void visitdateFieldActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_visitdateFieldActionPerformed
+        // TODO add your handling code here:
+    }//GEN-LAST:event_visitdateFieldActionPerformed
+
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JButton backButton;
@@ -290,8 +296,6 @@ public class viewencounterJPanel extends javax.swing.JPanel {
     private javax.swing.JLabel jLabel1;
     private javax.swing.JScrollPane jScrollPane1;
     private javax.swing.JTable jTable1;
-    private javax.swing.JLabel lastdateLabel;
-    private javax.swing.JTextField lvisitdateField;
     private javax.swing.JButton updateButton;
     private javax.swing.JTextField vdoctorField;
     private javax.swing.JLabel vdoctorLabel;
@@ -306,14 +310,12 @@ public class viewencounterJPanel extends javax.swing.JPanel {
         DefaultTableModel model = (DefaultTableModel) jTable1.getModel();
         model.setRowCount(0);
         
-        for (Encounter enc: history.getHistory()){
-            Object[] row = new Object[5];
-            row[0] = enc;
+        for (Encounter enc: DataManager.shared.history.getHistory()){
+            Object[] row = new Object[4];
+            row[0] = enc.getVisitdate();
             row[1] = enc.getEncounterid();
-            row[1] = enc.getVisitdate();
-            row[2] = enc.getVisitingdoctor();
-            row[3] = enc.getLastvisitdate();
-            row[4] = enc.getVisittype();            
+            row[2] = enc.doctor.getPerson().getName();
+            row[3] = enc.getVisittype();   
             model.addRow(row);
     }
     }

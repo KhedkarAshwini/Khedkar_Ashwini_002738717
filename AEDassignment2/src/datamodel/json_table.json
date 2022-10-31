@@ -1,0 +1,65 @@
+{
+    "patient_table":[
+        {
+            "pname": "Patient Name",
+            "pid": "Patient ID",
+            "age": 20,
+            "gender": "Patient gender",
+            "visitdate": "Visit Date",
+            "height": "Patient Hieght",
+            "weight":"Patient weight",
+            "temperature":"Temperature",
+            "bloodpressure":"Blood Pressure",
+            "pulse": "Pulse",
+            "diagnosis":"Diagnosis",
+            "medication": "medication",
+            "resrate": "Patient Respiratory Rate"
+        }
+    ],
+    "doctor_table":[
+        {
+            "pname":"Doctor Name",
+            "pid":"Doctor ID",
+            "age": 30,
+            "contact":"Doctor contact",
+            "email":"Doctor email",
+            "address":"Doctor address",
+            "city":"Doctor city",
+            "ptype":"Doctor Speciality"
+        }
+    ],
+    "person_table":[
+        {
+            "pname":"Person Name",
+            "pid":"Person ID",
+            "age":25,
+            "gender":"Person gender",
+            "type" :"string",
+            "visitdate":"Person visit date",                      
+            "contact":"Person contact",
+            "email":"Person email",
+            "address":"Person address",
+            "city":"Person city",
+            "ptype":"Person Relation to Patient"
+        }
+    ],
+    "encounter_table":[
+        {
+            "eid":"Encounter Id",
+            "visitdate":"Encounter/Visit date",
+            "visiting doctor name":"Visiting Doctor Name",
+            "visit type":"Visit type"
+        }
+    ],
+    "hospital_table":[
+        {
+            "hname":"Hospital Name",
+            "city":"City",
+            "community":"community",
+            "contact":"Hospital Contact",
+            "email":"Hospital email",
+            "zip":"Hospital Zipcode",
+            "address":"Hospital address" 
+        }
+    ]
+}

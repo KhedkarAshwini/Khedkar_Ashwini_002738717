@@ -29,19 +29,19 @@ public class SysadminJPanel extends javax.swing.JPanel {
     JPanel cards;
     
     
-    public SysadminJPanel(PatientDirectory p, PersonDirectory per , Encounterhistory enc , JPanel cards) {
+    public SysadminJPanel(PatientDirectory p, DoctorDirectory doc, PersonDirectory per , Encounterhistory enc , JPanel cards) {
        
         initComponents();
         this.patients = p;
         this.perd = per;
         this.enc = enc;
         this.cards = cards;
-        this.c1 =  (CardLayout)cards.getLayout();
+        this.c1 = (CardLayout)cards.getLayout();
+        this.doctors = doc;
         
     }
     
     public SysadminJPanel(PatientDirectory p, JPanel cards){
-        
         
         initComponents();
         this.patients = p;
@@ -49,7 +49,6 @@ public class SysadminJPanel extends javax.swing.JPanel {
         this.c1 =  (CardLayout)cards.getLayout();
     }
     public SysadminJPanel(DoctorDirectory p, JPanel cards){
-        
         
         initComponents();
         this.doctors = p;
@@ -71,16 +70,14 @@ public class SysadminJPanel extends javax.swing.JPanel {
         jButton1 = new javax.swing.JButton();
         jButton2 = new javax.swing.JButton();
         jButton3 = new javax.swing.JButton();
-        insertdoctorButton = new javax.swing.JButton();
-        jButton4 = new javax.swing.JButton();
-        insertpersonButton1 = new javax.swing.JButton();
+        insertdocButton1 = new javax.swing.JButton();
         viewdoctorButton = new javax.swing.JButton();
 
         setBorder(javax.swing.BorderFactory.createLineBorder(new java.awt.Color(0, 0, 0)));
 
         jLabel1.setFont(new java.awt.Font("Segoe UI", 1, 24)); // NOI18N
         jLabel1.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
-        jLabel1.setText("Welcome System Admin !");
+        jLabel1.setText("Welcome Hospital Admin !");
 
         jPanel1.setLayout(new java.awt.CardLayout());
 
@@ -116,27 +113,11 @@ public class SysadminJPanel extends javax.swing.JPanel {
             }
         });
 
-        insertdoctorButton.setBackground(new java.awt.Color(0, 0, 255));
-        insertdoctorButton.setText("Insert Doctor");
-        insertdoctorButton.addActionListener(new java.awt.event.ActionListener() {
+        insertdocButton1.setBackground(new java.awt.Color(0, 0, 255));
+        insertdocButton1.setText("Insert Doctor");
+        insertdocButton1.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
-                insertdoctorButtonActionPerformed(evt);
-            }
-        });
-
-        jButton4.setBackground(new java.awt.Color(0, 0, 255));
-        jButton4.setText("View Person");
-        jButton4.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                jButton4ActionPerformed(evt);
-            }
-        });
-
-        insertpersonButton1.setBackground(new java.awt.Color(0, 0, 255));
-        insertpersonButton1.setText("Insert Person");
-        insertpersonButton1.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                insertpersonButton1ActionPerformed(evt);
+                insertdocButton1ActionPerformed(evt);
             }
         });
 
@@ -164,15 +145,13 @@ public class SysadminJPanel extends javax.swing.JPanel {
             .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
                 .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING, false)
-                    .addComponent(insertdoctorButton, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                     .addComponent(jButton2, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                     .addComponent(addpButton, javax.swing.GroupLayout.DEFAULT_SIZE, 156, Short.MAX_VALUE)
-                    .addComponent(insertpersonButton1, javax.swing.GroupLayout.Alignment.LEADING, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
+                    .addComponent(insertdocButton1, javax.swing.GroupLayout.Alignment.LEADING, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
                 .addGap(208, 208, 208)
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
                     .addComponent(jButton1, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                     .addComponent(jButton3, javax.swing.GroupLayout.DEFAULT_SIZE, 160, Short.MAX_VALUE)
-                    .addComponent(jButton4, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                     .addComponent(viewdoctorButton, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
                 .addGap(336, 336, 336))
         );
@@ -193,19 +172,15 @@ public class SysadminJPanel extends javax.swing.JPanel {
                     .addComponent(jButton3, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
                 .addGap(43, 43, 43)
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                    .addComponent(jButton4, javax.swing.GroupLayout.PREFERRED_SIZE, 47, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addComponent(insertpersonButton1, javax.swing.GroupLayout.PREFERRED_SIZE, 47, javax.swing.GroupLayout.PREFERRED_SIZE))
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 43, Short.MAX_VALUE)
-                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                    .addComponent(insertdoctorButton, javax.swing.GroupLayout.PREFERRED_SIZE, 47, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(insertdocButton1, javax.swing.GroupLayout.PREFERRED_SIZE, 47, javax.swing.GroupLayout.PREFERRED_SIZE)
                     .addComponent(viewdoctorButton, javax.swing.GroupLayout.PREFERRED_SIZE, 47, javax.swing.GroupLayout.PREFERRED_SIZE))
-                .addGap(95, 95, 95))
+                .addContainerGap(185, Short.MAX_VALUE))
         );
     }// </editor-fold>//GEN-END:initComponents
 
     private void addpButtonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_addpButtonActionPerformed
         // TODO add your handling code here:
-        Add_patientJPanel addpanel = new Add_patientJPanel(patients, cards);
+        Add_patientJPanel addpanel = new Add_patientJPanel(patients,enc, cards);
         cards.add(addpanel,"addPatientPanel");
         c1.next(cards);
         //c1.show(cards,"addPatientPanel");
@@ -214,7 +189,7 @@ public class SysadminJPanel extends javax.swing.JPanel {
 
     private void jButton1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton1ActionPerformed
         // TODO add your handling code here:
-        viewPatientJPanel vpanel = new viewPatientJPanel(patients,cards);
+        viewPatientJPanel vpanel = new viewPatientJPanel(patients,enc,cards);
         cards.add(vpanel,"viewPatientPanel");
         c1.next(cards);
         //c1.show(cards,"viewPatientPanel");
@@ -222,39 +197,24 @@ public class SysadminJPanel extends javax.swing.JPanel {
 
     private void jButton2ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton2ActionPerformed
         // TODO add your handling code here:
-        addencounterJPanel addpanel = new addencounterJPanel(enc , cards);
+        addencounterJPanel addpanel = new addencounterJPanel(cards);
         cards.add(addpanel,"addEncounterPanel");
         c1.next(cards);
     }//GEN-LAST:event_jButton2ActionPerformed
 
     private void jButton3ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton3ActionPerformed
         // TODO add your handling code here:
-        viewencounterJPanel vpanel = new viewencounterJPanel(enc , cards);
+        viewencounterJPanel vpanel = new viewencounterJPanel(cards);
         cards.add(vpanel,"ViewEncounterPanel");
         c1.next(cards);
     }//GEN-LAST:event_jButton3ActionPerformed
 
-    private void insertdoctorButtonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_insertdoctorButtonActionPerformed
+    private void insertdocButton1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_insertdocButton1ActionPerformed
         // TODO add your handling code here:
-        addpersonJPanel addpanel = new addpersonJPanel(perd , cards);
-        cards.add(addpanel,"addPersonPanel");
-        c1.next(cards);
-    }//GEN-LAST:event_insertdoctorButtonActionPerformed
-
-    private void jButton4ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton4ActionPerformed
-        // TODO add your handling code here:
-        viewpersonJPanel vpanel = new viewpersonJPanel(perd, cards);
-        cards.add(vpanel,"ViewPersonPanel");
-        c1.next(cards);
-       
-    }//GEN-LAST:event_jButton4ActionPerformed
-
-    private void insertpersonButton1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_insertpersonButton1ActionPerformed
-        // TODO add your handling code here:
-        adddoctorJPanel addpanel = new adddoctorJPanel(doctors , cards);
+        adddoctorJPanel addpanel = new adddoctorJPanel(cards);
         cards.add(addpanel,"addDoctorPanel");
         c1.next(cards);
-    }//GEN-LAST:event_insertpersonButton1ActionPerformed
+    }//GEN-LAST:event_insertdocButton1ActionPerformed
 
     private void viewdoctorButtonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_viewdoctorButtonActionPerformed
         // TODO add your handling code here:
@@ -266,12 +226,10 @@ public class SysadminJPanel extends javax.swing.JPanel {
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JButton addpButton;
-    private javax.swing.JButton insertdoctorButton;
-    private javax.swing.JButton insertpersonButton1;
+    private javax.swing.JButton insertdocButton1;
     private javax.swing.JButton jButton1;
     private javax.swing.JButton jButton2;
     private javax.swing.JButton jButton3;
-    private javax.swing.JButton jButton4;
     private javax.swing.JLabel jLabel1;
     private javax.swing.JPanel jPanel1;
     private javax.swing.JButton viewdoctorButton;

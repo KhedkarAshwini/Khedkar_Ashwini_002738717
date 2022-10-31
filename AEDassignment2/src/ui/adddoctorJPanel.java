@@ -5,6 +5,7 @@
 
 package ui;
 
+import datamodel.DataManager;
 import java.awt.CardLayout;
 import java.text.SimpleDateFormat;
 import java.util.Date;
@@ -21,12 +22,12 @@ import model.Person;
 public class adddoctorJPanel extends javax.swing.JPanel {
 
     /** Creates new form adddoctorJPanel */
-    DoctorDirectory doctors;
+    //DoctorDirectory doctors;
     JPanel cards;
     CardLayout cl;
     
-    public adddoctorJPanel(DoctorDirectory doc, JPanel cards) {
-        this.doctors = doc;
+    public adddoctorJPanel(JPanel cards) {
+        
         this.cards = cards;
         this.cl =  (CardLayout)cards.getLayout();
         initComponents();
@@ -223,18 +224,84 @@ public class adddoctorJPanel extends javax.swing.JPanel {
 
     private void saveButtonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_saveButtonActionPerformed
         // TODO add your handling code here:
-
+        int val = 0;
         String pname = pnameField.getText();
+        if(pname.isEmpty()){
+            JOptionPane.showMessageDialog(this,"Please enter input");
+            val++;
+        }
+        if(pname.matches("-?\\d+")){
+            JOptionPane.showMessageDialog(this,"Please enter a string value.");
+            val++;
+        }
         int pid = Integer.parseInt(pidField.getText());
+        try{
+            if(pid == 0){
+            JOptionPane.showMessageDialog(this,"Please enter input");
+            val++;
+        }
+        }
+        catch (NumberFormatException nfe) {
+            JOptionPane.showMessageDialog(this,nfe.getMessage());
+        }
         int age = Integer.parseInt(ageField.getText());
-
+        try{
+            if(age == 0){
+            JOptionPane.showMessageDialog(this,"Please enter input");
+            val++;
+        }
+        }
+        catch (NumberFormatException nfe) {
+            JOptionPane.showMessageDialog(this,nfe.getMessage());
+        }
         String contact = contactField.getText();
+        if(contact.isEmpty()){
+            JOptionPane.showMessageDialog(this,"Please enter input");
+            val++;
+        }
+        if(contact.length() > 10 | contact.length() > 10){
+            JOptionPane.showMessageDialog(this,"Please enter a 10 digit value");
+            val++;
+        }
         String email = emailField.getText();
+        if(email.isEmpty()){
+            JOptionPane.showMessageDialog(this,"Please enter input");
+            val++;
+        }
+        if(!email.contains("@")){
+            JOptionPane.showMessageDialog(this,"Please enter valid email");
+            val++;
+        }
         String address = addressField.getText();
+        if(address.isEmpty()){
+            JOptionPane.showMessageDialog(this,"Please enter input");
+            val++;
+        }
+        if(address.matches("-?\\d+")){
+            JOptionPane.showMessageDialog(this,"Please enter a string value.");
+            val++;
+        }
         String city = cityField.getText();
+        if(city.isEmpty()){
+            JOptionPane.showMessageDialog(this,"Please enter input");
+            val++;
+        }
+        if(city.matches("-?\\d+")){
+            JOptionPane.showMessageDialog(this,"Please enter a string value.");
+            val++;
+        }
         String ptype = ptypeField.getText();
-
+        if(ptype.isEmpty()){
+            JOptionPane.showMessageDialog(this,"Please enter input");
+            val++;
+        }
+        if(ptype.matches("-?\\d+")){
+            JOptionPane.showMessageDialog(this,"Please enter a string value.");
+            val++;
+        }
         Person per = new Person();
+        
+        Doctor doc = new Doctor(per);
         per.setName(pname);
         per.setId(pid);
         per.setAge(age);
@@ -242,7 +309,6 @@ public class adddoctorJPanel extends javax.swing.JPanel {
         per.setEmail(email);
         per.setAddress(address);
         per.setCity(city);
-        per.setPtype(ptype);
         
         
         if((mRadioButton.isSelected())){
@@ -252,9 +318,10 @@ public class adddoctorJPanel extends javax.swing.JPanel {
             per.setGender("female");
         }
 
-        Doctor d = doctors.addnewdoctor(per);
+        DataManager.shared.doctors.addnewdoctor(doc);
+       
 
-        JOptionPane.showMessageDialog(this,"New Person Details saved successfully!!!");
+        JOptionPane.showMessageDialog(this,"New Doctor Details saved successfully!!!");
 
         pnameField.setText("");
         pidField.setText("");

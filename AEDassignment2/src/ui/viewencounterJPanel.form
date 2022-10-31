@@ -18,34 +18,36 @@
       <Group type="103" groupAlignment="0" attributes="0">
           <Component id="jLabel1" pref="1000" max="32767" attributes="0"/>
           <Component id="jScrollPane1" max="32767" attributes="0"/>
-          <Group type="102" attributes="0">
-              <Group type="103" groupAlignment="0" attributes="0">
-                  <Component id="viewButton" min="-2" max="-2" attributes="0"/>
-                  <Group type="102" attributes="0">
-                      <Group type="103" groupAlignment="0" attributes="0">
-                          <Component id="updateButton" alignment="0" min="-2" max="-2" attributes="0"/>
-                          <Component id="deleteButton" alignment="0" min="-2" max="-2" attributes="0"/>
-                          <Component id="backButton" min="-2" max="-2" attributes="0"/>
+          <Component id="viewButton" min="-2" max="-2" attributes="0"/>
+          <Group type="103" alignment="0" groupAlignment="1" attributes="0">
+              <Component id="eidField" min="-2" pref="133" max="-2" attributes="0"/>
+              <Group type="102" attributes="0">
+                  <Group type="103" groupAlignment="0" attributes="0">
+                      <Component id="updateButton" alignment="0" min="-2" max="-2" attributes="0"/>
+                      <Component id="deleteButton" alignment="0" min="-2" max="-2" attributes="0"/>
+                      <Component id="backButton" min="-2" max="-2" attributes="0"/>
+                  </Group>
+                  <EmptySpace min="-2" pref="126" max="-2" attributes="0"/>
+                  <Group type="103" groupAlignment="0" attributes="0">
+                      <Component id="visitdateLabel" alignment="0" min="-2" pref="62" max="-2" attributes="0"/>
+                      <Component id="vdoctorLabel" alignment="0" min="-2" max="-2" attributes="0"/>
+                      <Component id="eidLabel" min="-2" max="-2" attributes="0"/>
+                      <Component id="vtypeLabel" alignment="0" min="-2" max="-2" attributes="0"/>
+                  </Group>
+                  <Group type="103" groupAlignment="0" attributes="0">
+                      <Group type="102" alignment="0" attributes="0">
+                          <EmptySpace min="-2" pref="62" max="-2" attributes="0"/>
+                          <Component id="visitdateField" min="-2" pref="133" max="-2" attributes="0"/>
                       </Group>
-                      <EmptySpace min="-2" pref="126" max="-2" attributes="0"/>
-                      <Group type="103" groupAlignment="0" attributes="0">
-                          <Component id="visitdateLabel" alignment="0" min="-2" pref="62" max="-2" attributes="0"/>
-                          <Component id="vdoctorLabel" alignment="0" min="-2" max="-2" attributes="0"/>
-                          <Component id="lastdateLabel" alignment="0" min="-2" max="-2" attributes="0"/>
-                          <Component id="vtypeLabel" alignment="0" min="-2" max="-2" attributes="0"/>
-                          <Component id="eidLabel" min="-2" max="-2" attributes="0"/>
-                      </Group>
-                      <EmptySpace min="-2" pref="42" max="-2" attributes="0"/>
-                      <Group type="103" groupAlignment="0" max="-2" attributes="0">
-                          <Component id="vdoctorField" alignment="0" max="32767" attributes="0"/>
-                          <Component id="vtypeField" alignment="0" max="32767" attributes="0"/>
-                          <Component id="visitdateField" alignment="0" max="32767" attributes="0"/>
-                          <Component id="lvisitdateField" alignment="0" max="32767" attributes="0"/>
-                          <Component id="eidField" min="-2" pref="81" max="-2" attributes="0"/>
+                      <Group type="102" alignment="1" attributes="0">
+                          <EmptySpace max="-2" attributes="0"/>
+                          <Group type="103" groupAlignment="0" attributes="0">
+                              <Component id="vdoctorField" alignment="1" min="-2" pref="133" max="-2" attributes="0"/>
+                              <Component id="vtypeField" alignment="1" min="-2" pref="133" max="-2" attributes="0"/>
+                          </Group>
                       </Group>
                   </Group>
               </Group>
-              <EmptySpace min="0" pref="0" max="32767" attributes="0"/>
           </Group>
       </Group>
     </DimensionLayout>
@@ -82,19 +84,14 @@
                           <Component id="vdoctorLabel" alignment="3" min="-2" max="-2" attributes="0"/>
                           <Component id="vdoctorField" alignment="3" min="-2" max="-2" attributes="0"/>
                       </Group>
-                      <EmptySpace type="separate" max="-2" attributes="0"/>
-                      <Group type="103" groupAlignment="3" attributes="0">
-                          <Component id="lastdateLabel" alignment="3" min="-2" max="-2" attributes="0"/>
-                          <Component id="lvisitdateField" alignment="3" min="-2" max="-2" attributes="0"/>
-                      </Group>
-                      <EmptySpace min="-2" pref="23" max="-2" attributes="0"/>
-                      <Group type="103" groupAlignment="0" attributes="0">
-                          <Component id="vtypeLabel" alignment="0" min="-2" max="-2" attributes="0"/>
-                          <Component id="vtypeField" alignment="0" min="-2" max="-2" attributes="0"/>
-                      </Group>
                   </Group>
               </Group>
-              <EmptySpace pref="193" max="32767" attributes="0"/>
+              <EmptySpace min="-2" pref="28" max="-2" attributes="0"/>
+              <Group type="103" groupAlignment="3" attributes="0">
+                  <Component id="vtypeField" alignment="3" min="-2" max="-2" attributes="0"/>
+                  <Component id="vtypeLabel" alignment="3" min="-2" max="-2" attributes="0"/>
+              </Group>
+              <EmptySpace pref="226" max="32767" attributes="0"/>
           </Group>
       </Group>
     </DimensionLayout>
@@ -124,21 +121,15 @@
               </Border>
             </Property>
             <Property name="model" type="javax.swing.table.TableModel" editor="org.netbeans.modules.form.editors2.TableModelEditor">
-              <Table columnCount="5" rowCount="0">
+              <Table columnCount="4" rowCount="0">
                 <Column editable="true" title="Visit date" type="java.lang.Object"/>
-                <Column editable="true" title="EncounterId" type="java.lang.Object"/>
+                <Column editable="true" title="EncounterID" type="java.lang.Object"/>
                 <Column editable="true" title="Visiting Doctor" type="java.lang.Object"/>
-                <Column editable="true" title="Last Visit Date" type="java.lang.Object"/>
                 <Column editable="true" title="Visit type" type="java.lang.Object"/>
               </Table>
             </Property>
             <Property name="columnModel" type="javax.swing.table.TableColumnModel" editor="org.netbeans.modules.form.editors2.TableColumnModelEditor">
               <TableColumnModel selectionModel="0">
-                <Column maxWidth="-1" minWidth="-1" prefWidth="-1" resizable="true">
-                  <Title/>
-                  <Editor/>
-                  <Renderer/>
-                </Column>
                 <Column maxWidth="-1" minWidth="-1" prefWidth="-1" resizable="true">
                   <Title/>
                   <Editor/>
@@ -210,17 +201,12 @@
     </Component>
     <Component class="javax.swing.JLabel" name="vdoctorLabel">
       <Properties>
-        <Property name="text" type="java.lang.String" value="Visiting Doctor"/>
+        <Property name="text" type="java.lang.String" value="Visiting Doctor : "/>
       </Properties>
     </Component>
     <Component class="javax.swing.JLabel" name="eidLabel">
       <Properties>
         <Property name="text" type="java.lang.String" value="EncounterID : "/>
-      </Properties>
-    </Component>
-    <Component class="javax.swing.JLabel" name="lastdateLabel">
-      <Properties>
-        <Property name="text" type="java.lang.String" value="Last Visit Date : "/>
       </Properties>
     </Component>
     <Component class="javax.swing.JTextField" name="vdoctorField">
@@ -231,8 +217,9 @@
       </Events>
     </Component>
     <Component class="javax.swing.JTextField" name="visitdateField">
-    </Component>
-    <Component class="javax.swing.JTextField" name="lvisitdateField">
+      <Events>
+        <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="visitdateFieldActionPerformed"/>
+      </Events>
     </Component>
     <Component class="javax.swing.JButton" name="backButton">
       <Properties>

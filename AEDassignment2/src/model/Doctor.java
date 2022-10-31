@@ -12,13 +12,14 @@ import java.util.ArrayList;
  */
 public class Doctor {
     Person person;
-    private ArrayList<Encounterhistory> history;
+    //private ArrayList<Encounterhistory> history;
     VitalSigns vsigns;
     private String diagnosis;
     private String medication;
     
     public Doctor(Person p){
-        person = p;
+        this.person = p;
+       
         //this.history s= new ArrayList<Encounterhistory>();
     }
 
@@ -29,7 +30,7 @@ public class Doctor {
     public void setPerson(Person person) {
         this.person = person;
     }
-
+    /**
     public ArrayList<Encounterhistory> getHistory() {
         return history;
     }
@@ -37,7 +38,7 @@ public class Doctor {
     public void setHistory(ArrayList<Encounterhistory> history) {
         this.history = history;
     }
-
+   **/
     public VitalSigns getVsigns() {
         return vsigns;
     }
@@ -62,5 +63,8 @@ public class Doctor {
         this.medication = medication;
     }
     
-    
+    @Override
+    public String toString(){
+       return person.getName();
+    }
 }

@@ -12,6 +12,8 @@ import java.util.ArrayList;
  */
 public class Encounterhistory {
     private ArrayList<Encounter> history;
+    private PatientDirectory patients;
+    
     
     public Encounterhistory(){
         this.history = new ArrayList<Encounter>();
@@ -25,22 +27,41 @@ public class Encounterhistory {
         this.history = history;
     }
     
-    public Encounter addnewencounter(VitalSigns vs){
-       Encounter e = new Encounter(vs);
-       history.add(e);
-       return e;
+    
+   public Encounter addnewencounter(Encounter p){
+       history.add(p);
+       return p;
    }
-   public Encounter updateEncounter(int id){
-       for(Encounter e:history){
-           if(history.indexOf(e) == id){
-               history.set(id,e);
-           }
-           return e;
-           }
-           return null;
-       }
+   
     
     public void deleteEncounter(Encounter p){
         history.remove(p);
+    }
+    
+    public Encounter fetchEncounter(int id){
+        for(Encounter p : history){
+            if(p.getEncounterid() == id){
+                return p;
+            }
+        }
+        return null;
+    }
+    public ArrayList<Encounter> fetchEncounterforDoctor(int id){
+        ArrayList<Encounter> enc = new ArrayList<>();
+        for(Encounter e:history){
+            if(e.getEncounterid() == id){
+                enc.add(e);
+            }
+        }
+        return enc;
+    }
+    public ArrayList<Encounter> fetchEncounterforPatient(int id){
+        ArrayList<Encounter> enc = new ArrayList<>();
+        for(Encounter e:history){
+            if(e.getEncounterid() == id){
+                enc.add(e);
+            }
+        }
+        return enc;
     }
 }

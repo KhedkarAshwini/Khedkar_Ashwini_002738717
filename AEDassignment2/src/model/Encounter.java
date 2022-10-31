@@ -9,18 +9,49 @@ package model;
  * @author ashwini
  */
 public class Encounter {
+    public Patient p;
     private String visitdate;
     private int Encounterid;
+    static int currentid = 1;
     private String visittype;
-    private String lastvisitdate;
-    private String visitingdoctor;
+    public Doctor doctor;
     private VitalSigns signs;
     private String diagnosis;
     private String medication;
     
-    
+    public Encounter(){
+        this.Encounterid = currentid;
+        currentid++;
+    }
+    public Encounter(String vdate, int eid, String vtype, Doctor doc,Patient p,VitalSigns vs, String d, String med){
+        this.visitdate = vdate;
+        this.Encounterid = eid;
+        this.visittype = vtype;
+        this.doctor = doc;
+        this.p = p;
+        this.signs = vs;
+        this.diagnosis = d;
+        this.medication = med;
+        this.Encounterid = currentid;
+        currentid++;
+    }
     public Encounter(VitalSigns vs){
         this.signs = vs;
+        this.Encounterid = currentid;
+        currentid++;
+    }
+    
+    public Encounter(Patient p){
+        this.p = p;
+        this.Encounterid = currentid;
+        currentid++;
+    }
+    
+    public Encounter(Patient p,VitalSigns vs){
+        this.signs = vs;
+        this.p = p;
+        this.Encounterid = currentid;
+        currentid++;
     }
     
     public String getVisitdate() {
@@ -47,21 +78,7 @@ public class Encounter {
         this.visittype = visittype;
     }
 
-    public String getLastvisitdate() {
-        return lastvisitdate;
-    }
-
-    public void setLastvisitdate(String lastvisitdate) {
-        this.lastvisitdate = lastvisitdate;
-    }
-
-    public String getVisitingdoctor() {
-        return visitingdoctor;
-    }
-
-    public void setVisitingdoctor(String visitingdoctor) {
-        this.visitingdoctor = visitingdoctor;
-    }
+    
 
     public VitalSigns getSigns() {
         return signs;

@@ -4,13 +4,13 @@
  */
 package ui;
 
+import datamodel.DataManager;
 import java.awt.CardLayout;
+import java.util.ArrayList;
 import javax.swing.JOptionPane;
 import javax.swing.JPanel;
 import javax.swing.table.DefaultTableModel;
-import model.Encounterhistory;
-import model.Patient;
-import model.PatientDirectory;
+import model.*;
 
 /**
  *
@@ -21,14 +21,13 @@ public class addpdiagnosisJPanel extends javax.swing.JPanel {
     /**
      * Creates new form addpdiagnosisJPanel
      */
-    PatientDirectory patients;
-    Encounterhistory history;
+    Encounter enc;
+    ArrayList<Encounter> encounters;
     JPanel cards;
     CardLayout c1;
     
-    public addpdiagnosisJPanel(PatientDirectory patients, Encounterhistory history,JPanel cards) {
-        this.patients = patients;
-        this.history = history;
+    public addpdiagnosisJPanel(JPanel cards) {
+        this.encounters = DataManager.shared.history.fetchEncounterforDoctor(DataManager.shared.currentuserId);
         this.cards = cards;
         this.c1 =  (CardLayout)cards.getLayout();
         initComponents();
@@ -83,7 +82,7 @@ public class addpdiagnosisJPanel extends javax.swing.JPanel {
 
             },
             new String [] {
-                "Name", "PatientId", "Age", "Gender", "Visit Date", "Height", "Weight", "Temperature", "BloodPressure", "Pulse", "Diagnosis", "Medication"
+                "Name", "PatientId", "Age", "Gender", "Visit Date", "Height", "Weight", "Temperature", "BloodPressure", "Pulse", "Diagnosis", "Medication", "encounterID"
             }
         ));
         jTable1.setPreferredSize(new java.awt.Dimension(825, 80));
@@ -273,19 +272,21 @@ public class addpdiagnosisJPanel extends javax.swing.JPanel {
         }
 
         DefaultTableModel model = (DefaultTableModel) jTable1.getModel();
-        Patient selectedp = (Patient) model.getValueAt(rowindex, 0);
+        int selectedp = (Integer)model.getValueAt(rowindex, 12);
 
-        pnameField.setText(String.valueOf(selectedp.getPatient().getName()));
-        pidField.setText(String.valueOf(selectedp.getPatient().getId()));
-        ageField.setText(String.valueOf(selectedp.getPatient().getAge()));
-        visitdateField.setText(String.valueOf(selectedp.getVitalsigns().getVisitdate()));
-        heightField.setText(String.valueOf(selectedp.getVitalsigns().getHeight()));
-        weightField.setText(String.valueOf(selectedp.getVitalsigns().getWeight()));
-        temperatureField.setText(String.valueOf(selectedp.getVitalsigns().getTemperature()));
-        bloodpressureField.setText(String.valueOf(selectedp.getVitalsigns().getBloodpressure()));
-        pulseField.setText(String.valueOf(selectedp.getVitalsigns().getPulse()));
-        diagnosisField.setText(String.valueOf(selectedp.getEncounter().getDiagnosis()));
-        medicationField.setText(String.valueOf(selectedp.getEncounter().getMedication()));
+        enc = DataManager.shared.history.fetchEncounter((selectedp));
+        
+        pnameField.setText(String.valueOf(enc.p.getPatient().getName()));
+        pidField.setText(String.valueOf(enc.p.getPatient().getId()));
+        ageField.setText(String.valueOf(enc.p.getPatient().getAge()));
+        visitdateField.setText(String.valueOf(enc.getVisitdate()));
+        heightField.setText(String.valueOf(enc.getSigns().getHeight()));
+        weightField.setText(String.valueOf(enc.getSigns().getWeight()));
+        temperatureField.setText(String.valueOf(enc.getSigns().getTemperature()));
+        bloodpressureField.setText(String.valueOf(enc.getSigns().getBloodpressure()));
+        pulseField.setText(String.valueOf(enc.getSigns().getPulse()));
+        diagnosisField.setText(String.valueOf(enc.getDiagnosis()));
+        medicationField.setText(String.valueOf(enc.getMedication()));
     }//GEN-LAST:event_viewButtonActionPerformed
 
     private void bloodpressureFieldActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_bloodpressureFieldActionPerformed
@@ -317,19 +318,19 @@ public class addpdiagnosisJPanel extends javax.swing.JPanel {
         double pulse = Double.parseDouble(pulseField.getText());
         String d = diagnosisField.getText();
         String med = medicationField.getText();
-        Patient pat = patients.updatepatient(rowindex);
+        
 
-        pat.getPatient().setName(newname);
-        pat.getPatient().setId(newid);
-        pat.getPatient().setAge(newage);
-        pat.getVitalsigns().setVisitdate(newvisitdate);
-        pat.getVitalsigns().setHeight(newh);
-        pat.getVitalsigns().setWeight(newh);
-        pat.getVitalsigns().setTemperature(temp);
-        pat.getVitalsigns().setBloodpressure(bp);
-        pat.getVitalsigns().setPulse(pulse);
-        pat.getEncounter().getDiagnosis();
-        pat.getEncounter().getMedication();
+        enc.p.getPatient().setName(newname);
+        enc.p.getPatient().setId(newid);
+        enc.p.getPatient().setAge(newage);
+        enc.getSigns().setVisitdate(newvisitdate);
+        enc.getSigns().setHeight(newh);
+        enc.getSigns().setWeight(newh);
+        enc.getSigns().setTemperature(temp);
+        enc.getSigns().setBloodpressure(bp);
+        enc.getSigns().setPulse(pulse);
+        enc.getDiagnosis();
+        enc.getMedication();
 
         model.setValueAt(newname, rowindex, 0);
         model.setValueAt(newid, rowindex, 1);
@@ -389,22 +390,25 @@ public class addpdiagnosisJPanel extends javax.swing.JPanel {
         DefaultTableModel model = (DefaultTableModel) jTable1.getModel();
         model.setRowCount(0);
         
-        for (Patient pat: patients.getPatient()){
-            Object[] row = new Object[12];
-            row[0] = pat;
-            row[1] = pat.getPatient().getName();
-            row[1] = pat.getPatient().getId();
-            row[2] = pat.getPatient().getAge();
-            row[3] = pat.getPatient().getGender();
-            row[4] = pat.getVitalsigns().getVisitdate();
-            row[5] = pat.getVitalsigns().getHeight();
-            row[6] = pat.getVitalsigns().getWeight();
-            row[7] = pat.getVitalsigns().getTemperature();
-            row[8] = pat.getVitalsigns().getBloodpressure();
-            row[9] = pat.getVitalsigns().getPulse();
-            row[10]= pat.getEncounter().getDiagnosis();
-            row[11]= pat.getEncounter().getMedication();
+        for (Encounter e:encounters){
+            Object[] row = new Object[13];
+            row[0] = e;
+            row[1] = e.p.getPatient().getName();
+            row[1] = e.p.getPatient().getId();
+            row[2] = e.p.getPatient().getAge();
+            row[3] = e.p.getPatient().getGender();
+            row[4] = e.getVisitdate();
+            row[5] = e.getSigns().getHeight();
+            row[6] = e.getSigns().getWeight();
+            row[7] = e.getSigns().getTemperature();
+            row[8] = e.getSigns().getBloodpressure();
+            row[9] = e.getSigns().getPulse();
+            row[10]= e.getDiagnosis();
+            row[11]= e.getMedication();
+            row[12] = e.getEncounterid();
             model.addRow(row);
     }
     }
+
+   
 }

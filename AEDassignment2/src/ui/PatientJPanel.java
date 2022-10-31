@@ -7,9 +7,7 @@ package ui;
 
 import java.awt.CardLayout;
 import javax.swing.JPanel;
-import model.DoctorDirectory;
-import model.PatientDirectory;
-import model.Patient;
+import model.*;
 /**
  *
  * @author ashwini
@@ -22,11 +20,14 @@ public class PatientJPanel extends javax.swing.JPanel {
     
     PatientDirectory patients;
     DoctorDirectory doctors;
+    Encounterhistory history;
     JPanel cards;
     CardLayout cl;
     
-    public PatientJPanel(PatientDirectory p , JPanel cards) {
+    public PatientJPanel(PatientDirectory p,Encounterhistory hist, DoctorDirectory doc, JPanel cards) {
         this.patients = p;
+        this.doctors = doc;
+        this.history = hist;
         this.cards = cards;
         this.cl = (CardLayout) cards.getLayout();
         initComponents();
@@ -49,7 +50,7 @@ public class PatientJPanel extends javax.swing.JPanel {
 
         jLabel1 = new javax.swing.JLabel();
         jButton1 = new javax.swing.JButton();
-        jButton2 = new javax.swing.JButton();
+        vappointButton = new javax.swing.JButton();
 
         jLabel1.setFont(new java.awt.Font("Segoe UI", 1, 24)); // NOI18N
         jLabel1.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
@@ -63,11 +64,11 @@ public class PatientJPanel extends javax.swing.JPanel {
             }
         });
 
-        jButton2.setBackground(new java.awt.Color(51, 0, 255));
-        jButton2.setText("Find a Doctor");
-        jButton2.addActionListener(new java.awt.event.ActionListener() {
+        vappointButton.setBackground(new java.awt.Color(51, 0, 255));
+        vappointButton.setText("View Appointment History");
+        vappointButton.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
-                jButton2ActionPerformed(evt);
+                vappointButtonActionPerformed(evt);
             }
         });
 
@@ -79,9 +80,9 @@ public class PatientJPanel extends javax.swing.JPanel {
             .addGroup(layout.createSequentialGroup()
                 .addGap(163, 163, 163)
                 .addComponent(jButton1, javax.swing.GroupLayout.PREFERRED_SIZE, 210, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 181, Short.MAX_VALUE)
-                .addComponent(jButton2, javax.swing.GroupLayout.PREFERRED_SIZE, 233, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addGap(213, 213, 213))
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 224, Short.MAX_VALUE)
+                .addComponent(vappointButton, javax.swing.GroupLayout.PREFERRED_SIZE, 200, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addGap(203, 203, 203))
         );
         layout.setVerticalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
@@ -91,7 +92,7 @@ public class PatientJPanel extends javax.swing.JPanel {
                 .addGap(88, 88, 88)
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(jButton1, javax.swing.GroupLayout.PREFERRED_SIZE, 47, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addComponent(jButton2, javax.swing.GroupLayout.PREFERRED_SIZE, 47, javax.swing.GroupLayout.PREFERRED_SIZE))
+                    .addComponent(vappointButton, javax.swing.GroupLayout.PREFERRED_SIZE, 47, javax.swing.GroupLayout.PREFERRED_SIZE))
                 .addContainerGap(403, Short.MAX_VALUE))
         );
     }// </editor-fold>//GEN-END:initComponents
@@ -104,17 +105,17 @@ public class PatientJPanel extends javax.swing.JPanel {
         
     }//GEN-LAST:event_jButton1ActionPerformed
 
-    private void jButton2ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton2ActionPerformed
+    private void vappointButtonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_vappointButtonActionPerformed
         // TODO add your handling code here:
-        SearchdocJPanel spanel = new SearchdocJPanel(doctors,cards);
-        cards.add(spanel,"SearchDoctorPanel");
+        ViewappJPanel vapanel = new ViewappJPanel(cards);
+        cards.add(vapanel,"viewPatientAppointmentHistory");
         cl.next(cards);
-    }//GEN-LAST:event_jButton2ActionPerformed
+    }//GEN-LAST:event_vappointButtonActionPerformed
 
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JButton jButton1;
-    private javax.swing.JButton jButton2;
     private javax.swing.JLabel jLabel1;
+    private javax.swing.JButton vappointButton;
     // End of variables declaration//GEN-END:variables
 }

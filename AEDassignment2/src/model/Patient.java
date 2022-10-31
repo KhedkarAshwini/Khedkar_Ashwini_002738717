@@ -12,14 +12,15 @@ package model;
 public class Patient {
     
     private Person patient;
-    private VitalSigns vitalsigns;
-    private Encounter encounter;
+    private Encounterhistory history;
     
     
-    public Patient(Person p , VitalSigns vs , Encounter e){
+    public Patient(Person p){
+        this.patient = p;
+    }
+    public Patient(Person p , Encounterhistory e){
         patient = p;
-        vitalsigns = vs;
-        encounter = e;
+        history = e;
     }
    
 
@@ -31,6 +32,14 @@ public class Patient {
         this.patient = patient;
     }
 
+    public Encounterhistory getHistory() {
+        return history;
+    }
+
+    public void setHistory(Encounterhistory history) {
+        this.history = history;
+    }
+   /**
     public VitalSigns getVitalsigns() {
         return vitalsigns;
     }
@@ -38,14 +47,8 @@ public class Patient {
     public void setVitalsigns(VitalSigns vitalsigns) {
         this.vitalsigns = vitalsigns;
     }
-
-    public Encounter getEncounter() {
-        return encounter;
-    }
-
-    public void setEncounter(Encounter encounter) {
-        this.encounter = encounter;
-    }
+**/
+    
     
     
     

@@ -46,7 +46,6 @@ public class DoctorJPanel extends javax.swing.JPanel {
         workArea = new javax.swing.JPanel();
         jLabel1 = new javax.swing.JLabel();
         jButton1 = new javax.swing.JButton();
-        jButton2 = new javax.swing.JButton();
 
         javax.swing.GroupLayout controlAreaLayout = new javax.swing.GroupLayout(controlArea);
         controlArea.setLayout(controlAreaLayout);
@@ -66,18 +65,10 @@ public class DoctorJPanel extends javax.swing.JPanel {
         jLabel1.setText("Welcome Back Doctor !");
 
         jButton1.setBackground(new java.awt.Color(0, 0, 255));
-        jButton1.setText("Add Patient Diagosis");
+        jButton1.setText("Manage Patient Diagosis");
         jButton1.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 jButton1ActionPerformed(evt);
-            }
-        });
-
-        jButton2.setBackground(new java.awt.Color(0, 0, 255));
-        jButton2.setText("View Patients History");
-        jButton2.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                jButton2ActionPerformed(evt);
             }
         });
 
@@ -91,22 +82,18 @@ public class DoctorJPanel extends javax.swing.JPanel {
                         .addGap(47, 47, 47)
                         .addComponent(jLabel1, javax.swing.GroupLayout.PREFERRED_SIZE, 660, javax.swing.GroupLayout.PREFERRED_SIZE))
                     .addGroup(workAreaLayout.createSequentialGroup()
-                        .addGap(86, 86, 86)
-                        .addComponent(jButton1, javax.swing.GroupLayout.PREFERRED_SIZE, 280, javax.swing.GroupLayout.PREFERRED_SIZE)
-                        .addGap(95, 95, 95)
-                        .addComponent(jButton2, javax.swing.GroupLayout.PREFERRED_SIZE, 257, javax.swing.GroupLayout.PREFERRED_SIZE)))
-                .addContainerGap(77, Short.MAX_VALUE))
+                        .addGap(231, 231, 231)
+                        .addComponent(jButton1, javax.swing.GroupLayout.PREFERRED_SIZE, 280, javax.swing.GroupLayout.PREFERRED_SIZE)))
+                .addContainerGap(88, Short.MAX_VALUE))
         );
         workAreaLayout.setVerticalGroup(
             workAreaLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(workAreaLayout.createSequentialGroup()
                 .addGap(40, 40, 40)
                 .addComponent(jLabel1, javax.swing.GroupLayout.PREFERRED_SIZE, 51, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addGap(79, 79, 79)
-                .addGroup(workAreaLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                    .addComponent(jButton1, javax.swing.GroupLayout.PREFERRED_SIZE, 42, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addComponent(jButton2, javax.swing.GroupLayout.PREFERRED_SIZE, 42, javax.swing.GroupLayout.PREFERRED_SIZE))
-                .addContainerGap(377, Short.MAX_VALUE))
+                .addGap(88, 88, 88)
+                .addComponent(jButton1, javax.swing.GroupLayout.PREFERRED_SIZE, 42, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addContainerGap(368, Short.MAX_VALUE))
         );
 
         doctosplitPane.setRightComponent(workArea);
@@ -125,16 +112,9 @@ public class DoctorJPanel extends javax.swing.JPanel {
         );
     }// </editor-fold>//GEN-END:initComponents
 
-    private void jButton2ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton2ActionPerformed
-        // TODO add your handling code here:
-        viewPathistoryJPanel vpanel = new viewPathistoryJPanel(patients, history,cards);
-        cards.add(vpanel,"viewPatientHistoryPanel");
-        c1.next(cards);
-    }//GEN-LAST:event_jButton2ActionPerformed
-
     private void jButton1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton1ActionPerformed
         // TODO add your handling code here:
-        addpdiagnosisJPanel addpanel = new addpdiagnosisJPanel(patients, history,cards);
+        addpdiagnosisJPanel addpanel = new addpdiagnosisJPanel(cards);
         cards.add(addpanel,"AddPatientDiagnosisPanel");
         c1.next(cards);
         
@@ -145,7 +125,6 @@ public class DoctorJPanel extends javax.swing.JPanel {
     private javax.swing.JPanel controlArea;
     private javax.swing.JSplitPane doctosplitPane;
     private javax.swing.JButton jButton1;
-    private javax.swing.JButton jButton2;
     private javax.swing.JLabel jLabel1;
     private javax.swing.JPanel workArea;
     // End of variables declaration//GEN-END:variables

@@ -4,10 +4,12 @@
  */
 package ui;
 
+import datamodel.DataManager;
 import java.awt.CardLayout;
 import javax.swing.JOptionPane;
 import javax.swing.JPanel;
 import javax.swing.table.DefaultTableModel;
+import model.Encounterhistory;
 import model.Patient;
 import model.PatientDirectory;
 
@@ -22,12 +24,14 @@ public class viewPatientJPanel extends javax.swing.JPanel {
      */
     
     PatientDirectory p ;
+    Encounterhistory history;
     JPanel cards;
     CardLayout cl;
     
-    public viewPatientJPanel(PatientDirectory patients, JPanel cards) {
+    public viewPatientJPanel(PatientDirectory patients, Encounterhistory hist, JPanel cards) {
         initComponents();
         this.p = patients;
+        this.history = hist;
         this.cards = cards;
         this.cl =  (CardLayout)cards.getLayout();
         PopulateTable();
@@ -50,27 +54,19 @@ public class viewPatientJPanel extends javax.swing.JPanel {
         pnameField = new javax.swing.JTextField();
         pnameLabel = new javax.swing.JLabel();
         pIDLabel = new javax.swing.JLabel();
-        hLabel = new javax.swing.JLabel();
-        visitdateLabel = new javax.swing.JLabel();
-        weightLabel = new javax.swing.JLabel();
-        weightField = new javax.swing.JTextField();
         genderLabel = new javax.swing.JLabel();
-        diagnosisLabel = new javax.swing.JLabel();
-        temperatureField = new javax.swing.JTextField();
-        pulseField = new javax.swing.JTextField();
-        bloodpressureField = new javax.swing.JTextField();
-        diagnosisField = new javax.swing.JTextField();
-        temperatureLabel = new javax.swing.JLabel();
-        BPLabel = new javax.swing.JLabel();
-        pulseLabel = new javax.swing.JLabel();
         genderField = new javax.swing.JTextField();
-        visitdateField = new javax.swing.JTextField();
-        heightField = new javax.swing.JTextField();
         jLabel2 = new javax.swing.JLabel();
         ageField = new javax.swing.JTextField();
         updateButton = new javax.swing.JButton();
         deleteButton = new javax.swing.JButton();
         backButton = new javax.swing.JButton();
+        addressLabel = new javax.swing.JLabel();
+        addressField = new javax.swing.JTextField();
+        emailLabel = new javax.swing.JLabel();
+        emailField = new javax.swing.JTextField();
+        contactLabel = new javax.swing.JLabel();
+        contactField = new javax.swing.JTextField();
 
         jLabel1.setFont(new java.awt.Font("Segoe UI", 1, 18)); // NOI18N
         jLabel1.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
@@ -82,7 +78,7 @@ public class viewPatientJPanel extends javax.swing.JPanel {
 
             },
             new String [] {
-                "Name", "PatientId", "Age", "Gender", "Visit Date", "Height", "Weight", "Temperature", "BloodPressure", "Pulse", "Diagnosis"
+                "Name", "PatientId", "Age", "Gender", "Contact", "Email", "Address"
             }
         ));
         jTable1.setPreferredSize(new java.awt.Dimension(825, 80));
@@ -100,39 +96,7 @@ public class viewPatientJPanel extends javax.swing.JPanel {
 
         pIDLabel.setText("Patient ID :");
 
-        hLabel.setText("Height :");
-
-        visitdateLabel.setText("Visit Date :");
-
-        weightLabel.setText("Weight :");
-
         genderLabel.setText("Gender");
-
-        diagnosisLabel.setText("Diagnosis :");
-
-        bloodpressureField.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                bloodpressureFieldActionPerformed(evt);
-            }
-        });
-
-        temperatureLabel.setText("Temperature :");
-
-        BPLabel.setText("Blood Pressure :");
-
-        pulseLabel.setText("Pulse :");
-
-        visitdateField.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                visitdateFieldActionPerformed(evt);
-            }
-        });
-
-        heightField.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                heightFieldActionPerformed(evt);
-            }
-        });
 
         jLabel2.setText("Age :");
 
@@ -157,6 +121,18 @@ public class viewPatientJPanel extends javax.swing.JPanel {
             }
         });
 
+        addressLabel.setText("Address : ");
+
+        addressField.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                addressFieldActionPerformed(evt);
+            }
+        });
+
+        emailLabel.setText("Email  :");
+
+        contactLabel.setText("Contact:");
+
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(this);
         this.setLayout(layout);
         layout.setHorizontalGroup(
@@ -169,106 +145,78 @@ public class viewPatientJPanel extends javax.swing.JPanel {
                     .addComponent(updateButton)
                     .addComponent(deleteButton)
                     .addComponent(backButton))
-                .addGap(18, 18, 18)
-                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
-                    .addGroup(layout.createSequentialGroup()
-                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                            .addComponent(pIDLabel)
-                            .addComponent(pnameLabel))
-                        .addGap(42, 42, 42)
-                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                            .addComponent(pnameField, javax.swing.GroupLayout.DEFAULT_SIZE, 170, Short.MAX_VALUE)
-                            .addComponent(pidField)))
-                    .addGroup(layout.createSequentialGroup()
-                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                            .addComponent(weightLabel)
-                            .addComponent(hLabel)
-                            .addComponent(visitdateLabel, javax.swing.GroupLayout.PREFERRED_SIZE, 62, javax.swing.GroupLayout.PREFERRED_SIZE)
-                            .addComponent(diagnosisLabel)
-                            .addComponent(pulseLabel)
-                            .addComponent(BPLabel)
-                            .addComponent(temperatureLabel, javax.swing.GroupLayout.PREFERRED_SIZE, 84, javax.swing.GroupLayout.PREFERRED_SIZE)
-                            .addComponent(genderLabel)
-                            .addComponent(jLabel2))
-                        .addGap(34, 34, 34)
-                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
-                            .addComponent(weightField, javax.swing.GroupLayout.DEFAULT_SIZE, 170, Short.MAX_VALUE)
-                            .addComponent(temperatureField, javax.swing.GroupLayout.DEFAULT_SIZE, 170, Short.MAX_VALUE)
-                            .addComponent(bloodpressureField, javax.swing.GroupLayout.DEFAULT_SIZE, 170, Short.MAX_VALUE)
-                            .addComponent(pulseField, javax.swing.GroupLayout.DEFAULT_SIZE, 170, Short.MAX_VALUE)
-                            .addComponent(diagnosisField, javax.swing.GroupLayout.DEFAULT_SIZE, 170, Short.MAX_VALUE)
-                            .addComponent(heightField)
-                            .addComponent(visitdateField)
-                            .addComponent(genderField)
-                            .addComponent(ageField))))
+                .addGap(43, 43, 43)
+                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addComponent(emailLabel)
+                    .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
+                        .addGroup(layout.createSequentialGroup()
+                            .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                                .addComponent(pIDLabel)
+                                .addComponent(pnameLabel))
+                            .addGap(42, 42, 42)
+                            .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                                .addComponent(pnameField, javax.swing.GroupLayout.DEFAULT_SIZE, 170, Short.MAX_VALUE)
+                                .addComponent(pidField)))
+                        .addGroup(layout.createSequentialGroup()
+                            .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                                .addComponent(genderLabel)
+                                .addComponent(jLabel2)
+                                .addComponent(addressLabel))
+                            .addGap(67, 67, 67)
+                            .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
+                                .addComponent(genderField, javax.swing.GroupLayout.DEFAULT_SIZE, 170, Short.MAX_VALUE)
+                                .addComponent(ageField)
+                                .addComponent(contactField)
+                                .addComponent(emailField)
+                                .addComponent(addressField))))
+                    .addComponent(contactLabel))
                 .addGap(0, 0, Short.MAX_VALUE))
         );
         layout.setVerticalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(layout.createSequentialGroup()
-                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
+                .addComponent(jLabel1)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, 112, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addGroup(layout.createSequentialGroup()
-                        .addComponent(jLabel1)
-                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                        .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, 112, javax.swing.GroupLayout.PREFERRED_SIZE)
-                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                            .addGroup(layout.createSequentialGroup()
-                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
-                                .addComponent(viewButton)
-                                .addGap(18, 18, 18)
-                                .addComponent(updateButton))
-                            .addGroup(layout.createSequentialGroup()
-                                .addGap(30, 30, 30)
-                                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                                    .addComponent(pnameLabel)
-                                    .addComponent(pnameField, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
-                                .addGap(18, 18, 18)
-                                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                                    .addComponent(pIDLabel)
-                                    .addComponent(pidField, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))))
+                        .addComponent(viewButton)
+                        .addGap(18, 18, 18)
+                        .addComponent(updateButton)
+                        .addGap(18, 18, 18)
+                        .addComponent(deleteButton)
+                        .addGap(18, 18, 18)
+                        .addComponent(backButton))
+                    .addGroup(layout.createSequentialGroup()
+                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                            .addComponent(pnameLabel)
+                            .addComponent(pnameField, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                        .addGap(18, 18, 18)
+                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                            .addComponent(pIDLabel)
+                            .addComponent(pidField, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                         .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
                             .addComponent(jLabel2)
-                            .addComponent(ageField, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)))
-                    .addComponent(deleteButton))
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 10, Short.MAX_VALUE)
+                            .addComponent(ageField, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                        .addGap(18, 18, 18)
+                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                            .addComponent(genderLabel)
+                            .addComponent(genderField, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                        .addGap(18, 18, 18)
+                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                            .addComponent(contactLabel)
+                            .addComponent(contactField, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))))
+                .addGap(18, 18, 18)
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addGroup(layout.createSequentialGroup()
-                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                            .addComponent(genderLabel, javax.swing.GroupLayout.Alignment.TRAILING)
-                            .addComponent(genderField, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
-                        .addGap(18, 18, 18)
-                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                            .addComponent(visitdateLabel, javax.swing.GroupLayout.Alignment.TRAILING)
-                            .addComponent(visitdateField, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
-                        .addGap(18, 18, 18)
-                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                            .addComponent(hLabel, javax.swing.GroupLayout.Alignment.TRAILING)
-                            .addComponent(heightField, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
-                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
-                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                            .addComponent(weightLabel)
-                            .addComponent(weightField, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
-                        .addGap(18, 18, 18)
-                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                            .addComponent(temperatureLabel)
-                            .addComponent(temperatureField, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
-                        .addGap(18, 18, 18)
-                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
-                            .addComponent(BPLabel)
-                            .addComponent(bloodpressureField, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
-                        .addGap(18, 18, 18)
-                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
-                            .addComponent(pulseLabel)
-                            .addComponent(pulseField, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
-                        .addGap(18, 18, 18)
-                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
-                            .addComponent(diagnosisLabel)
-                            .addComponent(diagnosisField, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)))
-                    .addGroup(layout.createSequentialGroup()
-                        .addGap(6, 6, 6)
-                        .addComponent(backButton)))
-                .addGap(32, 32, 32))
+                    .addComponent(emailLabel)
+                    .addComponent(emailField, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                .addGap(18, 18, 18)
+                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                    .addComponent(addressLabel)
+                    .addComponent(addressField, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                .addContainerGap(219, Short.MAX_VALUE))
         );
     }// </editor-fold>//GEN-END:initComponents
 
@@ -288,29 +236,10 @@ public class viewPatientJPanel extends javax.swing.JPanel {
         pidField.setText(String.valueOf(selectedp.getPatient().getId()));
         ageField.setText(String.valueOf(selectedp.getPatient().getAge()));
         genderField.setText(String.valueOf(selectedp.getPatient().getGender()));
-        visitdateField.setText(String.valueOf(selectedp.getVitalsigns().getVisitdate()));
-        heightField.setText(String.valueOf(selectedp.getVitalsigns().getHeight()));
-        weightField.setText(String.valueOf(selectedp.getVitalsigns().getWeight()));
-        temperatureField.setText(String.valueOf(selectedp.getVitalsigns().getTemperature()));
-        bloodpressureField.setText(String.valueOf(selectedp.getVitalsigns().getBloodpressure()));
-        pulseField.setText(String.valueOf(selectedp.getVitalsigns().getPulse()));
-        diagnosisField.setText(String.valueOf(selectedp.getEncounter().getDiagnosis()));
-        
-           
+        contactField.setText(String.valueOf(selectedp.getPatient().getContact()));
+        emailField.setText(String.valueOf(selectedp.getPatient().getEmail()));
+        addressField.setText(String.valueOf(selectedp.getPatient().getAddress()));
     }//GEN-LAST:event_viewButtonActionPerformed
-
-    private void bloodpressureFieldActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_bloodpressureFieldActionPerformed
-        // TODO add your handling code here:
-    }//GEN-LAST:event_bloodpressureFieldActionPerformed
-
-    private void heightFieldActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_heightFieldActionPerformed
-        // TODO add your handling code here:
-    }//GEN-LAST:event_heightFieldActionPerformed
-
-    private void visitdateFieldActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_visitdateFieldActionPerformed
-        // TODO add your handling code here:
-        
-    }//GEN-LAST:event_visitdateFieldActionPerformed
 
     private void updateButtonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_updateButtonActionPerformed
         // TODO add your handling code here:
@@ -321,13 +250,10 @@ public class viewPatientJPanel extends javax.swing.JPanel {
         int newid = Integer.parseInt(pidField.getText());
         int newage = Integer.parseInt(ageField.getText());
         String newgender = genderField.getText();
-        String newvisitdate = visitdateField.getText();
-        double newh = Double.parseDouble(heightField.getText());
-        double neww = Double.parseDouble(weightField.getText());
-        double temp = Double.parseDouble(temperatureField.getText());
-        double bp = Double.parseDouble(bloodpressureField.getText());
-        double pulse = Double.parseDouble(pulseField.getText());
-        String d = diagnosisField.getText();
+        String contact = contactField.getText();
+        String email = emailField.getText();
+        String address = addressField.getText();
+        
         
         Patient pat = p.updatepatient(rowindex);
         
@@ -335,26 +261,17 @@ public class viewPatientJPanel extends javax.swing.JPanel {
         pat.getPatient().setId(newid);
         pat.getPatient().setAge(newage);
         pat.getPatient().setGender(newgender);
-        pat.getVitalsigns().setVisitdate(newvisitdate);
-        pat.getVitalsigns().setHeight(newh);
-        pat.getVitalsigns().setWeight(newh);
-        pat.getVitalsigns().setTemperature(temp);
-        pat.getVitalsigns().setBloodpressure(bp);
-        pat.getVitalsigns().setPulse(pulse);
-        pat.getEncounter().getDiagnosis();
+        pat.getPatient().setContact(contact);
+        pat.getPatient().setEmail(email);
+        pat.getPatient().setAddress(address);
         
         model.setValueAt(newname, rowindex, 0);
         model.setValueAt(newid, rowindex, 1);
         model.setValueAt(newage, rowindex, 2);
         model.setValueAt(newgender, rowindex, 3);
-        model.setValueAt(newvisitdate, rowindex, 4);
-        model.setValueAt(newh, rowindex, 5);
-        model.setValueAt(neww, rowindex, 6);
-        model.setValueAt(temp, rowindex, 7);
-        model.setValueAt(bp, rowindex, 8);
-        model.setValueAt(pulse, rowindex, 9);
-        model.setValueAt(d, rowindex, 10);
-           
+        model.setValueAt(contact, rowindex, 4);
+        model.setValueAt(email, rowindex, 5);
+        model.setValueAt(address, rowindex, 6);
         PopulateTable();
            
         
@@ -375,7 +292,7 @@ public class viewPatientJPanel extends javax.swing.JPanel {
         DefaultTableModel model = (DefaultTableModel) jTable1.getModel();
         Patient selectedp = (Patient) model.getValueAt(rowindex, 0);
         
-        p.deletepatient(selectedp);
+        DataManager.shared.patients.deletepatient(selectedp);
         
         JOptionPane.showMessageDialog(this, "Selected Patient Record is deleted.");
         
@@ -383,13 +300,9 @@ public class viewPatientJPanel extends javax.swing.JPanel {
         pidField.setText("");
         ageField.setText("");
         genderField.setText("");
-        visitdateField.setText("");
-        heightField.setText("");
-        weightField.setText("");
-        temperatureField.setText("");
-        bloodpressureField.setText("");
-        pulseField.setText("");
-        diagnosisField.setText("");
+        contactField.setText("");
+        emailField.setText("");
+        addressField.setText("");
         
         PopulateTable();
     }//GEN-LAST:event_deleteButtonActionPerformed
@@ -400,19 +313,23 @@ public class viewPatientJPanel extends javax.swing.JPanel {
         cards.remove(this);
     }//GEN-LAST:event_backButtonActionPerformed
 
+    private void addressFieldActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_addressFieldActionPerformed
+        // TODO add your handling code here:
+    }//GEN-LAST:event_addressFieldActionPerformed
+
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
-    private javax.swing.JLabel BPLabel;
+    private javax.swing.JTextField addressField;
+    private javax.swing.JLabel addressLabel;
     private javax.swing.JTextField ageField;
     private javax.swing.JButton backButton;
-    private javax.swing.JTextField bloodpressureField;
+    private javax.swing.JTextField contactField;
+    private javax.swing.JLabel contactLabel;
     private javax.swing.JButton deleteButton;
-    private javax.swing.JTextField diagnosisField;
-    private javax.swing.JLabel diagnosisLabel;
+    private javax.swing.JTextField emailField;
+    private javax.swing.JLabel emailLabel;
     private javax.swing.JTextField genderField;
     private javax.swing.JLabel genderLabel;
-    private javax.swing.JLabel hLabel;
-    private javax.swing.JTextField heightField;
     private javax.swing.JLabel jLabel1;
     private javax.swing.JLabel jLabel2;
     private javax.swing.JScrollPane jScrollPane1;
@@ -421,36 +338,24 @@ public class viewPatientJPanel extends javax.swing.JPanel {
     private javax.swing.JTextField pidField;
     private javax.swing.JTextField pnameField;
     private javax.swing.JLabel pnameLabel;
-    private javax.swing.JTextField pulseField;
-    private javax.swing.JLabel pulseLabel;
-    private javax.swing.JTextField temperatureField;
-    private javax.swing.JLabel temperatureLabel;
     private javax.swing.JButton updateButton;
     private javax.swing.JButton viewButton;
-    private javax.swing.JTextField visitdateField;
-    private javax.swing.JLabel visitdateLabel;
-    private javax.swing.JTextField weightField;
-    private javax.swing.JLabel weightLabel;
     // End of variables declaration//GEN-END:variables
 
     private void PopulateTable() {
         DefaultTableModel model = (DefaultTableModel) jTable1.getModel();
         model.setRowCount(0);
         
-        for (Patient pat: p.getPatient()){
-            Object[] row = new Object[11];
+        for (Patient pat: DataManager.shared.patients.getPatient()){
+            Object[] row = new Object[7];
             row[0] = pat;
             row[1] = pat.getPatient().getName();
             row[1] = pat.getPatient().getId();
             row[2] = pat.getPatient().getAge();
             row[3] = pat.getPatient().getGender();
-            row[4] = pat.getVitalsigns().getVisitdate();
-            row[5] = pat.getVitalsigns().getHeight();
-            row[6] = pat.getVitalsigns().getWeight();
-            row[7] = pat.getVitalsigns().getTemperature();
-            row[8] = pat.getVitalsigns().getBloodpressure();
-            row[9] = pat.getVitalsigns().getPulse();
-            row[10]= pat.getEncounter().getDiagnosis();
+            row[4] = pat.getPatient().getContact();
+            row[5] = pat.getPatient().getEmail();
+            row[6] = pat.getPatient().getAddress();
             model.addRow(row);
     }
     }

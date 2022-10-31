@@ -15,8 +15,22 @@ public class VitalSigns {
     private double weight;
     private double height;
     private String visitdate;
+    private double heartrate;
+    private double respiratoryrate;
     
-
+    public VitalSigns(){
+        
+    }
+    public VitalSigns(double temp,double bp,double pul,double w,double h,String visit,double heart,double res){
+        this.temperature = temp;
+        this.bloodpressure = bp;
+        this.pulse = pul;
+        this.weight = w;
+        this.height = h;
+        this.visitdate =visit;
+        this.heartrate = heart;
+        this.respiratoryrate = res;
+    }
     public double getTemperature() {
         return temperature;
     }
@@ -64,5 +78,22 @@ public class VitalSigns {
     public void setVisitdate(String visitdate) {
         this.visitdate = visitdate;
     } 
+
+    public double getHeartrate() {
+        return heartrate;
+    }
+
+    public void setHeartrate(double heartrate) {
+        this.heartrate = heartrate;
+    }
+
+    public double getRespiratoryrate() {
+        return respiratoryrate;
+    }
+
+    public void setRespiratoryrate(double respiratoryrate) {
+        this.respiratoryrate = respiratoryrate;
+    }
+    
     
 }

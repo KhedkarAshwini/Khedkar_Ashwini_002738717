@@ -10,6 +10,7 @@ package model;
  */
 public class Person {
     private String name;
+    static int currentid = 1;
     private int id;
     private String gender;
     private int age;
@@ -17,9 +18,23 @@ public class Person {
     private String email;
     private String address;
     private String city;
-    private String visit_date;
-    private String ptype;
-
+    
+    public Person(){
+        this.id = currentid;
+        currentid++;
+    }
+    public Person(String pname,int id,String gen,int age,String con,String email,String add,String city){
+        this.name = pname;
+        this.id = id;
+        this.age = age;
+        this.gender = gen;
+        this.contact = con;
+        this.email = email;
+        this.address = add;
+        this.city = city;
+        this.id = currentid;
+        currentid++;
+    }
     public String getName() {
         return name;
     }
@@ -28,7 +43,7 @@ public class Person {
         this.name = name;
     }
 
-    public int getId() {
+    public int getId(){
         return id;
     }
 
@@ -84,21 +99,6 @@ public class Person {
         this.city = city;
     }
 
-    public String getVisit_date() {
-        return visit_date;
-    }
-
-    public void setVisit_date(String visit_date) {
-        this.visit_date = visit_date;
-    }
-
-    public String getPtype() {
-        return ptype;
-    }
-
-    public void setPtype(String ptype) {
-        this.ptype = ptype;
-    }
     
     @Override
     public String toString() {

@@ -24,10 +24,12 @@ public class DoctorDirectory {
     public void setDoctor(ArrayList<Doctor> doctor) {
         this.doctor = doctor;
     }
-    public Doctor addnewdoctor(Person p){
-        Doctor d = new Doctor(p);
-        doctor.add(d);
-        return d;
+    public Doctor addnewdoctor(Doctor doc){
+        
+        doctor.add(doc);
+        System.out.println(doc.getPerson().getName()+"Ashwini");
+        return doc;
+        
    }
     
     public Doctor updatedoctor(int id){
@@ -43,5 +45,20 @@ public class DoctorDirectory {
     public void deletedoctor(Doctor d){
         doctor.remove(d);
     }
-    
+    public Doctor fetchDoctor(int id){
+        for(Doctor d : doctor){
+            if(d.getPerson().getId() == id){
+                return d;
+            }
+        }
+        return null;
+    }
+    public Doctor fetchDoctorbyName(String name){
+        for(Doctor d : doctor){
+            if(d.getPerson().getName() == name){
+                return d;
+            }
+        }
+        return null;
+    }
 }
