@@ -26,26 +26,17 @@
                   <Group type="103" groupAlignment="1" attributes="0">
                       <Component id="contactField" min="-2" pref="170" max="-2" attributes="0"/>
                       <Group type="102" attributes="0">
+                          <EmptySpace min="-2" pref="94" max="-2" attributes="0"/>
                           <Group type="103" groupAlignment="0" attributes="0">
-                              <Group type="102" attributes="0">
-                                  <EmptySpace min="-2" pref="94" max="-2" attributes="0"/>
-                                  <Group type="103" groupAlignment="0" attributes="0">
-                                      <Component id="temperatureLabel" alignment="0" min="-2" pref="84" max="-2" attributes="0"/>
-                                      <Component id="weightLabel" alignment="0" min="-2" max="-2" attributes="0"/>
-                                      <Component id="contactLabel" min="-2" max="-2" attributes="0"/>
-                                      <Component id="pIDLabel" min="-2" max="-2" attributes="0"/>
-                                      <Component id="pnameLabel" min="-2" max="-2" attributes="0"/>
-                                      <Component id="genderLabel" alignment="0" min="-2" max="-2" attributes="0"/>
-                                      <Component id="ageLabel" alignment="0" min="-2" max="-2" attributes="0"/>
-                                  </Group>
-                                  <EmptySpace min="-2" pref="42" max="-2" attributes="0"/>
-                              </Group>
-                              <Group type="102" alignment="1" attributes="0">
-                                  <EmptySpace max="-2" attributes="0"/>
-                                  <Component id="backButton" min="-2" max="-2" attributes="0"/>
-                                  <EmptySpace type="unrelated" max="-2" attributes="0"/>
-                              </Group>
+                              <Component id="temperatureLabel" alignment="0" min="-2" pref="84" max="-2" attributes="0"/>
+                              <Component id="weightLabel" alignment="0" min="-2" max="-2" attributes="0"/>
+                              <Component id="contactLabel" min="-2" max="-2" attributes="0"/>
+                              <Component id="pIDLabel" min="-2" max="-2" attributes="0"/>
+                              <Component id="pnameLabel" min="-2" max="-2" attributes="0"/>
+                              <Component id="genderLabel" alignment="0" min="-2" max="-2" attributes="0"/>
+                              <Component id="ageLabel" alignment="0" min="-2" max="-2" attributes="0"/>
                           </Group>
+                          <EmptySpace min="-2" pref="42" max="-2" attributes="0"/>
                           <Group type="103" groupAlignment="0" attributes="0">
                               <Group type="102" alignment="0" attributes="0">
                                   <Component id="mRadioButton" min="-2" pref="76" max="-2" attributes="0"/>
@@ -56,18 +47,14 @@
                                   <Component id="ageField" alignment="0" pref="170" max="32767" attributes="0"/>
                                   <Component id="pnameField" alignment="0" max="32767" attributes="0"/>
                               </Group>
-                              <Group type="102" alignment="0" attributes="0">
-                                  <EmptySpace min="-2" pref="32" max="-2" attributes="0"/>
-                                  <Component id="saveButton" min="-2" max="-2" attributes="0"/>
-                              </Group>
                               <Component id="emailField" alignment="1" min="-2" pref="170" max="-2" attributes="0"/>
                               <Component id="addressField" alignment="1" min="-2" pref="170" max="-2" attributes="0"/>
                           </Group>
                       </Group>
                   </Group>
                   <Group type="102" alignment="0" attributes="0">
-                      <EmptySpace min="-2" pref="204" max="-2" attributes="0"/>
-                      <Component id="jButton1" min="-2" max="-2" attributes="0"/>
+                      <EmptySpace min="-2" pref="207" max="-2" attributes="0"/>
+                      <Component id="saveButton" min="-2" max="-2" attributes="0"/>
                   </Group>
               </Group>
               <EmptySpace pref="606" max="32767" attributes="0"/>
@@ -114,14 +101,9 @@
                   <Component id="temperatureLabel" alignment="3" min="-2" max="-2" attributes="0"/>
                   <Component id="addressField" alignment="3" min="-2" max="-2" attributes="0"/>
               </Group>
-              <EmptySpace min="-2" pref="49" max="-2" attributes="0"/>
-              <Component id="jButton1" min="-2" max="-2" attributes="0"/>
-              <EmptySpace pref="98" max="32767" attributes="0"/>
-              <Group type="103" groupAlignment="3" attributes="0">
-                  <Component id="saveButton" alignment="3" min="-2" max="-2" attributes="0"/>
-                  <Component id="backButton" alignment="3" min="-2" max="-2" attributes="0"/>
-              </Group>
-              <EmptySpace min="-2" pref="90" max="-2" attributes="0"/>
+              <EmptySpace min="-2" pref="53" max="-2" attributes="0"/>
+              <Component id="saveButton" min="-2" max="-2" attributes="0"/>
+              <EmptySpace pref="209" max="32767" attributes="0"/>
           </Group>
       </Group>
     </DimensionLayout>
@@ -201,19 +183,6 @@
       </Properties>
     </Component>
     <Component class="javax.swing.JTextField" name="ageField">
-    </Component>
-    <Component class="javax.swing.JButton" name="backButton">
-      <Properties>
-        <Property name="text" type="java.lang.String" value="Back"/>
-      </Properties>
-      <Events>
-        <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="backButtonActionPerformed"/>
-      </Events>
-    </Component>
-    <Component class="javax.swing.JButton" name="jButton1">
-      <Properties>
-        <Property name="text" type="java.lang.String" value="Save"/>
-      </Properties>
     </Component>
   </SubComponents>
 </Form>

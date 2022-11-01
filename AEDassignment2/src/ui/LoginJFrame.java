@@ -5,24 +5,15 @@
 package ui;
 
 import datamodel.DataManager;
-import com.google.gson.Gson;
-
 import java.awt.CardLayout;
-import java.awt.Container;
-import java.io.FileReader;
-import java.io.IOException;
-import java.io.Reader;
+
 import javax.swing.JOptionPane;
 import javax.swing.JPanel;
 import model.Community;
-import model.Doctor;
-import model.Encounterhistory;
-import model.PatientDirectory;
-import model.PersonDirectory;
-import model.DoctorDirectory;
-import model.HospitalDirectory;
-import model.Person;
+import model.*;
 import datamodel.DataManager;
+import java.awt.event.ActionEvent;
+import java.awt.event.ActionListener;
 
 /**
  *
@@ -33,29 +24,17 @@ public class LoginJFrame extends javax.swing.JFrame {
     /**
      * Creates new form MainJFrame
      */
-    
-   PatientDirectory directory;
-   PersonDirectory persons;
-   DoctorDirectory doctors;
-   Encounterhistory history;
-   HospitalDirectory hos;
    Community cm;
    CardLayout cl;
    JPanel cards;
-   Gson gson;
    
     public LoginJFrame() {
         
         initComponents();
-        this.hos = new HospitalDirectory();
-        this.directory = new PatientDirectory();
-        this.doctors = new DoctorDirectory();
-        this.persons = new PersonDirectory();
-        this.history = new Encounterhistory();
-        this.gson = new Gson();
         this.cl = new CardLayout();
         this.cards = new JPanel(cl);
-        System.out.print(DataManager.shared);
+        addListener();
+        
     }
     
     /**
@@ -81,7 +60,6 @@ public class LoginJFrame extends javax.swing.JFrame {
         jLabel1 = new javax.swing.JLabel();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
-        setPreferredSize(new java.awt.Dimension(1000, 600));
 
         splitPane.setDividerLocation(160);
 
@@ -90,9 +68,9 @@ public class LoginJFrame extends javax.swing.JFrame {
         jComboBox1.setBackground(new java.awt.Color(102, 102, 255));
         jComboBox1.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "Patient", "Doctor", "SystemAdmin", "HospitalAdmin", "CommunityAdmin" }));
 
-        userLabel.setText("Username : ");
+        userLabel.setText("Username ");
 
-        passwordLabel.setText("Password : ");
+        passwordLabel.setText("Password ");
 
         loginButton.setBackground(new java.awt.Color(51, 51, 255));
         loginButton.setText("Login ");
@@ -120,10 +98,10 @@ public class LoginJFrame extends javax.swing.JFrame {
                     .addGroup(controllPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
                         .addComponent(jLabel2)
                         .addComponent(jComboBox1, javax.swing.GroupLayout.PREFERRED_SIZE, 105, javax.swing.GroupLayout.PREFERRED_SIZE)
-                        .addComponent(userLabel, javax.swing.GroupLayout.PREFERRED_SIZE, 65, javax.swing.GroupLayout.PREFERRED_SIZE)
                         .addComponent(unameField)
                         .addComponent(passwordLabel, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                        .addComponent(passwordField))
+                        .addComponent(passwordField)
+                        .addComponent(userLabel, javax.swing.GroupLayout.PREFERRED_SIZE, 93, javax.swing.GroupLayout.PREFERRED_SIZE))
                     .addComponent(loginButton)
                     .addComponent(registerButton))
                 .addContainerGap(42, Short.MAX_VALUE))
@@ -175,6 +153,8 @@ public class LoginJFrame extends javax.swing.JFrame {
 
     private void loginButtonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_loginButtonActionPerformed
         // TODO add your handling code here:
+        
+        DataManager.shared.currentuserId = -1;
         String selectedfield = jComboBox1.getSelectedItem().toString();
         
         String username = unameField.getText();
@@ -182,30 +162,38 @@ public class LoginJFrame extends javax.swing.JFrame {
         
         if(username.equals("admin") & password.equals("admin") & selectedfield.equals("HospitalAdmin")){
             
-            SysadminJPanel spanel = new SysadminJPanel(directory,doctors,persons,history, cards);
+            SysadminJPanel spanel = new SysadminJPanel(cards);
             cards.add(spanel, "SPanel");
             splitPane.setRightComponent(cards);
             cl.show(cards,"SPanel");
             
+            
         }
-        else if(username.contains("Dr") & selectedfield.equals("Doctor")){
-            DoctorJPanel dpanel = new DoctorJPanel(directory,history,cards);
-            int did =  DataManager.shared.doctors.fetchDoctorbyName(username).getPerson().getId();
+        else if(selectedfield.equals("Doctor")){
+            DoctorJPanel dpanel = new DoctorJPanel(cards);
+            int did = DataManager.shared.doctors.fetchDoctorbyName(username).getId();
             DataManager.shared.currentuserId = did;
             cards.add(dpanel,"DPanel");
             splitPane.setRightComponent(cards);
             cl.show(cards, "DPanel");
         }
         else if(selectedfield.equals("Patient")){
-            PatientJPanel ppanel = new PatientJPanel(directory,history,doctors,cards);
-            int pid =  DataManager.shared.patients.fetchPatient(username).getPatient().getId();
-            DataManager.shared.currentuserId = pid;
-            cards.add(ppanel,"PPanel");
-            splitPane.setRightComponent(cards);
-            cl.show(cards, "PPanel");
+            PatientJPanel ppanel = new PatientJPanel(cards);
+            Patient patient = DataManager.shared.patients.fetchPatient(username);
+            if(patient == null){
+                JOptionPane.showMessageDialog(this, "Unregistered Patient User");
+            } else {
+                int pid = patient.getId();
+                DataManager.shared.currentuserId = pid;
+                System.out.println("Patient logged in with uname "+patient+" id "+pid+" "+patient.getCity());
+                cards.add(ppanel,"PPanel");
+                splitPane.setRightComponent(cards);
+                cl.show(cards, "PPanel");
+            }
+            
         }
         else if(selectedfield.equals("CommunityAdmin")){
-            HospitalCommunityJPanel hpanel = new HospitalCommunityJPanel(hos,cm,cards);
+            HospitalCommunityJPanel hpanel = new HospitalCommunityJPanel(cards);
             cards.add(hpanel,"HPanel");
             splitPane.setRightComponent(cards);
             cl.show(cards, "PPanel");
@@ -220,7 +208,7 @@ public class LoginJFrame extends javax.swing.JFrame {
 
     private void registerButtonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_registerButtonActionPerformed
         // TODO add your handling code here:
-        registerJPanel dpanel = new registerJPanel(persons,cards);
+        registerJPanel dpanel = new registerJPanel(cards);
         cards.add(dpanel,"RegisterPanel");
         splitPane.setRightComponent(cards);
         cl.show(cards, "RegiserPanel");
@@ -279,4 +267,14 @@ public class LoginJFrame extends javax.swing.JFrame {
     private javax.swing.JLabel userLabel;
     private javax.swing.JPanel workPanel;
     // End of variables declaration//GEN-END:variables
+
+    private void addListener() {
+        jComboBox1.addActionListener (new ActionListener () {
+        public void actionPerformed(ActionEvent e) {
+            cards.removeAll();
+            splitPane.setRightComponent(workPanel);
+            registerButton.setVisible(jComboBox1.getSelectedItem().equals("Patient"));
+        }
+    });
+    }
 }

@@ -4,41 +4,21 @@
  */
 package model;
 
-import java.util.ArrayList;
 
 /**
  *
  * @author ashwini
  */
-public class Doctor {
-    Person person;
-    //private ArrayList<Encounterhistory> history;
+public class Doctor extends Person{
     VitalSigns vsigns;
     private String diagnosis;
     private String medication;
+    private String hospname;
     
-    public Doctor(Person p){
-        this.person = p;
+    public Doctor(){
        
-        //this.history s= new ArrayList<Encounterhistory>();
     }
-
-    public Person getPerson() {
-        return person;
-    }
-
-    public void setPerson(Person person) {
-        this.person = person;
-    }
-    /**
-    public ArrayList<Encounterhistory> getHistory() {
-        return history;
-    }
-
-    public void setHistory(ArrayList<Encounterhistory> history) {
-        this.history = history;
-    }
-   **/
+ 
     public VitalSigns getVsigns() {
         return vsigns;
     }
@@ -62,9 +42,18 @@ public class Doctor {
     public void setMedication(String medication) {
         this.medication = medication;
     }
+
+    public String getHospname() {
+        return hospname;
+    }
+
+    public void setHospname(String hospname) {
+        this.hospname = hospname;
+    }
     
     @Override
     public String toString(){
-       return person.getName();
+        return getName();
     }
+    
 }

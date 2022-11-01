@@ -52,18 +52,18 @@ public class adddoctorJPanel extends javax.swing.JPanel {
         ageLabel = new javax.swing.JLabel();
         ageField = new javax.swing.JTextField();
         addressLabel = new javax.swing.JLabel();
-        pidField = new javax.swing.JTextField();
         addressField = new javax.swing.JTextField();
         pnameField = new javax.swing.JTextField();
         cityLabel = new javax.swing.JLabel();
         pnameLabel = new javax.swing.JLabel();
         cityField = new javax.swing.JTextField();
-        pIDLabel = new javax.swing.JLabel();
         saveButton = new javax.swing.JButton();
-        typeLabel = new javax.swing.JLabel();
         mRadioButton = new javax.swing.JRadioButton();
-        ptypeField = new javax.swing.JTextField();
         backButton = new javax.swing.JButton();
+        jLabel2 = new javax.swing.JLabel();
+        jLabel3 = new javax.swing.JLabel();
+        zipField = new javax.swing.JTextField();
+        hosField = new javax.swing.JTextField();
 
         jLabel1.setFont(new java.awt.Font("Segoe UI", 1, 24)); // NOI18N
         jLabel1.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
@@ -91,16 +91,12 @@ public class adddoctorJPanel extends javax.swing.JPanel {
 
         pnameLabel.setText("Name :");
 
-        pIDLabel.setText("Doctor ID :");
-
         saveButton.setText("Save ");
         saveButton.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 saveButtonActionPerformed(evt);
             }
         });
-
-        typeLabel.setText("Speciality : ");
 
         mRadioButton.setText("Male");
 
@@ -111,56 +107,62 @@ public class adddoctorJPanel extends javax.swing.JPanel {
             }
         });
 
+        jLabel2.setText("Zip : ");
+
+        jLabel3.setText("Hospital : ");
+
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(this);
         this.setLayout(layout);
         layout.setHorizontalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addComponent(jLabel1, javax.swing.GroupLayout.DEFAULT_SIZE, 1000, Short.MAX_VALUE)
             .addGroup(layout.createSequentialGroup()
-                .addGap(336, 336, 336)
-                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
+                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addGroup(layout.createSequentialGroup()
-                        .addComponent(contactLabel)
-                        .addGap(57, 57, 57)
-                        .addComponent(contactField, javax.swing.GroupLayout.PREFERRED_SIZE, 88, javax.swing.GroupLayout.PREFERRED_SIZE))
-                    .addGroup(layout.createSequentialGroup()
+                        .addGap(336, 336, 336)
                         .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                            .addComponent(typeLabel)
-                            .addComponent(cityLabel)
-                            .addComponent(addressLabel)
-                            .addComponent(emailLabel))
-                        .addGap(41, 41, 41)
-                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING, false)
-                            .addComponent(ptypeField, javax.swing.GroupLayout.Alignment.LEADING)
-                            .addComponent(cityField, javax.swing.GroupLayout.Alignment.LEADING)
-                            .addComponent(addressField, javax.swing.GroupLayout.Alignment.LEADING)
-                            .addComponent(emailField, javax.swing.GroupLayout.Alignment.LEADING, javax.swing.GroupLayout.PREFERRED_SIZE, 90, javax.swing.GroupLayout.PREFERRED_SIZE))))
-                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
+                            .addComponent(jLabel3)
+                            .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
+                                .addGroup(layout.createSequentialGroup()
+                                    .addComponent(contactLabel)
+                                    .addGap(57, 57, 57)
+                                    .addComponent(contactField, javax.swing.GroupLayout.PREFERRED_SIZE, 88, javax.swing.GroupLayout.PREFERRED_SIZE))
+                                .addGroup(layout.createSequentialGroup()
+                                    .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                                        .addComponent(cityLabel)
+                                        .addComponent(addressLabel)
+                                        .addComponent(emailLabel)
+                                        .addComponent(jLabel2))
+                                    .addGap(49, 49, 49)
+                                    .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
+                                        .addComponent(cityField)
+                                        .addComponent(addressField)
+                                        .addComponent(emailField, javax.swing.GroupLayout.DEFAULT_SIZE, 90, Short.MAX_VALUE)
+                                        .addComponent(zipField)
+                                        .addComponent(hosField))))
+                            .addGroup(layout.createSequentialGroup()
+                                .addComponent(pnameLabel)
+                                .addGap(64, 64, 64)
+                                .addComponent(pnameField, javax.swing.GroupLayout.PREFERRED_SIZE, 91, javax.swing.GroupLayout.PREFERRED_SIZE))))
+                    .addGroup(layout.createSequentialGroup()
+                        .addGap(366, 366, 366)
+                        .addComponent(backButton)
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
+                        .addComponent(saveButton)))
+                .addContainerGap(471, Short.MAX_VALUE))
             .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                 .addGroup(layout.createSequentialGroup()
                     .addGap(334, 334, 334)
                     .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                        .addComponent(genderLabel)
+                        .addComponent(ageLabel))
+                    .addGap(66, 66, 66)
+                    .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                         .addGroup(layout.createSequentialGroup()
-                            .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                                .addComponent(pIDLabel)
-                                .addComponent(pnameLabel)
-                                .addComponent(genderLabel)
-                                .addComponent(ageLabel))
-                            .addGap(48, 48, 48)
-                            .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                                .addGroup(layout.createSequentialGroup()
-                                    .addComponent(mRadioButton, javax.swing.GroupLayout.PREFERRED_SIZE, 76, javax.swing.GroupLayout.PREFERRED_SIZE)
-                                    .addGap(18, 18, 18)
-                                    .addComponent(fRadioButton, javax.swing.GroupLayout.PREFERRED_SIZE, 80, javax.swing.GroupLayout.PREFERRED_SIZE))
-                                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING, false)
-                                    .addComponent(ageField, javax.swing.GroupLayout.Alignment.LEADING, javax.swing.GroupLayout.DEFAULT_SIZE, 91, Short.MAX_VALUE)
-                                    .addComponent(pidField, javax.swing.GroupLayout.Alignment.LEADING)
-                                    .addComponent(pnameField, javax.swing.GroupLayout.Alignment.LEADING))))
-                        .addGroup(layout.createSequentialGroup()
-                            .addGap(33, 33, 33)
-                            .addComponent(backButton)
-                            .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
-                            .addComponent(saveButton)))
+                            .addComponent(mRadioButton, javax.swing.GroupLayout.PREFERRED_SIZE, 76, javax.swing.GroupLayout.PREFERRED_SIZE)
+                            .addGap(18, 18, 18)
+                            .addComponent(fRadioButton, javax.swing.GroupLayout.PREFERRED_SIZE, 80, javax.swing.GroupLayout.PREFERRED_SIZE))
+                        .addComponent(ageField, javax.swing.GroupLayout.PREFERRED_SIZE, 91, javax.swing.GroupLayout.PREFERRED_SIZE))
                     .addContainerGap(388, Short.MAX_VALUE)))
         );
         layout.setVerticalGroup(
@@ -168,7 +170,11 @@ public class adddoctorJPanel extends javax.swing.JPanel {
             .addGroup(layout.createSequentialGroup()
                 .addContainerGap()
                 .addComponent(jLabel1, javax.swing.GroupLayout.PREFERRED_SIZE, 32, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addGap(210, 210, 210)
+                .addGap(77, 77, 77)
+                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                    .addComponent(pnameLabel)
+                    .addComponent(pnameField, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                .addGap(111, 111, 111)
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(contactLabel)
                     .addComponent(contactField, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
@@ -184,23 +190,23 @@ public class adddoctorJPanel extends javax.swing.JPanel {
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
                         .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                             .addComponent(cityField, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                            .addComponent(cityLabel))
-                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
-                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                            .addComponent(ptypeField, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                            .addComponent(typeLabel))))
-                .addContainerGap(173, Short.MAX_VALUE))
+                            .addComponent(cityLabel))))
+                .addGap(18, 18, 18)
+                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                    .addComponent(jLabel2)
+                    .addComponent(zipField, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                .addGap(18, 18, 18)
+                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                    .addComponent(jLabel3)
+                    .addComponent(hosField, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                .addGap(28, 28, 28)
+                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                    .addComponent(backButton)
+                    .addComponent(saveButton))
+                .addContainerGap(75, Short.MAX_VALUE))
             .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                 .addGroup(layout.createSequentialGroup()
-                    .addGap(93, 93, 93)
-                    .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                        .addComponent(pnameLabel)
-                        .addComponent(pnameField, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
-                    .addGap(18, 18, 18)
-                    .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                        .addComponent(pIDLabel)
-                        .addComponent(pidField, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
-                    .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
+                    .addGap(168, 168, 168)
                     .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                         .addComponent(ageLabel)
                         .addComponent(ageField, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
@@ -210,11 +216,7 @@ public class adddoctorJPanel extends javax.swing.JPanel {
                         .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                             .addComponent(mRadioButton)
                             .addComponent(fRadioButton)))
-                    .addGap(250, 250, 250)
-                    .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                        .addComponent(saveButton)
-                        .addComponent(backButton))
-                    .addContainerGap(94, Short.MAX_VALUE)))
+                    .addContainerGap(369, Short.MAX_VALUE)))
         );
     }// </editor-fold>//GEN-END:initComponents
 
@@ -234,16 +236,7 @@ public class adddoctorJPanel extends javax.swing.JPanel {
             JOptionPane.showMessageDialog(this,"Please enter a string value.");
             val++;
         }
-        int pid = Integer.parseInt(pidField.getText());
-        try{
-            if(pid == 0){
-            JOptionPane.showMessageDialog(this,"Please enter input");
-            val++;
-        }
-        }
-        catch (NumberFormatException nfe) {
-            JOptionPane.showMessageDialog(this,nfe.getMessage());
-        }
+        
         int age = Integer.parseInt(ageField.getText());
         try{
             if(age == 0){
@@ -290,47 +283,43 @@ public class adddoctorJPanel extends javax.swing.JPanel {
             JOptionPane.showMessageDialog(this,"Please enter a string value.");
             val++;
         }
-        String ptype = ptypeField.getText();
-        if(ptype.isEmpty()){
-            JOptionPane.showMessageDialog(this,"Please enter input");
-            val++;
-        }
-        if(ptype.matches("-?\\d+")){
-            JOptionPane.showMessageDialog(this,"Please enter a string value.");
-            val++;
-        }
-        Person per = new Person();
+        String zip = zipField.getText();
+        String Hospitalname = hosField.getText();
         
-        Doctor doc = new Doctor(per);
-        per.setName(pname);
-        per.setId(pid);
-        per.setAge(age);
-        per.setContact(contact);
-        per.setEmail(email);
-        per.setAddress(address);
-        per.setCity(city);
-        
-        
-        if((mRadioButton.isSelected())){
-            per.setGender("male");
-        }
-        else{
-            per.setGender("female");
-        }
+        if(val == 0){
+            Doctor doc = new Doctor();
+            doc.setHospname(Hospitalname);
 
-        DataManager.shared.doctors.addnewdoctor(doc);
-       
+            doc.setName(pname);
+            doc.setAge(age);
+            doc.setContact(contact);
+            doc.setEmail(email);
+            doc.setAddress(address);
+            doc.setCity(city);
+            doc.setZip(zip);        
+            if((mRadioButton.isSelected())){
+                doc.setGender("male");
+            }
+            else{
+                doc.setGender("female");
+            }
 
-        JOptionPane.showMessageDialog(this,"New Doctor Details saved successfully!!!");
+            DataManager.shared.doctors.addnewdoctor(doc);
+
+
+            JOptionPane.showMessageDialog(this,"New Doctor Details saved successfully!!!");
+        }
+        
 
         pnameField.setText("");
-        pidField.setText("");
         ageField.setText("");
         contactField.setText("");
         emailField.setText("");
         addressField.setText("");
         cityField.setText("");
-        ptypeField.setText("");
+        zipField.setText("");
+        hosField.setText("");
+//        specialtyField.setText("");
     }//GEN-LAST:event_saveButtonActionPerformed
 
     private void backButtonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_backButtonActionPerformed
@@ -354,15 +343,15 @@ public class adddoctorJPanel extends javax.swing.JPanel {
     private javax.swing.JLabel emailLabel;
     private javax.swing.JRadioButton fRadioButton;
     private javax.swing.JLabel genderLabel;
+    private javax.swing.JTextField hosField;
     private javax.swing.JLabel jLabel1;
+    private javax.swing.JLabel jLabel2;
+    private javax.swing.JLabel jLabel3;
     private javax.swing.JRadioButton mRadioButton;
-    private javax.swing.JLabel pIDLabel;
-    private javax.swing.JTextField pidField;
     private javax.swing.JTextField pnameField;
     private javax.swing.JLabel pnameLabel;
-    private javax.swing.JTextField ptypeField;
     private javax.swing.JButton saveButton;
-    private javax.swing.JLabel typeLabel;
+    private javax.swing.JTextField zipField;
     // End of variables declaration//GEN-END:variables
 
 }

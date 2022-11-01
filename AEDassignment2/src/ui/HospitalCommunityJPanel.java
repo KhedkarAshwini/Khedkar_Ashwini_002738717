@@ -18,14 +18,10 @@ public class HospitalCommunityJPanel extends javax.swing.JPanel {
     /**
      * Creates new form HospitalCommunityJPanel
      */
-    HospitalDirectory hospitals;
-    Community community;
     JPanel cards;
     CardLayout cl;
     
-    public HospitalCommunityJPanel(HospitalDirectory hos,Community cm , JPanel cards) {
-        this.hospitals = hos;
-        this.community = cm;
+    public HospitalCommunityJPanel(JPanel cards) {
         this.cards = cards;
         this.cl = (CardLayout) cards.getLayout();
         initComponents();
@@ -91,14 +87,14 @@ public class HospitalCommunityJPanel extends javax.swing.JPanel {
 
     private void jButton1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton1ActionPerformed
         // TODO add your handling code here:
-        addhosJPanel hpanel = new addhosJPanel(hospitals,cards);
+        addhosJPanel hpanel = new addhosJPanel(cards);
         cards.add(hpanel,"AddhospitalPanel");
         cl.next(cards);
     }//GEN-LAST:event_jButton1ActionPerformed
 
     private void jButton2ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton2ActionPerformed
         // TODO add your handling code here:
-        viewHospitalJPanel vhpanel = new viewHospitalJPanel(hospitals,cards);
+        viewHospitalJPanel vhpanel = new viewHospitalJPanel(cards);
         cards.add(vhpanel,"ViewhospitalPanel");
         cl.next(cards);
     }//GEN-LAST:event_jButton2ActionPerformed

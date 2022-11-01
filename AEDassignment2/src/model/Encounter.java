@@ -20,6 +20,10 @@ public class Encounter {
     private String medication;
     
     public Encounter(){
+        this.diagnosis = "";
+        this.medication = "";
+        this.visittype = "";
+        this.signs = new VitalSigns();
         this.Encounterid = currentid;
         currentid++;
     }

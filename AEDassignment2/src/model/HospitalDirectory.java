@@ -30,4 +30,13 @@ public class HospitalDirectory {
        hospitals.add(h);
        return h;
    }
+   public ArrayList<Hospital> fetchHospitalbyZipCode(String zip){
+       ArrayList<Hospital> hosp = new ArrayList<>();
+        for(Hospital hos : hospitals){
+            if(hos.getZipcode().equals(zip)){
+                hosp.add(hos);
+            }
+        }
+        return hosp;
+    }
 }

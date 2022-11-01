@@ -19,7 +19,13 @@ public class VitalSigns {
     private double respiratoryrate;
     
     public VitalSigns(){
-        
+        this.height = 0;
+        this.weight =0;
+        this.temperature = 0;
+        this.bloodpressure = 0;
+        this.pulse = 0;
+        this.heartrate = 0;
+        this.respiratoryrate = 0;
     }
     public VitalSigns(double temp,double bp,double pul,double w,double h,String visit,double heart,double res){
         this.temperature = temp;

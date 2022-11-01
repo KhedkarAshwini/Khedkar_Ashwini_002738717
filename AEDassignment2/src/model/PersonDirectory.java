@@ -24,12 +24,7 @@ public class PersonDirectory {
     public void setPersons(ArrayList<Person> persons) {
         this.persons = persons;
     }
-    
-    public Person addnewperson(){
-       Person emp = new Person();
-       persons.add(emp);
-       return emp;
-   }
+ 
    public Person updateperson(int id){
        for(Person e:persons){
            if(persons.indexOf(e) == id){

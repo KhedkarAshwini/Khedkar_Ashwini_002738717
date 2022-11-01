@@ -13,11 +13,7 @@ import java.util.Date;
 import javax.swing.JOptionPane;
 import javax.swing.JPanel;
 import model.PatientDirectory;
-import model.Person;
-import model.Encounter;
-import model.Encounterhistory;
-import model.VitalSigns;
-import model.Patient;
+import model.*;
 
 /**
  *
@@ -28,15 +24,13 @@ public class Add_patientJPanel extends javax.swing.JPanel {
     /**
      * Creates new form Add_patientJPanel
      */
-    PatientDirectory patients ;
+    //PatientDirectory patients ;
     //Encounterhistory history;
     CardLayout c1;
     JPanel cards;
     
-    public Add_patientJPanel(PatientDirectory pa,Encounterhistory hist, JPanel cards) {
+    public Add_patientJPanel(JPanel cards) {
         initComponents();
-        this.patients = pa;
-        //this.history = hist;
         this.cards = cards;
         this.c1 =  (CardLayout)cards.getLayout();
     }
@@ -56,11 +50,9 @@ public class Add_patientJPanel extends javax.swing.JPanel {
         fRadioButton = new javax.swing.JRadioButton();
         ageLabel = new javax.swing.JLabel();
         ageField = new javax.swing.JTextField();
-        pidField = new javax.swing.JTextField();
         pnameField = new javax.swing.JTextField();
         saveButton = new javax.swing.JButton();
         pnameLabel = new javax.swing.JLabel();
-        pIDLabel = new javax.swing.JLabel();
         genderLabel = new javax.swing.JLabel();
         backButton = new javax.swing.JButton();
         contactField = new javax.swing.JTextField();
@@ -91,8 +83,6 @@ public class Add_patientJPanel extends javax.swing.JPanel {
 
         pnameLabel.setText("Patient name :");
 
-        pIDLabel.setText("Patient ID :");
-
         genderLabel.setText("Gender");
 
         backButton.setText("Back");
@@ -118,7 +108,6 @@ public class Add_patientJPanel extends javax.swing.JPanel {
                     .addGroup(jPanel2Layout.createSequentialGroup()
                         .addGap(248, 248, 248)
                         .addGroup(jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                            .addComponent(pIDLabel)
                             .addComponent(pnameLabel)
                             .addComponent(ageLabel)
                             .addComponent(genderLabel)
@@ -133,8 +122,7 @@ public class Add_patientJPanel extends javax.swing.JPanel {
                                 .addComponent(fRadioButton, javax.swing.GroupLayout.PREFERRED_SIZE, 80, javax.swing.GroupLayout.PREFERRED_SIZE))
                             .addGroup(jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING, false)
                                 .addComponent(ageField, javax.swing.GroupLayout.Alignment.LEADING, javax.swing.GroupLayout.DEFAULT_SIZE, 170, Short.MAX_VALUE)
-                                .addComponent(pnameField, javax.swing.GroupLayout.Alignment.LEADING)
-                                .addComponent(pidField, javax.swing.GroupLayout.Alignment.LEADING))
+                                .addComponent(pnameField, javax.swing.GroupLayout.Alignment.LEADING))
                             .addComponent(contactField, javax.swing.GroupLayout.PREFERRED_SIZE, 170, javax.swing.GroupLayout.PREFERRED_SIZE)
                             .addComponent(emailField, javax.swing.GroupLayout.PREFERRED_SIZE, 170, javax.swing.GroupLayout.PREFERRED_SIZE)
                             .addComponent(addressField, javax.swing.GroupLayout.PREFERRED_SIZE, 170, javax.swing.GroupLayout.PREFERRED_SIZE)))
@@ -150,15 +138,11 @@ public class Add_patientJPanel extends javax.swing.JPanel {
             .addGroup(jPanel2Layout.createSequentialGroup()
                 .addContainerGap()
                 .addComponent(jLabel1, javax.swing.GroupLayout.PREFERRED_SIZE, 32, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addGap(42, 42, 42)
-                .addGroup(jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                .addGap(77, 77, 77)
+                .addGroup(jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
                     .addComponent(pnameLabel)
                     .addComponent(pnameField, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
                 .addGap(18, 18, 18)
-                .addGroup(jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                    .addComponent(pIDLabel)
-                    .addComponent(pidField, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
                 .addGroup(jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(ageLabel)
                     .addComponent(ageField, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
@@ -211,19 +195,10 @@ public class Add_patientJPanel extends javax.swing.JPanel {
             val++;
         }
 
-        int pid = Integer.parseInt(pidField.getText());
-        try{
-            if(pid == 0 | pid % 1 == 0){
-                JOptionPane.showMessageDialog(this,"Please enter input");
-                val++;
-            }
-        }
-        catch (NumberFormatException nfe) {
-            JOptionPane.showMessageDialog(this,nfe.getMessage());
-        }
+        
         int age = Integer.parseInt(ageField.getText());
         try{
-            if(age == 0 | age % 1 == 0){
+            if(age == 0){
                 JOptionPane.showMessageDialog(this,"Please enter input");
                 val++;
             }
@@ -259,39 +234,38 @@ public class Add_patientJPanel extends javax.swing.JPanel {
             JOptionPane.showMessageDialog(this,"Please enter a string value.");
             val++;
         }
-
-        Person per = new Person();
-        //ArrayList<Encounter> e = history.getHistory();
-
-        Patient p = new Patient(per);
+        
+        if(val == 0){
+            Patient p = new Patient();
         
         DataManager.shared.patients.addnewpatient(p);
         
 
-        p.getPatient().setName(pname);
-        p.getPatient().setId(pid);
-        p.getPatient().setAge(age);
-        p.getPatient().setContact(contact);
-        p.getPatient().setEmail(email);
-        p.getPatient().setAddress(address);
+        p.setName(pname);
+        p.setAge(age);
+        p.setContact(contact);
+        p.setEmail(email);
+        p.setAddress(address);
 
         if((mRadioButton.isSelected())){
-            p.getPatient().setGender("male");
+            p.setGender("male");
         }
         else{
-            p.getPatient().setGender("female");
+            p.setGender("female");
         }
 
         
 
         pnameField.setText("");
-        pidField.setText("");
         ageField.setText("");
         contactField.setText("");
         emailField.setText("");
         addressField.setText("");
 
         JOptionPane.showMessageDialog(this,"New Patient Details saved successfully!!!");
+        }
+        
+        
     }//GEN-LAST:event_saveButtonActionPerformed
 
 
@@ -308,8 +282,6 @@ public class Add_patientJPanel extends javax.swing.JPanel {
     private javax.swing.JLabel jLabel1;
     private javax.swing.JPanel jPanel2;
     private javax.swing.JRadioButton mRadioButton;
-    private javax.swing.JLabel pIDLabel;
-    private javax.swing.JTextField pidField;
     private javax.swing.JTextField pnameField;
     private javax.swing.JLabel pnameLabel;
     private javax.swing.JButton saveButton;

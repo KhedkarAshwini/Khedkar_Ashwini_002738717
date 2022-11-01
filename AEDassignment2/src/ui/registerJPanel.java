@@ -4,10 +4,12 @@
  */
 package ui;
 
+import datamodel.DataManager;
 import java.awt.CardLayout;
 import javax.swing.JOptionPane;
 import javax.swing.JPanel;
 import model.Encounter;
+import model.Patient;
 import model.PersonDirectory;
 import model.Person;
 import model.VitalSigns;
@@ -22,14 +24,10 @@ public class registerJPanel extends javax.swing.JPanel {
      * Creates new form addpatientJPanel
      */
     
-    PersonDirectory person ;
     CardLayout c1;
     JPanel cards;
     
-    public registerJPanel(PersonDirectory pa, JPanel cards) {
-        
-        
-        this.person = pa;
+    public registerJPanel(JPanel cards) {
         this. cards = cards;
         this.c1 = (CardLayout) cards.getLayout();
         initComponents();
@@ -64,8 +62,6 @@ public class registerJPanel extends javax.swing.JPanel {
         emailField = new javax.swing.JTextField();
         ageLabel = new javax.swing.JLabel();
         ageField = new javax.swing.JTextField();
-        backButton = new javax.swing.JButton();
-        jButton1 = new javax.swing.JButton();
 
         jLabel1.setFont(new java.awt.Font("Segoe UI", 1, 24)); // NOI18N
         jLabel1.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
@@ -96,15 +92,6 @@ public class registerJPanel extends javax.swing.JPanel {
 
         ageLabel.setText("Age:");
 
-        backButton.setText("Back");
-        backButton.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                backButtonActionPerformed(evt);
-            }
-        });
-
-        jButton1.setText("Save");
-
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(this);
         this.setLayout(layout);
         layout.setHorizontalGroup(
@@ -115,22 +102,16 @@ public class registerJPanel extends javax.swing.JPanel {
                     .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
                         .addComponent(contactField, javax.swing.GroupLayout.PREFERRED_SIZE, 170, javax.swing.GroupLayout.PREFERRED_SIZE)
                         .addGroup(layout.createSequentialGroup()
+                            .addGap(94, 94, 94)
                             .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                                .addGroup(layout.createSequentialGroup()
-                                    .addGap(94, 94, 94)
-                                    .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                                        .addComponent(temperatureLabel, javax.swing.GroupLayout.PREFERRED_SIZE, 84, javax.swing.GroupLayout.PREFERRED_SIZE)
-                                        .addComponent(weightLabel)
-                                        .addComponent(contactLabel)
-                                        .addComponent(pIDLabel)
-                                        .addComponent(pnameLabel)
-                                        .addComponent(genderLabel)
-                                        .addComponent(ageLabel))
-                                    .addGap(42, 42, 42))
-                                .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
-                                    .addContainerGap()
-                                    .addComponent(backButton)
-                                    .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)))
+                                .addComponent(temperatureLabel, javax.swing.GroupLayout.PREFERRED_SIZE, 84, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                .addComponent(weightLabel)
+                                .addComponent(contactLabel)
+                                .addComponent(pIDLabel)
+                                .addComponent(pnameLabel)
+                                .addComponent(genderLabel)
+                                .addComponent(ageLabel))
+                            .addGap(42, 42, 42)
                             .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                                 .addGroup(layout.createSequentialGroup()
                                     .addComponent(mRadioButton, javax.swing.GroupLayout.PREFERRED_SIZE, 76, javax.swing.GroupLayout.PREFERRED_SIZE)
@@ -139,14 +120,11 @@ public class registerJPanel extends javax.swing.JPanel {
                                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING, false)
                                     .addComponent(ageField, javax.swing.GroupLayout.Alignment.LEADING, javax.swing.GroupLayout.DEFAULT_SIZE, 170, Short.MAX_VALUE)
                                     .addComponent(pnameField, javax.swing.GroupLayout.Alignment.LEADING))
-                                .addGroup(layout.createSequentialGroup()
-                                    .addGap(32, 32, 32)
-                                    .addComponent(saveButton))
                                 .addComponent(emailField, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.PREFERRED_SIZE, 170, javax.swing.GroupLayout.PREFERRED_SIZE)
                                 .addComponent(addressField, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.PREFERRED_SIZE, 170, javax.swing.GroupLayout.PREFERRED_SIZE))))
                     .addGroup(layout.createSequentialGroup()
-                        .addGap(204, 204, 204)
-                        .addComponent(jButton1)))
+                        .addGap(207, 207, 207)
+                        .addComponent(saveButton)))
                 .addContainerGap(606, Short.MAX_VALUE))
         );
         layout.setVerticalGroup(
@@ -182,13 +160,9 @@ public class registerJPanel extends javax.swing.JPanel {
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(temperatureLabel)
                     .addComponent(addressField, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
-                .addGap(49, 49, 49)
-                .addComponent(jButton1)
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 98, Short.MAX_VALUE)
-                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                    .addComponent(saveButton)
-                    .addComponent(backButton))
-                .addGap(90, 90, 90))
+                .addGap(53, 53, 53)
+                .addComponent(saveButton)
+                .addContainerGap(209, Short.MAX_VALUE))
         );
     }// </editor-fold>//GEN-END:initComponents
 
@@ -198,21 +172,20 @@ public class registerJPanel extends javax.swing.JPanel {
         String pname = pnameField.getText();
         int age = Integer.parseInt(ageField.getText());
         
-        Person per = new Person();
-        per.setName(pname);
-        per.setAge(age);
+        Patient p = new Patient();
+        p.setName(pname);
+        p.setAge(age);
      
         if((mRadioButton.isSelected())){
-            per.setGender("male");
+            p.setGender("male");
         }
         else{
-            per.setGender("female");
+            p.setGender("female");
         }
         
-        VitalSigns vs = new VitalSigns();
-        Encounter e = new Encounter(vs);
         
-        Person p = person.addnewperson();
+        
+        DataManager.shared.patients.addnewpatient(p);
         
         JOptionPane.showMessageDialog(this,"New User Registered successfully!!!");
 
@@ -226,26 +199,17 @@ public class registerJPanel extends javax.swing.JPanel {
         
     }//GEN-LAST:event_saveButtonActionPerformed
 
-    private void backButtonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_backButtonActionPerformed
-        // TODO add your handling code here:
-        c1.previous(cards);
-        cards.remove(this);
-       
-    }//GEN-LAST:event_backButtonActionPerformed
-
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JTextField addressField;
     private javax.swing.JTextField ageField;
     private javax.swing.JLabel ageLabel;
-    private javax.swing.JButton backButton;
     private javax.swing.ButtonGroup buttonGroup1;
     private javax.swing.JTextField contactField;
     private javax.swing.JLabel contactLabel;
     private javax.swing.JTextField emailField;
     private javax.swing.JRadioButton fRadioButton;
     private javax.swing.JLabel genderLabel;
-    private javax.swing.JButton jButton1;
     private javax.swing.JLabel jLabel1;
     private javax.swing.JRadioButton mRadioButton;
     private javax.swing.JLabel pIDLabel;

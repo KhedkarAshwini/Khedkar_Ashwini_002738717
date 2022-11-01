@@ -13,21 +13,14 @@ import java.util.ArrayList;
 public class PatientDirectory {
     
     private ArrayList<Patient> patients;
-    private ArrayList<Encounterhistory> history;
     
     public PatientDirectory(){
-        this.patients = new ArrayList <Patient> ();
-        this.history = new ArrayList<Encounterhistory>();        
+        this.patients = new ArrayList<Patient>();      
     }
 
     public ArrayList<Patient> getPatient() {
         return patients;
     }
-
-    public void setPatient(ArrayList<Patient> patient) {
-        this.patients = patient;
-    }
-    
     
     public Patient addnewpatient(Patient p){
        patients.add(p);
@@ -50,7 +43,16 @@ public class PatientDirectory {
     
      public Patient fetchPatient(String name){
         for(Patient p : patients){
-            if(p.getPatient().getName() == name){
+            if(p.getName().equals(name)){
+                System.out.print(p.getName());
+                return p;
+            }
+        }
+        return null;
+    }
+     public Patient fetchPatientbyID(int id){
+        for(Patient p : patients){
+            if(p.getId() == id){
                 return p;
             }
         }

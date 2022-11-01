@@ -18,24 +18,24 @@ public class PatientJPanel extends javax.swing.JPanel {
      * Creates new form PatientJPanel
      */
     
-    PatientDirectory patients;
-    DoctorDirectory doctors;
-    Encounterhistory history;
+    //PatientDirectory patients;
+    //DoctorDirectory doctors;
+    //Encounterhistory history;
     JPanel cards;
     CardLayout cl;
     
-    public PatientJPanel(PatientDirectory p,Encounterhistory hist, DoctorDirectory doc, JPanel cards) {
-        this.patients = p;
-        this.doctors = doc;
-        this.history = hist;
+    public PatientJPanel( JPanel cards) {
+       // this.patients = p;
+        //this.doctors = doc;
+        //this.history = hist;
         this.cards = cards;
         this.cl = (CardLayout) cards.getLayout();
         initComponents();
     }
     public PatientJPanel(PatientDirectory p, DoctorDirectory doc, JPanel cards) {
-        this.patients = p;
-        this.doctors = doc;
-        this.cards = cards;
+//        this.patients = p;
+//        this.doctors = doc;
+//        this.cards = cards;
         this.cl = (CardLayout) cards.getLayout();
         initComponents();
     }

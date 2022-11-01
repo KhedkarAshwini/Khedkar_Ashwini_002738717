@@ -10,7 +10,7 @@ package model;
  */
 public class Person {
     private String name;
-    static int currentid = 1;
+    private static int currentid = 1;
     private int id;
     private String gender;
     private int age;
@@ -18,14 +18,14 @@ public class Person {
     private String email;
     private String address;
     private String city;
+    private String zip;
     
     public Person(){
         this.id = currentid;
         currentid++;
     }
-    public Person(String pname,int id,String gen,int age,String con,String email,String add,String city){
+    public Person(String pname,String gen,int age,String con,String email,String add,String city){
         this.name = pname;
-        this.id = id;
         this.age = age;
         this.gender = gen;
         this.contact = con;
@@ -44,11 +44,7 @@ public class Person {
     }
 
     public int getId(){
-        return id;
-    }
-
-    public void setId(int id) {
-        this.id = id;
+        return id; 
     }
 
     public String getGender() {
@@ -99,6 +95,14 @@ public class Person {
         this.city = city;
     }
 
+    public String getZip() {
+        return zip;
+    }
+
+    public void setZip(String zip) {
+        this.zip = zip;
+    }
+    
     
     @Override
     public String toString() {

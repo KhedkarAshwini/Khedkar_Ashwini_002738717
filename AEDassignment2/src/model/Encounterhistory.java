@@ -12,7 +12,7 @@ import java.util.ArrayList;
  */
 public class Encounterhistory {
     private ArrayList<Encounter> history;
-    private PatientDirectory patients;
+    //private PatientDirectory patients;
     
     
     public Encounterhistory(){
@@ -28,7 +28,7 @@ public class Encounterhistory {
     }
     
     
-   public Encounter addnewencounter(Encounter p){
+    public Encounter addnewencounter(Encounter p){
        history.add(p);
        return p;
    }
@@ -49,7 +49,7 @@ public class Encounterhistory {
     public ArrayList<Encounter> fetchEncounterforDoctor(int id){
         ArrayList<Encounter> enc = new ArrayList<>();
         for(Encounter e:history){
-            if(e.getEncounterid() == id){
+            if(e.doctor.getId() == id){
                 enc.add(e);
             }
         }
@@ -58,7 +58,7 @@ public class Encounterhistory {
     public ArrayList<Encounter> fetchEncounterforPatient(int id){
         ArrayList<Encounter> enc = new ArrayList<>();
         for(Encounter e:history){
-            if(e.getEncounterid() == id){
+            if(e.p.getId() == id){
                 enc.add(e);
             }
         }

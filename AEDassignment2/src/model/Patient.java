@@ -9,45 +9,16 @@ package model;
  *
  * @author ashwini
  */
-public class Patient {
+public class Patient extends Person{  
     
-    private Person patient;
-    private Encounterhistory history;
-    
-    
-    public Patient(Person p){
-        this.patient = p;
-    }
-    public Patient(Person p , Encounterhistory e){
-        patient = p;
-        history = e;
-    }
-   
-
-    public Person getPatient() {
-        return patient;
+    public Patient(){
+        
     }
 
-    public void setPatient(Person patient) {
-        this.patient = patient;
+    @Override
+    public String toString(){
+        return getName();
     }
-
-    public Encounterhistory getHistory() {
-        return history;
-    }
-
-    public void setHistory(Encounterhistory history) {
-        this.history = history;
-    }
-   /**
-    public VitalSigns getVitalsigns() {
-        return vitalsigns;
-    }
-
-    public void setVitalsigns(VitalSigns vitalsigns) {
-        this.vitalsigns = vitalsigns;
-    }
-**/
     
     
     

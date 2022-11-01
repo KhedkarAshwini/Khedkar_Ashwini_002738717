@@ -21,12 +21,11 @@ public class viewdoctorJPanel extends javax.swing.JPanel {
     /**
      * Creates new form viewdoctorJPanel
      */
-    DoctorDirectory doctors;
+    
     JPanel cards;
     CardLayout cl;
     
-    public viewdoctorJPanel(DoctorDirectory doc , JPanel cards) {
-        this.doctors = doc;
+    public viewdoctorJPanel(JPanel cards) {
         this.cards = cards;
         this.cl = (CardLayout)cards.getLayout();
         initComponents();
@@ -43,8 +42,6 @@ public class viewdoctorJPanel extends javax.swing.JPanel {
     private void initComponents() {
 
         jLabel1 = new javax.swing.JLabel();
-        jScrollPane1 = new javax.swing.JScrollPane();
-        jTable1 = new javax.swing.JTable();
         jLabel2 = new javax.swing.JLabel();
         contactLabel = new javax.swing.JLabel();
         backButton = new javax.swing.JButton();
@@ -53,37 +50,26 @@ public class viewdoctorJPanel extends javax.swing.JPanel {
         emailField = new javax.swing.JTextField();
         genderLabel = new javax.swing.JLabel();
         addressField = new javax.swing.JTextField();
-        ptypeField = new javax.swing.JTextField();
         cityField = new javax.swing.JTextField();
         addressLabel = new javax.swing.JLabel();
         CityLabel = new javax.swing.JLabel();
-        pidField = new javax.swing.JTextField();
-        ptypeLabel = new javax.swing.JLabel();
         pnameField = new javax.swing.JTextField();
         genderField = new javax.swing.JTextField();
         pnameLabel = new javax.swing.JLabel();
-        pIDLabel = new javax.swing.JLabel();
         contactField = new javax.swing.JTextField();
         updateButton = new javax.swing.JButton();
         viewButton = new javax.swing.JButton();
         deleteButton = new javax.swing.JButton();
+        zipField = new javax.swing.JTextField();
+        hosField = new javax.swing.JTextField();
+        addressLabel1 = new javax.swing.JLabel();
+        CityLabel1 = new javax.swing.JLabel();
+        jScrollPane1 = new javax.swing.JScrollPane();
+        jTable1 = new javax.swing.JTable();
 
         jLabel1.setFont(new java.awt.Font("Segoe UI", 1, 18)); // NOI18N
         jLabel1.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
         jLabel1.setText("View Doctor Details");
-
-        jTable1.setBorder(javax.swing.BorderFactory.createLineBorder(new java.awt.Color(0, 0, 0)));
-        jTable1.setModel(new javax.swing.table.DefaultTableModel(
-            new Object [][] {
-
-            },
-            new String [] {
-                "Name", "DoctorId", "Age", "Gender", "Contact", "Email", "Address", "City", "Speciality"
-            }
-        ));
-        jTable1.setPreferredSize(new java.awt.Dimension(825, 80));
-        jTable1.setShowGrid(true);
-        jScrollPane1.setViewportView(jTable1);
 
         jLabel2.setText("Age :");
 
@@ -104,11 +90,7 @@ public class viewdoctorJPanel extends javax.swing.JPanel {
 
         CityLabel.setText("City : ");
 
-        ptypeLabel.setText("Speciality : ");
-
         pnameLabel.setText("Doctor name :");
-
-        pIDLabel.setText("Doctor ID :");
 
         updateButton.setText("Update");
         updateButton.addActionListener(new java.awt.event.ActionListener() {
@@ -131,12 +113,29 @@ public class viewdoctorJPanel extends javax.swing.JPanel {
             }
         });
 
+        addressLabel1.setText("Zip :");
+
+        CityLabel1.setText("Hospital Name  : ");
+
+        jTable1.setBorder(javax.swing.BorderFactory.createLineBorder(new java.awt.Color(0, 0, 0)));
+        jTable1.setModel(new javax.swing.table.DefaultTableModel(
+            new Object [][] {
+
+            },
+            new String [] {
+                "Name", "DoctorID", "Age", "Gender", "Contact", "Email", "Address", "City", "Zip", "Hospital Name"
+            }
+        ));
+        jTable1.setPreferredSize(new java.awt.Dimension(825, 80));
+        jTable1.setShowGrid(true);
+        jTable1.getTableHeader().setReorderingAllowed(false);
+        jScrollPane1.setViewportView(jTable1);
+
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(this);
         this.setLayout(layout);
         layout.setHorizontalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addComponent(jLabel1, javax.swing.GroupLayout.DEFAULT_SIZE, 1000, Short.MAX_VALUE)
-            .addComponent(jScrollPane1)
             .addGroup(layout.createSequentialGroup()
                 .addContainerGap()
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
@@ -148,59 +147,57 @@ public class viewdoctorJPanel extends javax.swing.JPanel {
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
                     .addGroup(layout.createSequentialGroup()
                         .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                            .addComponent(pIDLabel)
-                            .addComponent(pnameLabel))
-                        .addGap(43, 43, 43)
+                            .addComponent(CityLabel1)
+                            .addComponent(addressLabel1, javax.swing.GroupLayout.PREFERRED_SIZE, 84, javax.swing.GroupLayout.PREFERRED_SIZE))
+                        .addGap(34, 34, 34)
                         .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                            .addComponent(pnameField)
-                            .addComponent(pidField)))
+                            .addComponent(zipField)
+                            .addComponent(hosField)))
                     .addGroup(layout.createSequentialGroup()
                         .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                            .addComponent(ptypeLabel)
                             .addComponent(CityLabel)
                             .addComponent(addressLabel, javax.swing.GroupLayout.PREFERRED_SIZE, 84, javax.swing.GroupLayout.PREFERRED_SIZE)
                             .addComponent(genderLabel)
                             .addComponent(jLabel2)
                             .addComponent(contactLabel)
-                            .addComponent(emailLabel))
+                            .addComponent(emailLabel)
+                            .addComponent(pnameLabel))
                         .addGap(34, 34, 34)
-                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
-                            .addComponent(emailField)
-                            .addComponent(addressField, javax.swing.GroupLayout.Alignment.TRAILING)
-                            .addComponent(cityField)
-                            .addComponent(ptypeField)
-                            .addComponent(contactField)
-                            .addComponent(genderField)
-                            .addComponent(ageField, javax.swing.GroupLayout.PREFERRED_SIZE, 170, javax.swing.GroupLayout.PREFERRED_SIZE))))
-                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
+                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                            .addComponent(pnameField, javax.swing.GroupLayout.PREFERRED_SIZE, 170, javax.swing.GroupLayout.PREFERRED_SIZE)
+                            .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
+                                .addComponent(emailField)
+                                .addComponent(addressField, javax.swing.GroupLayout.Alignment.TRAILING)
+                                .addComponent(cityField)
+                                .addComponent(contactField)
+                                .addComponent(genderField)
+                                .addComponent(ageField, javax.swing.GroupLayout.PREFERRED_SIZE, 170, javax.swing.GroupLayout.PREFERRED_SIZE)))))
+                .addContainerGap(571, Short.MAX_VALUE))
+            .addComponent(jScrollPane1)
         );
         layout.setVerticalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(layout.createSequentialGroup()
                 .addContainerGap()
                 .addComponent(jLabel1)
-                .addGap(18, 18, 18)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                 .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, 112, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
+                .addGap(24, 24, 24)
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addGroup(layout.createSequentialGroup()
                         .addComponent(viewButton)
                         .addGap(18, 18, 18)
-                        .addComponent(updateButton)
+                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                            .addComponent(updateButton)
+                            .addComponent(pnameLabel))
                         .addGap(18, 18, 18)
                         .addComponent(deleteButton)
                         .addGap(18, 18, 18)
                         .addComponent(backButton))
                     .addGroup(layout.createSequentialGroup()
-                        .addGap(15, 15, 15)
-                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                            .addComponent(pnameLabel)
-                            .addComponent(pnameField, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                        .addGap(44, 44, 44)
+                        .addComponent(pnameField, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                         .addGap(18, 18, 18)
-                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                            .addComponent(pIDLabel)
-                            .addComponent(pidField, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
-                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                         .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
                             .addComponent(jLabel2)
                             .addComponent(ageField, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
@@ -212,7 +209,7 @@ public class viewdoctorJPanel extends javax.swing.JPanel {
                         .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                             .addComponent(contactLabel)
                             .addComponent(contactField, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))))
-                .addGap(18, 18, 18)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(emailField, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                     .addComponent(emailLabel))
@@ -224,11 +221,15 @@ public class viewdoctorJPanel extends javax.swing.JPanel {
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(CityLabel)
                     .addComponent(cityField, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
+                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                    .addComponent(addressLabel1)
+                    .addComponent(zipField, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
                 .addGap(18, 18, 18)
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                    .addComponent(ptypeLabel)
-                    .addComponent(ptypeField, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
-                .addContainerGap(73, Short.MAX_VALUE))
+                    .addComponent(CityLabel1)
+                    .addComponent(hosField, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                .addContainerGap(49, Short.MAX_VALUE))
         );
     }// </editor-fold>//GEN-END:initComponents
 
@@ -244,37 +245,37 @@ public class viewdoctorJPanel extends javax.swing.JPanel {
         int rowindex = jTable1.getSelectedRow();
 
         String newname = pnameField.getText();
-        int newid = Integer.parseInt(pidField.getText());
         int newage = Integer.parseInt(ageField.getText());
         String newgender = genderField.getText();
         String contact = contactField.getText();
         String email = emailField.getText();
         String address = addressField.getText();
         String city = cityField.getText();
-        String ptype = ptypeField.getText();
-
-        Doctor d = doctors.updatedoctor(rowindex);
-
-        d.getPerson().setName(newname);
-        d.getPerson().setId(newid);
-        d.getPerson().setAge(newage);
-        d.getPerson().setGender(newgender);
-        d.getPerson().setContact(contact);
-        d.getPerson().setEmail(email);
-        d.getPerson().setAddress(address);
-        d.getPerson().setCity(city);
+        String zip = zipField.getText();
+        String hosame = hosField.getText();
         
+        Doctor d = DataManager.shared.doctors.updatedoctor(rowindex);
 
+        d.setName(newname);
+        d.setAge(newage);
+        d.setGender(newgender);
+        d.setContact(contact);
+        d.setEmail(email);
+        d.setAddress(address);
+        d.setCity(city);
+        d.setZip(zip);
+        d.setHospname(hosame);
+        
+        model.setValueAt(d, rowindex, 10);
         model.setValueAt(newname, rowindex, 0);
-        model.setValueAt(newid, rowindex, 1);
-        model.setValueAt(newage, rowindex, 2);
-        model.setValueAt(newgender, rowindex, 3);
-        model.setValueAt(contact, rowindex, 4);
-        model.setValueAt(email, rowindex, 5);
-        model.setValueAt(address, rowindex, 6);
-        model.setValueAt(city, rowindex, 7);
-        model.setValueAt(ptype, rowindex, 8);
-
+        model.setValueAt(newage, rowindex, 1);
+        model.setValueAt(newgender, rowindex, 2);
+        model.setValueAt(contact, rowindex, 3);
+        model.setValueAt(email, rowindex, 4);
+        model.setValueAt(address, rowindex, 5);
+        model.setValueAt(city, rowindex, 6);
+        model.setValueAt(zip, rowindex, 7);
+        model.setValueAt(hosame, rowindex, 8);
         PopulateTable();
     }//GEN-LAST:event_updateButtonActionPerformed
 
@@ -288,16 +289,19 @@ public class viewdoctorJPanel extends javax.swing.JPanel {
         }
 
         DefaultTableModel model = (DefaultTableModel) jTable1.getModel();
-        Doctor selectedp = (Doctor) model.getValueAt(rowindex, 0);
+        Doctor selectedp = DataManager.shared.doctors.fetchDoctor((Integer)model.getValueAt(rowindex, 1));
         
-        pnameField.setText(String.valueOf(selectedp.getPerson().getName()));
-        pidField.setText(String.valueOf(selectedp.getPerson().getId()));
-        ageField.setText(String.valueOf(selectedp.getPerson().getAge()));
-        genderField.setText(String.valueOf(selectedp.getPerson().getGender()));
-        contactField.setText(String.valueOf(selectedp.getPerson().getContact()));
-        emailField.setText(String.valueOf(selectedp.getPerson().getEmail()));
-        addressField.setText(String.valueOf(selectedp.getPerson().getAddress()));
-        cityField.setText(String.valueOf(selectedp.getPerson().getCity()));
+        pnameField.setText(String.valueOf(selectedp.getName()));
+        ageField.setText(String.valueOf(selectedp.getAge()));
+        genderField.setText(String.valueOf(selectedp.getGender()));
+        contactField.setText(String.valueOf(selectedp.getContact()));
+        emailField.setText(String.valueOf(selectedp.getEmail()));
+        addressField.setText(String.valueOf(selectedp.getAddress()));
+        cityField.setText(String.valueOf(selectedp.getCity()));
+        zipField.setText(String.valueOf(selectedp.getZip()));
+        hosField.setText(String.valueOf(selectedp.getHospname()));
+        
+
     }//GEN-LAST:event_viewButtonActionPerformed
 
     private void deleteButtonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_deleteButtonActionPerformed
@@ -313,19 +317,19 @@ public class viewdoctorJPanel extends javax.swing.JPanel {
         DefaultTableModel model = (DefaultTableModel) jTable1.getModel();
         Doctor selectedp = (Doctor) model.getValueAt(rowindex, 0);
 
-        doctors.deletedoctor(selectedp);
+        DataManager.shared.doctors.deletedoctor(selectedp);
 
         JOptionPane.showMessageDialog(this, "Selected Person Record is deleted.");
 
         pnameField.setText("");
-        pidField.setText("");
         ageField.setText("");
         genderField.setText("");
         contactField.setText("");
         emailField.setText("");
         addressField.setText("");
         cityField.setText("");
-        ptypeField.setText("");
+        zipField.setText("");
+        hosField.setText("");
 
         PopulateTable();
     }//GEN-LAST:event_deleteButtonActionPerformed
@@ -333,8 +337,10 @@ public class viewdoctorJPanel extends javax.swing.JPanel {
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JLabel CityLabel;
+    private javax.swing.JLabel CityLabel1;
     private javax.swing.JTextField addressField;
     private javax.swing.JLabel addressLabel;
+    private javax.swing.JLabel addressLabel1;
     private javax.swing.JTextField ageField;
     private javax.swing.JButton backButton;
     private javax.swing.JTextField cityField;
@@ -345,35 +351,34 @@ public class viewdoctorJPanel extends javax.swing.JPanel {
     private javax.swing.JLabel emailLabel;
     private javax.swing.JTextField genderField;
     private javax.swing.JLabel genderLabel;
+    private javax.swing.JTextField hosField;
     private javax.swing.JLabel jLabel1;
     private javax.swing.JLabel jLabel2;
     private javax.swing.JScrollPane jScrollPane1;
     private javax.swing.JTable jTable1;
-    private javax.swing.JLabel pIDLabel;
-    private javax.swing.JTextField pidField;
     private javax.swing.JTextField pnameField;
     private javax.swing.JLabel pnameLabel;
-    private javax.swing.JTextField ptypeField;
-    private javax.swing.JLabel ptypeLabel;
     private javax.swing.JButton updateButton;
     private javax.swing.JButton viewButton;
+    private javax.swing.JTextField zipField;
     // End of variables declaration//GEN-END:variables
 
     private void PopulateTable() {
         DefaultTableModel model = (DefaultTableModel) jTable1.getModel();
-        model.setRowCount(1);
+//        model.setRowCount(0);
         
         for (Doctor doc: DataManager.shared.doctors.getDoctor()){
-            Object[] row = new Object[9];
-            row[0] = doc;
-            row[1] = doc.getPerson().getName();
-            row[2] = String.valueOf(doc.getPerson().getId());
-            row[3] = String.valueOf(doc.getPerson().getAge());
-            row[4] = doc.getPerson().getGender();
-            row[5] = doc.getPerson().getContact();
-            row[6] = doc.getPerson().getEmail();
-            row[7] = doc.getPerson().getAddress();
-            row[8] = doc.getPerson().getCity();
+            Object[] row = new Object[10];
+            row[0] = doc.getName();
+            row[1] = doc.getId();
+            row[2] = doc.getAge();
+            row[3] = doc.getGender();
+            row[4] = doc.getContact();
+            row[5] = doc.getEmail();
+            row[6] = doc.getAddress();
+            row[7] = doc.getCity();
+            row[8] = doc.getZip();
+            row[9] = doc.getHospname();
             model.addRow(row);
     }
     }

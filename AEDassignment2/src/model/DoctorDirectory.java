@@ -27,7 +27,6 @@ public class DoctorDirectory {
     public Doctor addnewdoctor(Doctor doc){
         
         doctor.add(doc);
-        System.out.println(doc.getPerson().getName()+"Ashwini");
         return doc;
         
    }
@@ -47,7 +46,7 @@ public class DoctorDirectory {
     }
     public Doctor fetchDoctor(int id){
         for(Doctor d : doctor){
-            if(d.getPerson().getId() == id){
+            if(d.getId() == id){
                 return d;
             }
         }
@@ -55,10 +54,20 @@ public class DoctorDirectory {
     }
     public Doctor fetchDoctorbyName(String name){
         for(Doctor d : doctor){
-            if(d.getPerson().getName() == name){
+            if(d.getName().equals(name)){
                 return d;
             }
         }
         return null;
+    }
+    
+    public ArrayList<Doctor> fetchDoctorbyHosName(String name){
+        ArrayList<Doctor> doc  = new ArrayList<>();
+        for(Doctor d : doctor){
+            if(d.getHospname().equals(name)){
+                doc.add(d);
+            }
+        }
+        return doc;
     }
 }

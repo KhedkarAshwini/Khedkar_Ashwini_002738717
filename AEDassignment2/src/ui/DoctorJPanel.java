@@ -4,6 +4,7 @@
  */
 package ui;
 
+import datamodel.DataManager;
 import java.awt.CardLayout;
 import javax.swing.JPanel;
 import model.Encounterhistory;
@@ -24,9 +25,9 @@ public class DoctorJPanel extends javax.swing.JPanel {
     JPanel cards;
     CardLayout c1;
     
-    public DoctorJPanel(PatientDirectory patients , Encounterhistory history, JPanel cards) {
-        this.history = history;
-        this.patients = patients;
+    public DoctorJPanel(JPanel cards) {
+        this.history = DataManager.shared.history;
+        this.patients = DataManager.shared.patients;
         this.cards = cards;
         this.c1 =  (CardLayout)cards.getLayout();
         initComponents();

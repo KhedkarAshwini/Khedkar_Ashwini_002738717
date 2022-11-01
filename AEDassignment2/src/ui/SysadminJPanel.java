@@ -22,22 +22,16 @@ public class SysadminJPanel extends javax.swing.JPanel {
      */
     
     PatientDirectory patients;
-    PersonDirectory perd;
-    Encounterhistory enc;
     DoctorDirectory doctors;
     CardLayout c1;
     JPanel cards;
     
     
-    public SysadminJPanel(PatientDirectory p, DoctorDirectory doc, PersonDirectory per , Encounterhistory enc , JPanel cards) {
+    public SysadminJPanel(JPanel cards) {
        
         initComponents();
-        this.patients = p;
-        this.perd = per;
-        this.enc = enc;
         this.cards = cards;
         this.c1 = (CardLayout)cards.getLayout();
-        this.doctors = doc;
         
     }
     
@@ -180,7 +174,7 @@ public class SysadminJPanel extends javax.swing.JPanel {
 
     private void addpButtonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_addpButtonActionPerformed
         // TODO add your handling code here:
-        Add_patientJPanel addpanel = new Add_patientJPanel(patients,enc, cards);
+        Add_patientJPanel addpanel = new Add_patientJPanel(cards);
         cards.add(addpanel,"addPatientPanel");
         c1.next(cards);
         //c1.show(cards,"addPatientPanel");
@@ -189,7 +183,7 @@ public class SysadminJPanel extends javax.swing.JPanel {
 
     private void jButton1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton1ActionPerformed
         // TODO add your handling code here:
-        viewPatientJPanel vpanel = new viewPatientJPanel(patients,enc,cards);
+        viewPatientJPanel vpanel = new viewPatientJPanel(cards);
         cards.add(vpanel,"viewPatientPanel");
         c1.next(cards);
         //c1.show(cards,"viewPatientPanel");
@@ -218,7 +212,7 @@ public class SysadminJPanel extends javax.swing.JPanel {
 
     private void viewdoctorButtonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_viewdoctorButtonActionPerformed
         // TODO add your handling code here:
-        viewdoctorJPanel vpanel = new viewdoctorJPanel(doctors , cards);
+        viewdoctorJPanel vpanel = new viewdoctorJPanel(cards);
         cards.add(vpanel,"viewDoctorPanel");
         c1.next(cards);
     }//GEN-LAST:event_viewdoctorButtonActionPerformed

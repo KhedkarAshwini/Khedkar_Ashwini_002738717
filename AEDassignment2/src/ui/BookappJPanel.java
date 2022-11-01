@@ -36,8 +36,8 @@ public class BookappJPanel extends javax.swing.JPanel {
     CardLayout cl;
     
     public BookappJPanel(JPanel cards) {
-        
-        this.enc = new Encounter();
+        VitalSigns vs = new VitalSigns();
+        this.enc = new Encounter(vs);
         this.cards = cards;
         this.cl = (CardLayout) cards.getLayout();
         initComponents();
@@ -61,7 +61,6 @@ public class BookappJPanel extends javax.swing.JPanel {
         ageLabel = new javax.swing.JLabel();
         pnameField = new javax.swing.JTextField();
         visitdatePicker = new org.jdesktop.swingx.JXDatePicker();
-        jButton1 = new javax.swing.JButton();
         jButton2 = new javax.swing.JButton();
         jButton3 = new javax.swing.JButton();
 
@@ -76,14 +75,6 @@ public class BookappJPanel extends javax.swing.JPanel {
         pnameLabel.setText("User name :");
 
         ageLabel.setText("Appointment Date: ");
-
-        jButton1.setBackground(new java.awt.Color(51, 0, 255));
-        jButton1.setText("Request Appointment ");
-        jButton1.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                jButton1ActionPerformed(evt);
-            }
-        });
 
         jButton2.setBackground(new java.awt.Color(51, 0, 255));
         jButton2.setText("Back");
@@ -107,29 +98,25 @@ public class BookappJPanel extends javax.swing.JPanel {
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addComponent(jLabel1, javax.swing.GroupLayout.DEFAULT_SIZE, 1000, Short.MAX_VALUE)
             .addGroup(layout.createSequentialGroup()
-                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
-                    .addComponent(jButton2)
+                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addGroup(layout.createSequentialGroup()
                         .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                             .addComponent(weightLabel)
                             .addComponent(contactLabel)
                             .addComponent(pnameLabel)
                             .addComponent(ageLabel))
-                        .addGap(62, 62, 62)))
-                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addGroup(layout.createSequentialGroup()
-                        .addGap(54, 54, 54)
+                        .addGap(116, 116, 116)
                         .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
                             .addComponent(visitdatePicker, javax.swing.GroupLayout.DEFAULT_SIZE, 202, Short.MAX_VALUE)
                             .addComponent(emailField)
                             .addComponent(contactField)
                             .addComponent(pnameField, javax.swing.GroupLayout.PREFERRED_SIZE, 194, javax.swing.GroupLayout.PREFERRED_SIZE)))
                     .addGroup(layout.createSequentialGroup()
-                        .addGap(33, 33, 33)
-                        .addComponent(jButton1)
-                        .addGap(33, 33, 33)
+                        .addGap(144, 144, 144)
+                        .addComponent(jButton2)
+                        .addGap(42, 42, 42)
                         .addComponent(jButton3)))
-                .addContainerGap(514, Short.MAX_VALUE))
+                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
         );
         layout.setVerticalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
@@ -154,48 +141,11 @@ public class BookappJPanel extends javax.swing.JPanel {
                     .addComponent(emailField, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
                 .addGap(127, 127, 127)
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                    .addComponent(jButton1)
                     .addComponent(jButton2)
                     .addComponent(jButton3))
                 .addContainerGap(172, Short.MAX_VALUE))
         );
     }// </editor-fold>//GEN-END:initComponents
-
-    private void jButton1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton1ActionPerformed
-        // TODO add your handling code here:
-        
-        String uname = pnameField.getText();
-        Date sdate = visitdatePicker.getDate();
-        String pattern = "MM-dd-yyyy";
-        SimpleDateFormat simpleDateFormat = new SimpleDateFormat(pattern);
-        String visitdate = simpleDateFormat.format(sdate);
-        
-        String contact = contactField.getText();
-        String email = emailField.getText();
-        
-        Person per = new Person();
-        per.setName(uname);
-        per.setContact(contact);
-        per.setEmail(email);
-        
-        
-        VitalSigns vs = new VitalSigns();
-        
-        Encounter e = new Encounter(vs);
-        
-        
-        //Patient p = new Patient(per);
-        e.setVisitdate(visitdate);
-        
-        
-        DataManager.shared.history.addnewencounter(e);
-        //Encounter enc = history.addnewencounterhistory(p);
-        
-        
-        
-        JOptionPane.showMessageDialog(this,"Appointment Booked successfully");
-        
-    }//GEN-LAST:event_jButton1ActionPerformed
 
     private void jButton2ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton2ActionPerformed
         // TODO add your handling code here:
@@ -205,6 +155,16 @@ public class BookappJPanel extends javax.swing.JPanel {
 
     private void jButton3ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton3ActionPerformed
         // TODO add your handling code here:
+        
+        String uname = pnameField.getText();
+        Date sdate = visitdatePicker.getDate();
+        String pattern = "MM-dd-yyyy";
+        SimpleDateFormat simpleDateFormat = new SimpleDateFormat(pattern);
+        String visitdate = simpleDateFormat.format(sdate);
+        enc.setVisitdate(visitdate);
+        enc.p = DataManager.shared.patients.fetchPatient(uname);
+       
+        DataManager.shared.history.addnewencounter(enc);
         SearchdocJPanel spanel = new SearchdocJPanel(enc,cards);
         cards.add(spanel,"SearchDoctorPanel");
         cl.next(cards);
@@ -216,7 +176,6 @@ public class BookappJPanel extends javax.swing.JPanel {
     private javax.swing.JTextField contactField;
     private javax.swing.JLabel contactLabel;
     private javax.swing.JTextField emailField;
-    private javax.swing.JButton jButton1;
     private javax.swing.JButton jButton2;
     private javax.swing.JButton jButton3;
     private javax.swing.JLabel jLabel1;

@@ -23,15 +23,12 @@ public class viewPatientJPanel extends javax.swing.JPanel {
      * Creates new form viewPatientJPanel
      */
     
-    PatientDirectory p ;
-    Encounterhistory history;
+    
     JPanel cards;
     CardLayout cl;
     
-    public viewPatientJPanel(PatientDirectory patients, Encounterhistory hist, JPanel cards) {
+    public viewPatientJPanel(JPanel cards) {
         initComponents();
-        this.p = patients;
-        this.history = hist;
         this.cards = cards;
         this.cl =  (CardLayout)cards.getLayout();
         PopulateTable();
@@ -50,10 +47,8 @@ public class viewPatientJPanel extends javax.swing.JPanel {
         jScrollPane1 = new javax.swing.JScrollPane();
         jTable1 = new javax.swing.JTable();
         viewButton = new javax.swing.JButton();
-        pidField = new javax.swing.JTextField();
         pnameField = new javax.swing.JTextField();
         pnameLabel = new javax.swing.JLabel();
-        pIDLabel = new javax.swing.JLabel();
         genderLabel = new javax.swing.JLabel();
         genderField = new javax.swing.JTextField();
         jLabel2 = new javax.swing.JLabel();
@@ -92,9 +87,13 @@ public class viewPatientJPanel extends javax.swing.JPanel {
             }
         });
 
-        pnameLabel.setText("Patient name :");
+        pnameField.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                pnameFieldActionPerformed(evt);
+            }
+        });
 
-        pIDLabel.setText("Patient ID :");
+        pnameLabel.setText("Patient name :");
 
         genderLabel.setText("Gender");
 
@@ -148,16 +147,13 @@ public class viewPatientJPanel extends javax.swing.JPanel {
                 .addGap(43, 43, 43)
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addComponent(emailLabel)
-                    .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
-                        .addGroup(layout.createSequentialGroup()
-                            .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                                .addComponent(pIDLabel)
-                                .addComponent(pnameLabel))
-                            .addGap(42, 42, 42)
-                            .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                                .addComponent(pnameField, javax.swing.GroupLayout.DEFAULT_SIZE, 170, Short.MAX_VALUE)
-                                .addComponent(pidField)))
-                        .addGroup(layout.createSequentialGroup()
+                    .addComponent(contactLabel)
+                    .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING, false)
+                        .addGroup(javax.swing.GroupLayout.Alignment.LEADING, layout.createSequentialGroup()
+                            .addComponent(pnameLabel)
+                            .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 42, Short.MAX_VALUE)
+                            .addComponent(pnameField, javax.swing.GroupLayout.PREFERRED_SIZE, 170, javax.swing.GroupLayout.PREFERRED_SIZE))
+                        .addGroup(javax.swing.GroupLayout.Alignment.LEADING, layout.createSequentialGroup()
                             .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                                 .addComponent(genderLabel)
                                 .addComponent(jLabel2)
@@ -168,8 +164,7 @@ public class viewPatientJPanel extends javax.swing.JPanel {
                                 .addComponent(ageField)
                                 .addComponent(contactField)
                                 .addComponent(emailField)
-                                .addComponent(addressField))))
-                    .addComponent(contactLabel))
+                                .addComponent(addressField)))))
                 .addGap(0, 0, Short.MAX_VALUE))
         );
         layout.setVerticalGroup(
@@ -189,14 +184,11 @@ public class viewPatientJPanel extends javax.swing.JPanel {
                         .addGap(18, 18, 18)
                         .addComponent(backButton))
                     .addGroup(layout.createSequentialGroup()
+                        .addGap(35, 35, 35)
                         .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                            .addComponent(pnameLabel)
-                            .addComponent(pnameField, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                            .addComponent(pnameField, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                            .addComponent(pnameLabel))
                         .addGap(18, 18, 18)
-                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                            .addComponent(pIDLabel)
-                            .addComponent(pidField, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
-                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                         .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
                             .addComponent(jLabel2)
                             .addComponent(ageField, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
@@ -216,7 +208,7 @@ public class viewPatientJPanel extends javax.swing.JPanel {
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(addressLabel)
                     .addComponent(addressField, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
-                .addContainerGap(219, Short.MAX_VALUE))
+                .addContainerGap(213, Short.MAX_VALUE))
         );
     }// </editor-fold>//GEN-END:initComponents
 
@@ -232,13 +224,12 @@ public class viewPatientJPanel extends javax.swing.JPanel {
         DefaultTableModel model = (DefaultTableModel) jTable1.getModel();
         Patient selectedp = (Patient) model.getValueAt(rowindex, 0);
         
-        pnameField.setText(String.valueOf(selectedp.getPatient().getName()));
-        pidField.setText(String.valueOf(selectedp.getPatient().getId()));
-        ageField.setText(String.valueOf(selectedp.getPatient().getAge()));
-        genderField.setText(String.valueOf(selectedp.getPatient().getGender()));
-        contactField.setText(String.valueOf(selectedp.getPatient().getContact()));
-        emailField.setText(String.valueOf(selectedp.getPatient().getEmail()));
-        addressField.setText(String.valueOf(selectedp.getPatient().getAddress()));
+        pnameField.setText(String.valueOf(selectedp.getName()));
+        ageField.setText(String.valueOf(selectedp.getAge()));
+        genderField.setText(String.valueOf(selectedp.getGender()));
+        contactField.setText(String.valueOf(selectedp.getContact()));
+        emailField.setText(String.valueOf(selectedp.getEmail()));
+        addressField.setText(String.valueOf(selectedp.getAddress()));
     }//GEN-LAST:event_viewButtonActionPerformed
 
     private void updateButtonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_updateButtonActionPerformed
@@ -247,7 +238,6 @@ public class viewPatientJPanel extends javax.swing.JPanel {
         int rowindex = jTable1.getSelectedRow();
         
         String newname = pnameField.getText();
-        int newid = Integer.parseInt(pidField.getText());
         int newage = Integer.parseInt(ageField.getText());
         String newgender = genderField.getText();
         String contact = contactField.getText();
@@ -255,23 +245,21 @@ public class viewPatientJPanel extends javax.swing.JPanel {
         String address = addressField.getText();
         
         
-        Patient pat = p.updatepatient(rowindex);
+        Patient pat = DataManager.shared.patients.updatepatient(rowindex);
         
-        pat.getPatient().setName(newname);
-        pat.getPatient().setId(newid);
-        pat.getPatient().setAge(newage);
-        pat.getPatient().setGender(newgender);
-        pat.getPatient().setContact(contact);
-        pat.getPatient().setEmail(email);
-        pat.getPatient().setAddress(address);
+        pat.setName(newname);
+        pat.setAge(newage);
+        pat.setGender(newgender);
+        pat.setContact(contact);
+        pat.setEmail(email);
+        pat.setAddress(address);
         
         model.setValueAt(newname, rowindex, 0);
-        model.setValueAt(newid, rowindex, 1);
-        model.setValueAt(newage, rowindex, 2);
-        model.setValueAt(newgender, rowindex, 3);
-        model.setValueAt(contact, rowindex, 4);
-        model.setValueAt(email, rowindex, 5);
-        model.setValueAt(address, rowindex, 6);
+        model.setValueAt(newage, rowindex, 1);
+        model.setValueAt(newgender, rowindex, 2);
+        model.setValueAt(contact, rowindex, 3);
+        model.setValueAt(email, rowindex, 4);
+        model.setValueAt(address, rowindex, 5);
         PopulateTable();
            
         
@@ -297,7 +285,6 @@ public class viewPatientJPanel extends javax.swing.JPanel {
         JOptionPane.showMessageDialog(this, "Selected Patient Record is deleted.");
         
         pnameField.setText("");
-        pidField.setText("");
         ageField.setText("");
         genderField.setText("");
         contactField.setText("");
@@ -317,6 +304,10 @@ public class viewPatientJPanel extends javax.swing.JPanel {
         // TODO add your handling code here:
     }//GEN-LAST:event_addressFieldActionPerformed
 
+    private void pnameFieldActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_pnameFieldActionPerformed
+        // TODO add your handling code here:
+    }//GEN-LAST:event_pnameFieldActionPerformed
+
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JTextField addressField;
@@ -334,8 +325,6 @@ public class viewPatientJPanel extends javax.swing.JPanel {
     private javax.swing.JLabel jLabel2;
     private javax.swing.JScrollPane jScrollPane1;
     private javax.swing.JTable jTable1;
-    private javax.swing.JLabel pIDLabel;
-    private javax.swing.JTextField pidField;
     private javax.swing.JTextField pnameField;
     private javax.swing.JLabel pnameLabel;
     private javax.swing.JButton updateButton;
@@ -349,13 +338,13 @@ public class viewPatientJPanel extends javax.swing.JPanel {
         for (Patient pat: DataManager.shared.patients.getPatient()){
             Object[] row = new Object[7];
             row[0] = pat;
-            row[1] = pat.getPatient().getName();
-            row[1] = pat.getPatient().getId();
-            row[2] = pat.getPatient().getAge();
-            row[3] = pat.getPatient().getGender();
-            row[4] = pat.getPatient().getContact();
-            row[5] = pat.getPatient().getEmail();
-            row[6] = pat.getPatient().getAddress();
+            row[1] = pat.getName();
+            row[1] = pat.getId();
+            row[2] = pat.getAge();
+            row[3] = pat.getGender();
+            row[4] = pat.getContact();
+            row[5] = pat.getEmail();
+            row[6] = pat.getAddress();
             model.addRow(row);
     }
     }

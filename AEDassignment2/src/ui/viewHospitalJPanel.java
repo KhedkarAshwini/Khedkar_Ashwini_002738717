@@ -4,12 +4,11 @@
  */
 package ui;
 
+import datamodel.DataManager;
 import java.awt.CardLayout;
 import javax.swing.JPanel;
 import javax.swing.table.DefaultTableModel;
-import model.Hospital;
-import model.HospitalDirectory;
-import model.Patient;
+import model.*;
 
 /**
  *
@@ -20,12 +19,11 @@ public class viewHospitalJPanel extends javax.swing.JPanel {
     /**
      * Creates new form viewHospitalJPanel
      */
-    HospitalDirectory hospitals;
+    
     JPanel cards;
     CardLayout cl;
      
-    public viewHospitalJPanel(HospitalDirectory hos,JPanel cards) {
-        this.hospitals = hos;
+    public viewHospitalJPanel(JPanel cards) {
         this.cards = cards;
         this.cl = (CardLayout) cards.getLayout();
         initComponents();
@@ -111,7 +109,7 @@ public class viewHospitalJPanel extends javax.swing.JPanel {
         DefaultTableModel model = (DefaultTableModel) jTable1.getModel();
         model.setRowCount(0);
         
-        for (Hospital hos: hospitals.getHospitals()){
+        for (Hospital hos: DataManager.shared.hospitals.getHospitals()){
             Object[] row = new Object[8];
             row[0] = hos.getHosname();
             row[1] = hos.getCity();

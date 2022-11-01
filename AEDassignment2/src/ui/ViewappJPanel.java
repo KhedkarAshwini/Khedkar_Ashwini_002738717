@@ -115,27 +115,29 @@ public class ViewappJPanel extends javax.swing.JPanel {
         model.setRowCount(0);
         
         int currid = DataManager.shared.currentuserId;
-        
+        System.out.print(currid);
+        System.out.println(DataManager.shared.history.fetchEncounterforPatient(currid));
         for (Encounter enc: DataManager.shared.history.fetchEncounterforPatient(currid)){
-            Object[] row = new Object[11];
+            Object[] row = new Object[12];
             int eid = 0;
-            row[0] = enc;
-            row[1] = enc.getVisitdate();
+            row[11] = enc;
+            row[0] = enc.getVisitdate();
             if(enc.getEncounterid() == 0){
-                row[2] = eid++;
+                row[1] = eid++;
             }
             else{
-                row[2] = enc.getEncounterid();
+                row[1] = enc.getEncounterid();
             }
-            row[3] = enc.getVisittype();
-            row[4] = enc.doctor.getPerson().getName();
-            row[5] = enc.getSigns().getHeight();
-            row[6] = enc.getSigns().getWeight();
-            row[7] = enc.getSigns().getTemperature();
-            row[8] = enc.getSigns().getBloodpressure();
-            row[9] = enc.getSigns().getPulse();
-            row[10]= enc.getDiagnosis();
-            row[11] = enc.getMedication();
+            row[2] = enc.getVisittype();
+            row[3] = enc.doctor.getName();
+            System.out.println(enc.doctor.getName());
+            row[4] = enc.getSigns().getHeight();
+            row[5] = enc.getSigns().getWeight();
+            row[6] = enc.getSigns().getTemperature();
+            row[7] = enc.getSigns().getBloodpressure();
+            row[8] = enc.getSigns().getPulse();
+            row[9]= enc.getDiagnosis();
+            row[10] = enc.getMedication();
             model.addRow(row);
     }
     }

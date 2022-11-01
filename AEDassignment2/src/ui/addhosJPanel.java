@@ -4,6 +4,7 @@
  */
 package ui;
 
+import datamodel.DataManager;
 import java.awt.CardLayout;
 import javax.swing.JOptionPane;
 import javax.swing.JPanel;
@@ -22,8 +23,7 @@ public class addhosJPanel extends javax.swing.JPanel {
     HospitalDirectory hospitals;
     JPanel cards;
     CardLayout cl;
-    public addhosJPanel(HospitalDirectory hos, JPanel cards) {
-        this.hospitals =hos;
+    public addhosJPanel(JPanel cards) {
         this.cards = cards;
         this.cl =  (CardLayout)cards.getLayout();
         initComponents();
@@ -210,11 +210,11 @@ public class addhosJPanel extends javax.swing.JPanel {
             val++;
         }
         String zip = zipField.getText();
-        if(contact.isEmpty()){
+        if(zip.isEmpty()){
             JOptionPane.showMessageDialog(this,"Please enter input");
             val++;
         }
-        if(contact.length() > 5 | contact.length() > 5){
+        if(zip.length() > 5 | zip.length() > 5){
             JOptionPane.showMessageDialog(this,"Please enter a 5 digit value");
             val++;
         }
@@ -227,26 +227,32 @@ public class addhosJPanel extends javax.swing.JPanel {
             JOptionPane.showMessageDialog(this,"Please enter a string value.");
             val++;
         }
-        Hospital h = new Hospital();
         
-        h.setCity(selectedcity);
-        h.setCommunity(selectedcommunity);
-        h.setHosname(hname);
-        h.setContact(contact);
-        h.setEmail(email);
-        h.setZipcode(zip);
-        h.setAddress(address);
+        if(val == 0){
+            Hospital h = new Hospital();
         
         
-        hnameField.setText("");
-        contactField.setText("");
-        emailField.setText("");
-        zipField.setText("");
-        addressField.setText("");
+            h.setCity(selectedcity);
+            h.setCommunity(selectedcommunity);
+            h.setHosname(hname);
+            h.setContact(contact);
+            h.setEmail(email);
+            h.setZipcode(zip);
+            h.setAddress(address);
+
+            DataManager.shared.hospitals.addnewhospital(h);
+
+            hnameField.setText("");
+            contactField.setText("");
+            emailField.setText("");
+            zipField.setText("");
+            addressField.setText("");
+
+            //Hospital hosp = hospitals.addnewhospital(h);
+
+            JOptionPane.showMessageDialog(this,"New Hospital Info added successfully!!!");
+            }
         
-        Hospital hosp = hospitals.addnewhospital(h);
-        
-        JOptionPane.showMessageDialog(this,"New Hospital Info added successfully!!!");
         
         
     }//GEN-LAST:event_jButton1ActionPerformed

@@ -276,9 +276,9 @@ public class addpdiagnosisJPanel extends javax.swing.JPanel {
 
         enc = DataManager.shared.history.fetchEncounter((selectedp));
         
-        pnameField.setText(String.valueOf(enc.p.getPatient().getName()));
-        pidField.setText(String.valueOf(enc.p.getPatient().getId()));
-        ageField.setText(String.valueOf(enc.p.getPatient().getAge()));
+        pnameField.setText(String.valueOf(enc.p.getName()));
+        pidField.setText(String.valueOf(enc.p.getId()));
+        ageField.setText(String.valueOf(enc.p.getAge()));
         visitdateField.setText(String.valueOf(enc.getVisitdate()));
         heightField.setText(String.valueOf(enc.getSigns().getHeight()));
         weightField.setText(String.valueOf(enc.getSigns().getWeight()));
@@ -320,17 +320,16 @@ public class addpdiagnosisJPanel extends javax.swing.JPanel {
         String med = medicationField.getText();
         
 
-        enc.p.getPatient().setName(newname);
-        enc.p.getPatient().setId(newid);
-        enc.p.getPatient().setAge(newage);
+        enc.p.setName(newname);
+        enc.p.setAge(newage);
         enc.getSigns().setVisitdate(newvisitdate);
         enc.getSigns().setHeight(newh);
-        enc.getSigns().setWeight(newh);
+        enc.getSigns().setWeight(neww);
         enc.getSigns().setTemperature(temp);
         enc.getSigns().setBloodpressure(bp);
         enc.getSigns().setPulse(pulse);
-        enc.getDiagnosis();
-        enc.getMedication();
+        enc.setDiagnosis(d);
+        enc.setMedication(med);
 
         model.setValueAt(newname, rowindex, 0);
         model.setValueAt(newid, rowindex, 1);
@@ -388,15 +387,13 @@ public class addpdiagnosisJPanel extends javax.swing.JPanel {
 
     private void PopulateTable() {
         DefaultTableModel model = (DefaultTableModel) jTable1.getModel();
-        model.setRowCount(0);
-        
-        for (Encounter e:encounters){
+     
+        for (Encounter e:DataManager.shared.history.fetchEncounterforDoctor(DataManager.shared.currentuserId)){
             Object[] row = new Object[13];
-            row[0] = e;
-            row[1] = e.p.getPatient().getName();
-            row[1] = e.p.getPatient().getId();
-            row[2] = e.p.getPatient().getAge();
-            row[3] = e.p.getPatient().getGender();
+            row[0] = e.p.getName();
+            row[1] = e.p.getId();
+            row[2] = e.p.getAge();
+            row[3] = e.p.getGender();
             row[4] = e.getVisitdate();
             row[5] = e.getSigns().getHeight();
             row[6] = e.getSigns().getWeight();

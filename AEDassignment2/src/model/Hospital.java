@@ -4,6 +4,9 @@
  */
 package model;
 
+import datamodel.*;
+import java.util.ArrayList;
+
 /**
  *
  * @author ashwini
@@ -12,7 +15,7 @@ public class Hospital {
     private PatientDirectory patients;
     private PersonDirectory persons;
     private Encounterhistory hist;
-    private DoctorDirectory doctors;
+    //private DoctorDirectory doctors;
     private String hosname;
     private String contact;
     private String email;
@@ -22,15 +25,11 @@ public class Hospital {
     private String community;
     
    
-    public Hospital(PatientDirectory pat, PersonDirectory per,DoctorDirectory doc , Encounterhistory hist){
-        this.patients = pat;
-        this.persons = per;
-        this.doctors = doc;
-        this.hist = hist;
+    public Hospital(){
+        this.patients = DataManager.shared.patients;
+        //this.doctors = DataManager.shared.doctors;
+        this.hist = DataManager.shared.history;
     }
-   public Hospital(){
-       
-   }
     
     public PatientDirectory getPatients() {
         return patients;
@@ -55,15 +54,15 @@ public class Hospital {
     public void setHist(Encounterhistory hist) {
         this.hist = hist;
     }
-
-    public DoctorDirectory getDoctors() {
-        return doctors;
+    
+    public ArrayList<Doctor> getDoctors() {
+        return DataManager.shared.doctors.fetchDoctorbyHosName(hosname);
     }
-
+    /**
     public void setDoctors(DoctorDirectory doctors) {
         this.doctors = doctors;
     }
-
+   **/
     public String getHosname() {
         return hosname;
     }

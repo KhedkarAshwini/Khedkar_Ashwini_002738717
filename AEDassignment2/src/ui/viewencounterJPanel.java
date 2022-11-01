@@ -206,7 +206,7 @@ public class viewencounterJPanel extends javax.swing.JPanel {
 
         eidField.setText(String.valueOf(selectedp.getEncounterid()));
         visitdateField.setText(String.valueOf(selectedp.getVisitdate()));
-        vdoctorField.setText(String.valueOf(selectedp.doctor.getPerson().getName()));
+        vdoctorField.setText(String.valueOf(selectedp.doctor.getName()));
         vtypeField.setText(String.valueOf(selectedp.getVisittype()));
         
 
@@ -311,11 +311,12 @@ public class viewencounterJPanel extends javax.swing.JPanel {
         model.setRowCount(0);
         
         for (Encounter enc: DataManager.shared.history.getHistory()){
-            Object[] row = new Object[4];
-            row[0] = enc.getVisitdate();
-            row[1] = enc.getEncounterid();
-            row[2] = enc.doctor.getPerson().getName();
-            row[3] = enc.getVisittype();   
+            Object[] row = new Object[5];
+            row[0] = enc;
+            row[1] = enc.getVisitdate();
+            row[2] = enc.getEncounterid();
+            row[3] = enc.doctor.getName();
+            row[4] = enc.getVisittype();   
             model.addRow(row);
     }
     }
